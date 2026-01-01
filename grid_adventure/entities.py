@@ -240,12 +240,12 @@ def create_agent_entity(health: int = DEFAULT_AGENT_HEALTH) -> AgentEntity:
     return agent
 
 
-def create_portal_pair() -> tuple[PortalEntity, PortalEntity]:
-    """Helper to create a pair of linked portal entities."""
-    portal_a = PortalEntity()
-    portal_b = PortalEntity()
-    portal_a.set_pair(portal_b)
-    return portal_a, portal_b
+def create_portal_entity(pair: PortalEntity | None = None) -> PortalEntity:
+    """Helper to create a portal entity, optionally linked to a given pair entity."""
+    portal = PortalEntity()
+    if pair is not None:
+        portal.set_pair(pair)
+    return portal
 
 
 def create_robot_entity(direction: Direction = DEFAULT_DIRECTION) -> RobotEntity:

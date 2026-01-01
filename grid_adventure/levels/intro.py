@@ -11,7 +11,7 @@ from grid_adventure.entities import (
     KeyEntity,
     LockedDoorEntity,
     LavaEntity,
-    create_portal_pair,
+    create_portal_entity,
     BoxEntity,
     create_moving_box_entity,
     create_robot_entity,
@@ -205,7 +205,8 @@ def build_level_portal_shortcut(seed: int = 107) -> Level:
     _floors(level)
     level.add((1, h // 2), create_agent_entity())
     level.add((w - 2, h // 2), ExitEntity())
-    p1, p2 = create_portal_pair()
+    p1 = create_portal_entity()
+    p2 = create_portal_entity(pair=p1)
     level.add((2, 1), p1)
     level.add((w - 1, h // 2), p2)
     for x in range(3, w - 3):
