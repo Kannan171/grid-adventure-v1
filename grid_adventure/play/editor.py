@@ -1,25 +1,17 @@
 from __future__ import annotations
 
-from typing import Any, Callable, cast
+from typing import Any, Callable
 
 import streamlit as st
 
 from grid_universe.state import State
 from grid_universe.renderer.texture import TextureMap
 
-from grid_play.config.sources.base import register_level_source
-from grid_play.config.sources.level_editor import ToolSpec, make_level_editor_source
-
-from grid_adventure.types import Direction
 from grid_adventure.env import GridAdventureEnv
-from grid_adventure.rendering import (
-    TEXTURE_MAP as ADVENTURE_TEXTURE_MAP,
-    DEFAULT_ASSET_ROOT,
-)
 from grid_adventure.objectives import objectives
 from grid_adventure.moves import moves
+from grid_adventure.rendering import TEXTURE_MAP, DEFAULT_ASSET_ROOT
 from grid_adventure.entities import (
-    AgentEntity,
     FloorEntity,
     WallEntity,
     ExitEntity,
@@ -28,10 +20,7 @@ from grid_adventure.entities import (
     KeyEntity,
     LockedDoorEntity,
     UnlockedDoorEntity,
-    PortalEntity,
     BoxEntity,
-    MovingBoxEntity,
-    RobotEntity,
     LavaEntity,
     SpeedPowerUpEntity,
     ShieldPowerUpEntity,
@@ -39,12 +28,16 @@ from grid_adventure.entities import (
     create_agent_entity,
     create_robot_entity,
     create_moving_box_entity,
+    create_portal_entity,
 )
 
+from grid_play.config.sources.base import register_level_source
+from grid_play.config.sources.level_editor import ToolSpec, make_level_editor_source
 
-# ------------------------
-# Parameter UIs (only for configurable entities with helper functions)
-# ------------------------
+
+# -----------------------
+# Parameter UIs
+# -----------------------
 
 
 def agent_params() -> dict[str, Any]:
@@ -61,87 +54,141 @@ def direction_params(prefix: str) -> dict[str, Any]:
     direction = st.selectbox(
         "Direction", ["up", "down", "left", "right"], index=1, key=f"{prefix}_direction"
     )
-    return {"direction": cast(Direction, direction)}
+    return {"direction": direction}
 
 
-# ------------------------
-# Builders using helper functions
-# ------------------------
-
-
-def build_agent(p: dict[str, Any]) -> AgentEntity:
-    return create_agent_entity(health=int(p.get("health", 5)))
-
-
-def build_moving_box(p: dict[str, Any]) -> MovingBoxEntity:
-    return create_moving_box_entity(direction=p.get("direction", "down"))
-
-
-def build_robot(p: dict[str, Any]) -> RobotEntity:
-    return create_robot_entity(direction=p.get("direction", "down"))
-
-
-# --- Palette specification ---
+# -----------------------
+# Palette
+# -----------------------
 
 PALETTE: dict[str, ToolSpec] = {
-    "floor": ToolSpec(label="Floor", icon="⬜", builder=lambda _p: FloorEntity()),
-    "wall": ToolSpec(label="Wall", icon="🟫", builder=lambda _p: WallEntity()),
-    "agent": ToolSpec(
-        label="Agent", icon="😊", builder=build_agent, param_ui=agent_params
+    "floor": ToolSpec(
+        label="Floor",
+        icon="⬜",
+        factory_fn=FloorEntity,
+        param_map=lambda p: {},
     ),
-    "exit": ToolSpec(label="Exit", icon="🏁", builder=lambda _p: ExitEntity()),
-    "coin": ToolSpec(label="Coin", icon="🪙", builder=lambda _p: CoinEntity()),
-    "gem": ToolSpec(label="Gem", icon="💎", builder=lambda _p: GemEntity()),
-    "key": ToolSpec(label="Key", icon="🔑", builder=lambda _p: KeyEntity()),
+    "wall": ToolSpec(
+        label="Wall",
+        icon="🟫",
+        factory_fn=WallEntity,
+        param_map=lambda p: {},
+    ),
+    "agent": ToolSpec(
+        label="Agent",
+        icon="😊",
+        factory_fn=create_agent_entity,
+        param_map=lambda p: {"health": int(p.get("health", 5))},
+        param_ui=agent_params,
+    ),
+    "exit": ToolSpec(
+        label="Exit",
+        icon="🏁",
+        factory_fn=ExitEntity,
+        param_map=lambda p: {},
+    ),
+    "coin": ToolSpec(
+        label="Coin",
+        icon="🪙",
+        factory_fn=CoinEntity,
+        param_map=lambda p: {},
+    ),
+    "gem": ToolSpec(
+        label="Gem",
+        icon="💎",
+        factory_fn=GemEntity,
+        param_map=lambda p: {},
+    ),
+    "key": ToolSpec(
+        label="Key",
+        icon="🔑",
+        factory_fn=KeyEntity,
+        param_map=lambda p: {},
+    ),
     "door_locked": ToolSpec(
-        label="Locked Door", icon="🚪", builder=lambda _p: LockedDoorEntity()
+        label="Locked Door",
+        icon="🚪",
+        factory_fn=LockedDoorEntity,
+        param_map=lambda p: {},
     ),
     "door_unlocked": ToolSpec(
-        label="Unlocked Door", icon="🚪", builder=lambda _p: UnlockedDoorEntity()
+        label="Unlocked Door",
+        icon="🚪",
+        factory_fn=UnlockedDoorEntity,
+        param_map=lambda p: {},
     ),
     "portal": ToolSpec(
         label="Portal",
         icon="🔵",
-        builder=lambda _p: PortalEntity(),
-        description="Click two cells sequentially to pair (auto-wired by editor).",
+        factory_fn=create_portal_entity,
+        param_map=lambda p: {},
+        description="Click two cells sequentially to pair.",
     ),
-    "box": ToolSpec(label="Box", icon="📦", builder=lambda _p: BoxEntity()),
+    "box": ToolSpec(
+        label="Box",
+        icon="📦",
+        factory_fn=BoxEntity,
+        param_map=lambda p: {},
+    ),
     "moving_box": ToolSpec(
         label="Moving Box",
         icon="🧱",
-        builder=build_moving_box,
+        factory_fn=create_moving_box_entity,
+        param_map=lambda p: {"direction": p.get("direction", "down")},
         param_ui=lambda: direction_params("moving_box"),
     ),
     "robot": ToolSpec(
         label="Robot",
         icon="🤖",
-        builder=build_robot,
+        factory_fn=create_robot_entity,
+        param_map=lambda p: {"direction": p.get("direction", "down")},
         param_ui=lambda: direction_params("robot"),
     ),
-    "lava": ToolSpec(label="Lava", icon="🔥", builder=lambda _p: LavaEntity()),
+    "lava": ToolSpec(
+        label="Lava",
+        icon="🔥",
+        factory_fn=LavaEntity,
+        param_map=lambda p: {},
+    ),
     "speed": ToolSpec(
-        label="Speed PowerUp", icon="🥾", builder=lambda _p: SpeedPowerUpEntity()
+        label="Speed PowerUp",
+        icon="🥾",
+        factory_fn=SpeedPowerUpEntity,
+        param_map=lambda p: {},
     ),
     "shield": ToolSpec(
-        label="Shield PowerUp", icon="🛡️", builder=lambda _p: ShieldPowerUpEntity()
+        label="Shield PowerUp",
+        icon="🛡️",
+        factory_fn=ShieldPowerUpEntity,
+        param_map=lambda p: {},
     ),
     "ghost": ToolSpec(
-        label="Ghost PowerUp", icon="👻", builder=lambda _p: PhasingPowerUpEntity()
+        label="Ghost PowerUp",
+        icon="👻",
+        factory_fn=PhasingPowerUpEntity,
+        param_map=lambda p: {},
     ),
     "erase": ToolSpec(
         label="Eraser",
         icon="␡",
-        builder=lambda _p: FloorEntity(),
+        factory_fn=FloorEntity,
+        param_map=lambda p: {},
         description="Reset cell to floor-only.",
     ),
 }
 
 
-# --- Environment factory for editor preview ---
+# -----------------------
+# Asset root resolver (preview) + env factory
+# -----------------------
+
+
+def _asset_root_resolver(texture_map: TextureMap) -> str:
+    return DEFAULT_ASSET_ROOT
 
 
 def _env_factory(
-    initial_state_fn: Callable[..., State], texture_map: Any
+    initial_state_fn: Callable[..., State], texture_map: TextureMap
 ) -> GridAdventureEnv:
     sample_state = initial_state_fn()
     return GridAdventureEnv(
@@ -153,25 +200,19 @@ def _env_factory(
     )
 
 
-# --- Asset root resolver for preview ---
-
-
-def _asset_root_resolver(texture_map: TextureMap) -> str:
-    return DEFAULT_ASSET_ROOT
-
-
-# --- Register LevelSource ---
+# -----------------------
+# Register LevelSource
+# -----------------------
 
 register_level_source(
     make_level_editor_source(
         name="Grid Adventure Level Editor",
         palette=PALETTE,
-        texture_maps=[
-            ADVENTURE_TEXTURE_MAP
-        ],  # single map -> picker hidden; ensures correct art set
+        texture_maps=[TEXTURE_MAP],
         env_factory=_env_factory,
         move_fn_registry=moves,
         objective_fn_registry=objectives,
         asset_root_resolver=_asset_root_resolver,
+        env_class=GridAdventureEnv,
     )
 )
