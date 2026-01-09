@@ -26,9 +26,6 @@ from grid_adventure.entities import (
     ShieldPowerUpEntity,
     PhasingPowerUpEntity,
     create_agent_entity,
-    create_robot_entity,
-    create_moving_box_entity,
-    create_portal_entity,
 )
 
 from grid_play.config.sources.base import register_level_source
@@ -117,32 +114,11 @@ PALETTE: dict[str, ToolSpec] = {
         factory_fn=UnlockedDoorEntity,
         param_map=lambda p: {},
     ),
-    "portal": ToolSpec(
-        label="Portal",
-        icon="🔵",
-        factory_fn=create_portal_entity,
-        param_map=lambda p: {},
-        description="Click two cells sequentially to pair.",
-    ),
     "box": ToolSpec(
         label="Box",
         icon="📦",
         factory_fn=BoxEntity,
         param_map=lambda p: {},
-    ),
-    "moving_box": ToolSpec(
-        label="Moving Box",
-        icon="🧱",
-        factory_fn=create_moving_box_entity,
-        param_map=lambda p: {"direction": p.get("direction", "down")},
-        param_ui=lambda: direction_params("moving_box"),
-    ),
-    "robot": ToolSpec(
-        label="Robot",
-        icon="🤖",
-        factory_fn=create_robot_entity,
-        param_map=lambda p: {"direction": p.get("direction", "down")},
-        param_ui=lambda: direction_params("robot"),
     ),
     "lava": ToolSpec(
         label="Lava",

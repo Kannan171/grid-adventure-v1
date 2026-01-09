@@ -23,14 +23,11 @@ BUILDERS: dict[str, Builder] = {
     "A4 Two Required Gems": adv_intro_levels.build_level_required_two,
     "A5 Key & Door": adv_intro_levels.build_level_key_door,
     "A6 Hazard Detour": adv_intro_levels.build_level_hazard_detour,
-    "A7 Portal Shortcut": adv_intro_levels.build_level_portal_shortcut,
-    "A8 Pushable Box": adv_intro_levels.build_level_pushable_box,
-    "A9 Moving Box": adv_intro_levels.build_level_moving_box,
-    "A10 Enemy Patrol": adv_intro_levels.build_level_enemy_patrol,
-    "A11 Shield Powerup": adv_intro_levels.build_level_power_shield,
-    "A12 Ghost Powerup": adv_intro_levels.build_level_power_ghost,
-    "A13 Boots Powerup": adv_intro_levels.build_level_power_boots,
-    "A14 Capstone": adv_intro_levels.build_level_capstone,
+    "A7 Pushable Box": adv_intro_levels.build_level_pushable_box,
+    "A8 Shield Powerup": adv_intro_levels.build_level_power_shield,
+    "A9 Ghost Powerup": adv_intro_levels.build_level_power_ghost,
+    "A10 Boots Powerup": adv_intro_levels.build_level_power_boots,
+    "A11 Capstone": adv_intro_levels.build_level_capstone,
 }
 
 

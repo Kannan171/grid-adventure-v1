@@ -18,25 +18,16 @@ from grid_universe.components.properties.health import Health
 from grid_universe.components.properties.inventory import Inventory
 from grid_universe.components.properties.key import Key
 from grid_universe.components.properties.locked import Locked
-from grid_universe.components.properties.moving import Moving, MovingAxis
-from grid_universe.components.properties.portal import Portal
 from grid_universe.components.properties.pushable import Pushable
 from grid_universe.components.properties.requirable import Requirable
 from grid_universe.components.properties.rewardable import Rewardable
 from grid_universe.components.properties.status import Status
 from grid_universe.levels.entity import BaseEntity
 
-from grid_adventure.types import Direction
 from grid_adventure.constants import (
     DEFAULT_AGENT_HEALTH,
-    DEFAULT_DIRECTION,
     COIN_REWARD,
-    ENEMY_DAMAGE,
     HAZARD_DAMAGE,
-    ENTITY_MOVE_AXIS,
-    ENTITY_MOVE_BOUNCE,
-    ENTITY_MOVE_DIRECTION,
-    ENTITY_MOVE_SPEED,
     FLOOR_COST,
     KEY_DOOR_ID,
     PHASING_POWERUP_DURATION,
@@ -67,46 +58,6 @@ class PushableEntity(BaseEntity):
 @dataclass(repr=False)
 class CollectibleEntity(BaseEntity):
     collectible: Collectible = Collectible()
-
-
-@dataclass(repr=False)
-class MovingEntity(BaseEntity):
-    moving: Moving = Moving(
-        axis=ENTITY_MOVE_AXIS[0],
-        direction=ENTITY_MOVE_DIRECTION[0],
-        bounce=ENTITY_MOVE_BOUNCE,
-        speed=ENTITY_MOVE_SPEED,
-    )
-
-    def set_direction(self, direction: Direction) -> None:
-        """Set the moving direction of this MovingEntity based on cardinal direction."""
-        assert self.moving is not None, (
-            "MovingEntity must have a Moving component to set direction."
-        )
-
-        if direction == "up":
-            _axis = MovingAxis.VERTICAL
-            _direction = -1
-        elif direction == "down":
-            _axis = MovingAxis.VERTICAL
-            _direction = +1
-        elif direction == "left":
-            _axis = MovingAxis.HORIZONTAL
-            _direction = -1
-        elif direction == "right":
-            _axis = MovingAxis.HORIZONTAL
-            _direction = +1
-        else:
-            raise ValueError(
-                f"Invalid direction '{direction}'. Must be one of: 'up', 'down', 'left', 'right'."
-            )
-
-        self.moving = Moving(
-            axis=_axis,
-            direction=_direction,
-            bounce=self.moving.bounce,
-            speed=self.moving.speed,
-        )
 
 
 # Entity definitions.
@@ -177,30 +128,8 @@ class UnlockedDoorEntity(BaseEntity):
 
 
 @dataclass(repr=False)
-class PortalEntity(BaseEntity):
-    appearance: Appearance = Appearance(name="portal", priority=7)
-    portal: Portal = Portal(pair_entity=-1)  # Placeholder ID; to be set later
-    portal_pair_ref: "PortalEntity | None" = None
-
-    def set_pair(self, pair_entity: "PortalEntity") -> None:
-        self.portal_pair_ref = pair_entity
-        pair_entity.portal_pair_ref = self
-
-
-@dataclass(repr=False)
 class BoxEntity(BlockingEntity, PushableEntity):
     appearance: Appearance = Appearance(name="box", priority=2)
-
-
-@dataclass(repr=False)
-class MovingBoxEntity(BlockingEntity, MovingEntity):
-    appearance: Appearance = Appearance(name="metalbox", priority=2)
-
-
-@dataclass(repr=False)
-class RobotEntity(CollidableEntity, MovingEntity):
-    appearance: Appearance = Appearance(name="robot", priority=1)
-    damage: Damage = Damage(amount=ENEMY_DAMAGE)
 
 
 @dataclass(repr=False)
@@ -238,27 +167,3 @@ def create_agent_entity(health: int = DEFAULT_AGENT_HEALTH) -> AgentEntity:
     agent = AgentEntity()
     agent.set_health(health)
     return agent
-
-
-def create_portal_entity(pair: PortalEntity | None = None) -> PortalEntity:
-    """Helper to create a portal entity, optionally linked to a given pair entity."""
-    portal = PortalEntity()
-    if pair is not None:
-        portal.set_pair(pair)
-    return portal
-
-
-def create_robot_entity(direction: Direction = DEFAULT_DIRECTION) -> RobotEntity:
-    """Helper to create a robot entity moving in the specified direction."""
-    robot = RobotEntity()
-    robot.set_direction(direction)
-    return robot
-
-
-def create_moving_box_entity(
-    direction: Direction = DEFAULT_DIRECTION,
-) -> MovingBoxEntity:
-    """Helper to create a moving box entity moving in the specified direction."""
-    box = MovingBoxEntity()
-    box.set_direction(direction)
-    return box

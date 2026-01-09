@@ -9,9 +9,7 @@ from grid_universe.levels.factories import (
     create_core,
     create_key,
     create_door,
-    create_portal,
     create_box,
-    create_monster,
     create_hazard,
     create_speed_effect,
     create_immunity_effect,
@@ -19,7 +17,6 @@ from grid_universe.levels.factories import (
 )
 from grid_universe.components.properties.appearance import Appearance
 from grid_universe.levels.entity import Entity
-from grid_universe.components.properties.moving import MovingAxis
 
 from grid_adventure.level import specialize_entities, from_state
 from grid_adventure.entities import (
@@ -32,10 +29,7 @@ from grid_adventure.entities import (
     KeyEntity,
     LockedDoorEntity,
     UnlockedDoorEntity,
-    PortalEntity,
     BoxEntity,
-    MovingBoxEntity,
-    RobotEntity,
     LavaEntity,
     SpeedPowerUpEntity,
     ShieldPowerUpEntity,
@@ -71,11 +65,7 @@ def test_specialize_every_entity_type():
         "key": (6, 0),
         "locked_door": (7, 0),
         "unlocked_door": (8, 0),
-        "portal_a": (0, 1),
-        "portal_b": (1, 1),
         "box": (2, 1),
-        "moving_box": (3, 1),
-        "monster": (4, 1),
         "lava": (5, 1),
         "speed": (6, 1),
         "shield": (7, 1),
@@ -95,25 +85,9 @@ def test_specialize_every_entity_type():
     level.add(
         coords["unlocked_door"], Entity(appearance=Appearance(name="door", priority=6))
     )
-    # Portals
-    p1 = create_portal()
-    p2 = create_portal(pair=p1)
-    level.add(coords["portal_a"], p1)
-    level.add(coords["portal_b"], p2)
     # Boxes
     level.add(coords["box"], create_box(pushable=True))
-    level.add(
-        coords["moving_box"],
-        create_box(
-            pushable=False,
-            moving_axis=MovingAxis.HORIZONTAL,
-            moving_direction=1,
-            moving_bounce=True,
-            moving_speed=1,
-        ),
-    )
     # Hostiles / hazards
-    level.add(coords["monster"], create_monster(damage=1, lethal=False))
     level.add(coords["lava"], create_hazard("lava", damage=2, lethal=True))
     # Power-ups
     level.add(coords["speed"], create_speed_effect(multiplier=2, time=5))
@@ -145,12 +119,7 @@ def test_specialize_every_entity_type():
     assert_at(coords["key"], KeyEntity)
     assert_at(coords["locked_door"], LockedDoorEntity)
     assert_at(coords["unlocked_door"], UnlockedDoorEntity)
-    # Two portals, one each at the two coordinates (pairing is wired after conversion; here we only check type/placement)
-    assert_at(coords["portal_a"], PortalEntity)
-    assert_at(coords["portal_b"], PortalEntity)
     assert_at(coords["box"], BoxEntity)
-    assert_at(coords["moving_box"], MovingBoxEntity)
-    assert_at(coords["monster"], RobotEntity)
     assert_at(coords["lava"], LavaEntity)
     assert_at(coords["speed"], SpeedPowerUpEntity)
     assert_at(coords["shield"], ShieldPowerUpEntity)
@@ -167,10 +136,7 @@ def test_specialize_every_entity_type():
         "KeyEntity": 0,
         "LockedDoorEntity": 0,
         "UnlockedDoorEntity": 0,
-        "PortalEntity": 0,
         "BoxEntity": 0,
-        "MovingBoxEntity": 0,
-        "RobotEntity": 0,
         "LavaEntity": 0,
         "SpeedPowerUpEntity": 0,
         "ShieldPowerUpEntity": 0,
@@ -181,7 +147,6 @@ def test_specialize_every_entity_type():
         if name in counts:
             counts[name] += 1
 
-    # Exactly one of each, except portals (2)
     assert counts["AgentEntity"] == 1
     assert counts["FloorEntity"] == 1
     assert counts["WallEntity"] == 1
@@ -191,32 +156,18 @@ def test_specialize_every_entity_type():
     assert counts["KeyEntity"] == 1
     assert counts["LockedDoorEntity"] == 1
     assert counts["UnlockedDoorEntity"] == 1
-    assert counts["PortalEntity"] == 2
     assert counts["BoxEntity"] == 1
-    assert counts["MovingBoxEntity"] == 1
-    assert counts["RobotEntity"] == 1
     assert counts["LavaEntity"] == 1
     assert counts["SpeedPowerUpEntity"] == 1
     assert counts["ShieldPowerUpEntity"] == 1
     assert counts["PhasingPowerUpEntity"] == 1
 
-    # Behavioral/attribute checks (portal pairing is established during Level->State conversion; not asserted here)
-    # MovingBox must have Moving; Box must not
-    moving_box = next(
-        obj for _, _, obj in _flatten(specialized) if isinstance(obj, MovingBoxEntity)
-    )
     box = next(obj for _, _, obj in _flatten(specialized) if isinstance(obj, BoxEntity))
-    assert getattr(moving_box, "moving") is not None
     assert getattr(box, "moving", None) is None
 
-    # Monster/Lava have damage components
-    monster = next(
-        obj for _, _, obj in _flatten(specialized) if isinstance(obj, RobotEntity)
-    )
     lava = next(
         obj for _, _, obj in _flatten(specialized) if isinstance(obj, LavaEntity)
     )
-    assert getattr(monster, "damage") is not None
     assert getattr(lava, "damage") is not None
 
     # Power-ups carry correct effect components
@@ -281,11 +232,7 @@ def test_specialize_roundtrip_preserves_types_and_coordinates():
         "key": (6, 0),
         "locked_door": (7, 0),
         "unlocked_door": (8, 0),
-        "portal_a": (0, 1),
-        "portal_b": (1, 1),
         "box": (2, 1),
-        "moving_box": (3, 1),
-        "monster": (4, 1),
         "lava": (5, 1),
         "speed": (6, 1),
         "shield": (7, 1),
@@ -304,23 +251,7 @@ def test_specialize_roundtrip_preserves_types_and_coordinates():
     level.add(
         coords["unlocked_door"], Entity(appearance=Appearance(name="door", priority=6))
     )
-    p1 = create_portal()
-    p2 = create_portal(pair=p1)
-    level.add(coords["portal_a"], p1)
-    level.add(coords["portal_b"], p2)
-
     level.add(coords["box"], create_box(pushable=True))
-    level.add(
-        coords["moving_box"],
-        create_box(
-            pushable=False,
-            moving_axis=MovingAxis.HORIZONTAL,
-            moving_direction=1,
-            moving_bounce=True,
-            moving_speed=1,
-        ),
-    )
-    level.add(coords["monster"], create_monster(damage=1, lethal=False))
     level.add(coords["lava"], create_hazard("lava", damage=2, lethal=True))
     level.add(coords["speed"], create_speed_effect(multiplier=2, time=5))
     level.add(coords["shield"], create_immunity_effect(usage=5))
@@ -347,11 +278,7 @@ def test_specialize_roundtrip_preserves_types_and_coordinates():
         coords["key"]: {"KeyEntity"},
         coords["locked_door"]: {"LockedDoorEntity"},
         coords["unlocked_door"]: {"UnlockedDoorEntity"},
-        coords["portal_a"]: {"PortalEntity"},
-        coords["portal_b"]: {"PortalEntity"},
         coords["box"]: {"BoxEntity"},
-        coords["moving_box"]: {"MovingBoxEntity"},
-        coords["monster"]: {"RobotEntity"},
         coords["lava"]: {"LavaEntity"},
         coords["speed"]: {"SpeedPowerUpEntity"},
         coords["shield"]: {"ShieldPowerUpEntity"},
@@ -362,25 +289,6 @@ def test_specialize_roundtrip_preserves_types_and_coordinates():
         have = types_at(pos)
         assert want.issubset(have), f"At {pos}, expected {want}, found {have}"
 
-    # Portal pairing should be established after roundtrip
-    portals: list[PortalEntity] = []
-    for _, row in enumerate(roundtrip_level.grid):
-        for _, cell in enumerate(row):
-            portals.extend([obj for obj in cell if isinstance(obj, PortalEntity)])
-    assert len(portals) == 2
-    assert hasattr(portals[0], "portal_pair_ref")
-    assert hasattr(portals[1], "portal_pair_ref")
-    assert portals[0].portal_pair_ref is portals[1]
-    assert portals[1].portal_pair_ref is portals[0]
-
-    # MovingBox remains moving; Box remains non-moving
-    moving_box = next(
-        obj
-        for row in roundtrip_level.grid
-        for cell in row
-        for obj in cell
-        if isinstance(obj, MovingBoxEntity)
-    )
     box = next(
         obj
         for row in roundtrip_level.grid
@@ -388,5 +296,4 @@ def test_specialize_roundtrip_preserves_types_and_coordinates():
         for obj in cell
         if isinstance(obj, BoxEntity)
     )
-    assert getattr(moving_box, "moving") is not None
     assert getattr(box, "moving", None) is None

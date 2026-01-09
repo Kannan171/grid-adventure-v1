@@ -11,10 +11,7 @@ from grid_adventure.entities import (
     KeyEntity,
     LockedDoorEntity,
     LavaEntity,
-    create_portal_entity,
     BoxEntity,
-    create_moving_box_entity,
-    create_robot_entity,
     SpeedPowerUpEntity,
     ShieldPowerUpEntity,
     PhasingPowerUpEntity,
@@ -192,28 +189,6 @@ def build_level_hazard_detour(seed: int = 106) -> Level:
     return level
 
 
-def build_level_portal_shortcut(seed: int = 107) -> Level:
-    w, h = 11, 9
-    level = Level(
-        w,
-        h,
-        move_fn=cardinal_move_fn,
-        objective_fn=exit_objective_fn,
-        seed=seed,
-        turn_limit=TURN_LIMIT,
-    )
-    _floors(level)
-    level.add((1, h // 2), create_agent_entity())
-    level.add((w - 2, h // 2), ExitEntity())
-    p1 = create_portal_entity()
-    p2 = create_portal_entity(pair=p1)
-    level.add((2, 1), p1)
-    level.add((w - 1, h // 2), p2)
-    for x in range(3, w - 3):
-        level.add((x, h // 2 - 1), WallEntity())
-    return level
-
-
 def build_level_pushable_box(seed: int = 108) -> Level:
     w, h = 11, 9
     level = Level(
@@ -231,50 +206,6 @@ def build_level_pushable_box(seed: int = 108) -> Level:
     level.add((1, h // 2), create_agent_entity())
     level.add((w - 2, h // 2), ExitEntity())
     level.add((w // 2 - 1, h // 2), BoxEntity())
-    return level
-
-
-def build_level_moving_box(seed: int = 108) -> Level:
-    w, h = 11, 9
-    level = Level(
-        w,
-        h,
-        move_fn=cardinal_move_fn,
-        objective_fn=exit_objective_fn,
-        seed=seed,
-        turn_limit=TURN_LIMIT,
-    )
-    _floors(level)
-    for y in range(h):
-        if y not in [h // 2, h // 2 + 1]:
-            level.add((w // 2, y), WallEntity())
-    level.add((1, h // 2), create_agent_entity())
-    level.add((w - 2, h // 2), ExitEntity())
-    level.add((w // 2, h // 2), create_moving_box_entity())
-    return level
-
-
-def build_level_enemy_patrol(seed: int = 109) -> Level:
-    w, h = 13, 9
-    level = Level(
-        w,
-        h,
-        move_fn=cardinal_move_fn,
-        objective_fn=exit_objective_fn,
-        seed=seed,
-        turn_limit=TURN_LIMIT,
-    )
-    _floors(level)
-    level.add((2, h // 2), create_agent_entity(1))
-    level.add((w - 2, h // 2), ExitEntity())
-    for y in range(h):
-        if y not in [h // 2, h // 2 + 1]:
-            level.add((w // 2, y), WallEntity())
-            level.add((w // 2 + 1, y), WallEntity())
-    enemy1 = create_robot_entity("down")
-    enemy2 = create_robot_entity("down")
-    level.add((w // 2, h // 2), enemy1)
-    level.add((w // 2 + 1, h // 2), enemy2)
     return level
 
 
@@ -339,12 +270,6 @@ def build_level_power_boots(seed: int = 112) -> Level:
             level.add((w // 2 + 1, y), WallEntity())
             level.add((w // 2 + 2, y), WallEntity())
     level.add((w // 2 - 1, h // 2 + 1), SpeedPowerUpEntity())
-    enemy1 = create_robot_entity("down")
-    enemy2 = create_robot_entity("down")
-    enemy3 = create_robot_entity("down")
-    level.add((w // 2, h // 2), enemy1)
-    level.add((w // 2 + 1, h // 2), enemy2)
-    level.add((w // 2 + 2, h // 2), enemy3)
     return level
 
 
@@ -395,9 +320,6 @@ def build_level_capstone(seed: int = 113) -> Level:
     level.add((6, 3), GemEntity())
     level.add((0, 4), KeyEntity())
     level.add((3, 4), LockedDoorEntity())
-
-    # Enemy
-    level.add((2, 6), create_robot_entity("up"))
 
     # Exit
     level.add((6, 6), ExitEntity())
