@@ -18,7 +18,7 @@ from grid_universe.components.properties.health import Health
 from grid_universe.components.properties.inventory import Inventory
 from grid_universe.components.properties.key import Key
 from grid_universe.components.properties.locked import Locked
-from grid_universe.components.properties.moving import Moving, MovingAxis
+from grid_universe.components.properties.moving import Moving, Direction
 from grid_universe.components.properties.portal import Portal
 from grid_universe.components.properties.pushable import Pushable
 from grid_universe.components.properties.requirable import Requirable
@@ -26,14 +26,12 @@ from grid_universe.components.properties.rewardable import Rewardable
 from grid_universe.components.properties.status import Status
 from grid_universe.levels.entity import BaseEntity
 
-from grid_adventure.types import Direction
 from grid_adventure.constants import (
     DEFAULT_AGENT_HEALTH,
     DEFAULT_DIRECTION,
     COIN_REWARD,
     ENEMY_DAMAGE,
     HAZARD_DAMAGE,
-    ENTITY_MOVE_AXIS,
     ENTITY_MOVE_BOUNCE,
     ENTITY_MOVE_DIRECTION,
     ENTITY_MOVE_SPEED,
@@ -72,7 +70,6 @@ class CollectibleEntity(BaseEntity):
 @dataclass(repr=False)
 class MovingEntity(BaseEntity):
     moving: Moving = Moving(
-        axis=ENTITY_MOVE_AXIS[0],
         direction=ENTITY_MOVE_DIRECTION[0],
         bounce=ENTITY_MOVE_BOUNCE,
         speed=ENTITY_MOVE_SPEED,
@@ -84,26 +81,8 @@ class MovingEntity(BaseEntity):
             "MovingEntity must have a Moving component to set direction."
         )
 
-        if direction == "up":
-            _axis = MovingAxis.VERTICAL
-            _direction = -1
-        elif direction == "down":
-            _axis = MovingAxis.VERTICAL
-            _direction = +1
-        elif direction == "left":
-            _axis = MovingAxis.HORIZONTAL
-            _direction = -1
-        elif direction == "right":
-            _axis = MovingAxis.HORIZONTAL
-            _direction = +1
-        else:
-            raise ValueError(
-                f"Invalid direction '{direction}'. Must be one of: 'up', 'down', 'left', 'right'."
-            )
-
         self.moving = Moving(
-            axis=_axis,
-            direction=_direction,
+            direction=direction,
             bounce=self.moving.bounce,
             speed=self.moving.speed,
         )

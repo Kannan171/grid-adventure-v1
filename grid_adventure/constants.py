@@ -1,5 +1,4 @@
-from grid_universe.components.properties.moving import MovingAxis
-from grid_adventure.types import Direction
+from grid_universe.components.properties.moving import Direction
 
 # Default settings
 DEFAULT_AGENT_HEALTH = 5
@@ -7,11 +6,7 @@ DEFAULT_DIRECTION: Direction = "down"
 
 # Entity movement settings
 ENTITY_MOVE_SPEED = 1
-ENTITY_MOVE_DIRECTION = [+1, -1]
-ENTITY_MOVE_AXIS = [
-    MovingAxis.VERTICAL,
-    MovingAxis.HORIZONTAL,
-]  # Either horizontal or vertical
+ENTITY_MOVE_DIRECTION: list[Direction] = ["down", "up", "left", "right"]
 ENTITY_MOVE_BOUNCE = True
 
 # Reward and cost values

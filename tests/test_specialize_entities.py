@@ -19,7 +19,6 @@ from grid_universe.levels.factories import (
 )
 from grid_universe.components.properties.appearance import Appearance
 from grid_universe.levels.entity import Entity
-from grid_universe.components.properties.moving import MovingAxis
 
 from grid_adventure.level import specialize_entities, from_state
 from grid_adventure.entities import (
@@ -106,8 +105,7 @@ def test_specialize_every_entity_type():
         coords["moving_box"],
         create_box(
             pushable=False,
-            moving_axis=MovingAxis.HORIZONTAL,
-            moving_direction=1,
+            moving_direction="right",
             moving_bounce=True,
             moving_speed=1,
         ),
@@ -314,8 +312,7 @@ def test_specialize_roundtrip_preserves_types_and_coordinates():
         coords["moving_box"],
         create_box(
             pushable=False,
-            moving_axis=MovingAxis.HORIZONTAL,
-            moving_direction=1,
+            moving_direction="right",
             moving_bounce=True,
             moving_speed=1,
         ),
