@@ -2,26 +2,48 @@
 
 A gridworld puzzle-adventure game built on the Grid Universe engine.
 
+Navigate grid-based levels, collect coins and keys, avoid hazards and enemies, and find the exit. Features powerups (speed, phasing, shields), moving enemies, portals, and locked doors.
+
 ## Install
 
-```
+```bash
 pip install -e .
+pip install -e ".[test]"  # Includes grid-play for running the game
 ```
+
+Requires Python 3.11+.
 
 ## Play
 
-### Intro Levels
-
-```
+**Intro Levels:**
+```bash
 grid-play --plugin grid_adventure.play.intro
 ```
+Play through pre-built levels with varying difficulty.
 
-To change the level, navigate to the “Config” tab and select the desired level from the dropdown menu.
-
-### Level Editor
-
-```
+**Level Editor:**
+```bash
 grid-play --plugin grid_adventure.play.editor
 ```
+Create custom levels with drag-and-drop entity placement.
 
-After launching the game in the browser, navigate to the “Config” tab to customize the level.
+Use the Config tab to change levels or customize settings.
+
+## Features
+
+- **Entities:** Player, walls, floors, exits, coins, keys, doors, enemies, hazards
+- **Powerups:** Speed boost, phasing (walk through walls), damage immunity shield
+- **Mechanics:** Health system, inventory, time limits, portal teleportation, pushable blocks
+- **Editor:** Visual level design with real-time testing
+
+## Development
+
+Run tests:
+```bash
+pip install -e ".[dev]"
+pytest
+```
+
+## License
+
+MIT License - see [LICENSE](LICENSE) file for details.
