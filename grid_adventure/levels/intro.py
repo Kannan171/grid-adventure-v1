@@ -380,7 +380,7 @@ def build_level_capstone_advanced(seed: int = 113) -> Level:
         level.add(p, CoinEntity())
 
     # Powerups
-    level.add((0, 2), SpeedPowerUpEntity())
+    level.add((2, 0), SpeedPowerUpEntity())
     level.add((2, 3), PhasingPowerUpEntity())
     level.add((4, 0), ShieldPowerUpEntity())
 

@@ -1,0 +1,12 @@
+site_name: Grid-Adventure1 Documentation
+
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - Player Guide:
+      - Introduction: player-guide/introduction.md
+      - Entities: player-guide/entities.md
+      - Objectives: player-guide/objectives.md
+      - Movements: player-guide/movements.md
