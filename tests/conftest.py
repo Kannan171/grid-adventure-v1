@@ -3,30 +3,32 @@ import pytest
 from typing import Iterator, Callable
 from PIL import Image
 
-from grid_universe.levels.convert import to_state, level_fn_to_initial_state_fn
-from grid_universe.levels.grid import Level
+from grid_universe.grid.convert import to_state, grid_state_fn_to_initial_state_fn
+from grid_universe.grid.gridstate import GridState
 from grid_universe.state import State
 from grid_adventure.levels import intro
 from grid_adventure.env import GridAdventureEnv
 
 
 @pytest.fixture(scope="session")
-def small_level() -> Level:
+def small_gridstate() -> GridState:
     # Use the simplest level to keep tests fast/stable
     return intro.build_level_basic_movement(seed=100)
 
 
 @pytest.fixture(scope="session")
-def small_state(small_level: Level) -> State:
-    return to_state(small_level)
+def small_state(small_gridstate: GridState) -> State:
+    return to_state(small_gridstate)
 
 
 @pytest.fixture
 def level_env() -> Iterator[GridAdventureEnv]:
-    # observation_type="level" avoids any real rendering/assets
+    # observation_type="gridstate" avoids any real rendering/assets
     env = GridAdventureEnv(
-        initial_state_fn=level_fn_to_initial_state_fn(intro.build_level_basic_movement),
-        observation_type="level",
+        initial_state_fn=grid_state_fn_to_initial_state_fn(
+            intro.build_level_basic_movement
+        ),
+        observation_type="gridstate",
         width=7,
         height=5,
     )

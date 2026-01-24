@@ -22,7 +22,7 @@ from grid_universe.components.properties.pushable import Pushable
 from grid_universe.components.properties.requirable import Requirable
 from grid_universe.components.properties.rewardable import Rewardable
 from grid_universe.components.properties.status import Status
-from grid_universe.levels.entity import BaseEntity
+from grid_universe.grid.entity import BaseEntity
 
 from grid_adventure.constants import (
     DEFAULT_AGENT_HEALTH,
@@ -68,7 +68,7 @@ class AgentEntity(CollidableEntity):
     agent: Agent = Agent()
     appearance: Appearance = Appearance(name="human", priority=0)
     health: Health = Health(
-        health=DEFAULT_AGENT_HEALTH, max_health=DEFAULT_AGENT_HEALTH
+        current_health=DEFAULT_AGENT_HEALTH, max_health=DEFAULT_AGENT_HEALTH
     )
     inventory: Inventory = Inventory(pset())
     status: Status = Status(pset())
@@ -78,7 +78,7 @@ class AgentEntity(CollidableEntity):
         assert self.health is not None, (
             "AgentEntity must have a Health component to set health."
         )
-        self.health = Health(health=health, max_health=health)
+        self.health = Health(current_health=health, max_health=health)
 
 
 @dataclass(repr=False)

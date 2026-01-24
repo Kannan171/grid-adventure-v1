@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
-from grid_universe.renderer.image import ImageMap
+from typing import Any
+from grid_universe.renderer.image import ImageMap, ImageRenderer as BaseImageRenderer
 
 
 # Default asset root directory.
@@ -26,3 +27,15 @@ IMAGE_MAP: ImageMap = ImageMap(
         ("floor", tuple([])): "floor",
     }
 )
+
+
+class ImageRenderer(BaseImageRenderer):
+    """Image renderer for the Grid Adventure environment."""
+
+    def __init__(
+        self,
+        asset_root: str = DEFAULT_ASSET_ROOT,
+        image_map: ImageMap = IMAGE_MAP,
+        **kwargs: Any,
+    ):
+        super().__init__(asset_root=asset_root, image_map=image_map, **kwargs)

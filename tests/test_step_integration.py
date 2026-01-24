@@ -1,7 +1,7 @@
 from grid_universe.state import State
 from grid_universe.types import EntityID
 from grid_universe.actions import Action
-from grid_universe.levels.convert import to_state
+from grid_universe.grid.convert import to_state
 from grid_universe.utils.ecs import entities_with_components_at
 from grid_universe.components.properties import Position
 from grid_adventure.levels import intro
@@ -20,8 +20,8 @@ def _agent_pos(state: State) -> Position:
 # ---- L0 ----
 def test_basic_movement_reaches_exit():
     """L0: Basic movement corridor — walking right should eventually reach the exit (win=True)."""
-    level = intro.build_level_basic_movement(seed=100)
-    state = to_state(level)
+    gridstate = intro.build_level_basic_movement(seed=100)
+    state = to_state(gridstate)
 
     # Move right along the open middle corridor until win
     for _ in range(20):  # ample budget
@@ -35,8 +35,8 @@ def test_basic_movement_reaches_exit():
 # ---- L1 ----
 def test_maze_turns_blocked_and_open_moves():
     """L1: Maze turns — movement into a wall is blocked; movement along corridor succeeds."""
-    level = intro.build_level_maze_turns(seed=101)
-    state = to_state(level)
+    gridstate = intro.build_level_maze_turns(seed=101)
+    state = to_state(gridstate)
     aid = _agent_id(state)
 
     # Agent starts at (1,1). Border has walls at y=0; UP should be blocked.
@@ -52,8 +52,8 @@ def test_maze_turns_blocked_and_open_moves():
 # ---- L2 ----
 def test_collect_coin_increases_score():
     """L2: Optional coin — after navigating to a coin tile, PICK_UP should increase score (net positive)."""
-    level = intro.build_level_optional_coin(seed=102)
-    state = to_state(level)
+    gridstate = intro.build_level_optional_coin(seed=102)
+    state = to_state(gridstate)
 
     # Hardcoded path to a coin tile at (1,5), avoiding walls:
     # Start (1,1): RIGHT -> (2,1), DOWN -> (2,2), DOWN -> (2,3),
@@ -75,8 +75,8 @@ def test_collect_coin_increases_score():
 # ---- L3 ----
 def test_required_one_collect_then_exit_wins():
     """L3: One required core — collect the core then reach exit to win."""
-    level = intro.build_level_required_one(seed=103)
-    state = to_state(level)
+    gridstate = intro.build_level_required_one(seed=103)
+    state = to_state(gridstate)
 
     # Derive geometry
     w = state.width
@@ -101,8 +101,8 @@ def test_required_one_collect_then_exit_wins():
 # ---- L4 ----
 def test_required_two_collect_both_then_exit_wins():
     """L4: Two required cores — collect both (top and bottom) then reach exit to win."""
-    level = intro.build_level_required_two(seed=104)
-    state = to_state(level)
+    gridstate = intro.build_level_required_two(seed=104)
+    state = to_state(gridstate)
 
     # Geometry (open cross: mid row and mid column are open)
     w, h = state.width, state.height
@@ -139,8 +139,8 @@ def test_required_two_collect_both_then_exit_wins():
 # ---- L5 ----
 def test_unlock_door_removes_locked_and_blocking():
     """L5: Key–Door — pick key, move adjacent to door, USE_KEY should unlock (Locked removed; not Blocking)."""
-    level = intro.build_level_key_door(seed=105)
-    state = to_state(level)
+    gridstate = intro.build_level_key_door(seed=105)
+    state = to_state(gridstate)
 
     # Agent starts at (1,4). Key is at (2,3).
     # Move onto the key tile before picking it up: UP -> (1,3), RIGHT -> (2,3)
@@ -171,25 +171,25 @@ def test_unlock_door_removes_locked_and_blocking():
 # ---- L6 ----
 def test_hazard_damage_reduces_health():
     """L6: Hazard detour — stepping into lava should reduce health."""
-    level = intro.build_level_hazard_detour(seed=106)
-    state = to_state(level)
+    gridstate = intro.build_level_hazard_detour(seed=106)
+    state = to_state(gridstate)
     aid = _agent_id(state)
-    hp_before = state.health[aid].health
+    hp_before = state.health[aid].current_health
 
     # Walk into the lava tile in the middle corridor
     state = adv_step(state, Action.RIGHT)
     state = adv_step(state, Action.RIGHT)
     state = adv_step(state, Action.RIGHT)
 
-    hp_after = state.health[aid].health
+    hp_after = state.health[aid].current_health
     assert hp_after <= hp_before
 
 
 # ---- L8 ----
 def test_pushable_box_pushes():
     """L8: Pushable box — moving into a pushable should push it one tile forward if destination is free."""
-    level = intro.build_level_pushable_box(seed=108)
-    state = to_state(level)
+    gridstate = intro.build_level_pushable_box(seed=108)
+    state = to_state(gridstate)
 
     # Locate initial box position: known at (w//2 - 1, h//2)
     w, h = state.width, state.height
@@ -220,29 +220,29 @@ def test_pushable_box_pushes():
 # ---- L11 ----
 def test_shield_blocks_damage():
     """L11: Shield (Immunity) — picking the shield should prevent subsequent hazard damage."""
-    level = intro.build_level_power_shield(seed=110)
-    state = to_state(level)
+    gridstate = intro.build_level_power_shield(seed=110)
+    state = to_state(gridstate)
     aid = _agent_id(state)
 
     # Pick up shield power-up
     state = adv_step(state, Action.UP)
     state = adv_step(state, Action.PICK_UP)
 
-    hp_before = state.health[aid].health
+    hp_before = state.health[aid].current_health
 
     # Step into lava — shield should absorb
     state = adv_step(state, Action.RIGHT)
     state = adv_step(state, Action.RIGHT)
 
-    hp_after = state.health[aid].health
+    hp_after = state.health[aid].current_health
     assert hp_after == hp_before
 
 
 # ---- L12 ----
 def test_phasing_allows_passing_blocking():
     """L12: Ghost (Phasing) — phasing should allow movement through blocking tiles (locked door)."""
-    level = intro.build_level_power_ghost(seed=111)
-    state = to_state(level)
+    gridstate = intro.build_level_power_ghost(seed=111)
+    state = to_state(gridstate)
     aid = _agent_id(state)
 
     # Pick up ghost effect
@@ -261,8 +261,8 @@ def test_phasing_allows_passing_blocking():
 # ---- L13 ----
 def test_power_boots_speed_multiplier_effect():
     """L13: Boots (Speed×2) — after pickup, a single move should traverse at least two tiles if unobstructed."""
-    level = intro.build_level_power_boots(seed=112)
-    state = to_state(level)
+    gridstate = intro.build_level_power_boots(seed=112)
+    state = to_state(gridstate)
 
     w = state.width
 

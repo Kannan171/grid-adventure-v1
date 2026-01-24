@@ -1,4 +1,4 @@
-from grid_universe.levels.grid import Level
+from grid_universe.grid.gridstate import GridState
 from grid_adventure.movements import MOVEMENTS
 from grid_adventure.objectives import OBJECTIVES
 from grid_adventure.entities import (
@@ -21,24 +21,24 @@ from grid_adventure.entities import (
 TURN_LIMIT = 50
 
 
-def _floors(level: Level) -> None:
-    for y in range(level.height):
-        for x in range(level.width):
-            level.add((x, y), FloorEntity())
+def _floors(gridstate: GridState) -> None:
+    for y in range(gridstate.height):
+        for x in range(gridstate.width):
+            gridstate.add((x, y), FloorEntity())
 
 
-def _border(level: Level) -> None:
-    for x in range(level.width):
-        level.add((x, 0), WallEntity())
-        level.add((x, level.height - 1), WallEntity())
-    for y in range(level.height):
-        level.add((0, y), WallEntity())
-        level.add((level.width - 1, y), WallEntity())
+def _border(gridstate: GridState) -> None:
+    for x in range(gridstate.width):
+        gridstate.add((x, 0), WallEntity())
+        gridstate.add((x, gridstate.height - 1), WallEntity())
+    for y in range(gridstate.height):
+        gridstate.add((0, y), WallEntity())
+        gridstate.add((gridstate.width - 1, y), WallEntity())
 
 
-def build_level_basic_movement(seed: int = 100) -> Level:
+def build_level_basic_movement(seed: int = 100) -> GridState:
     w, h = 7, 5
-    level = Level(
+    gridstate = GridState(
         w,
         h,
         movement=MOVEMENTS["cardinal"],
@@ -46,18 +46,18 @@ def build_level_basic_movement(seed: int = 100) -> Level:
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
-    _floors(level)
-    level.add((1, h // 2), create_agent_entity())
-    level.add((w - 2, h // 2), ExitEntity())
+    _floors(gridstate)
+    gridstate.add((1, h // 2), create_agent_entity())
+    gridstate.add((w - 2, h // 2), ExitEntity())
     for y in range(h):
         if y != h // 2:
-            level.add((w // 2, y), WallEntity())
-    return level
+            gridstate.add((w // 2, y), WallEntity())
+    return gridstate
 
 
-def build_level_maze_turns(seed: int = 101) -> Level:
+def build_level_maze_turns(seed: int = 101) -> GridState:
     w, h = 9, 7
-    level = Level(
+    gridstate = GridState(
         w,
         h,
         movement=MOVEMENTS["cardinal"],
@@ -65,21 +65,21 @@ def build_level_maze_turns(seed: int = 101) -> Level:
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
-    _floors(level)
-    _border(level)
+    _floors(gridstate)
+    _border(gridstate)
     for x in range(2, w - 2):
-        level.add((x, 2), WallEntity())
+        gridstate.add((x, 2), WallEntity())
     for x in range(2, w - 2):
         if x != w // 2:
-            level.add((x, h - 3), WallEntity())
-    level.add((1, 1), create_agent_entity())
-    level.add((w - 2, h - 2), ExitEntity())
-    return level
+            gridstate.add((x, h - 3), WallEntity())
+    gridstate.add((1, 1), create_agent_entity())
+    gridstate.add((w - 2, h - 2), ExitEntity())
+    return gridstate
 
 
-def build_level_optional_coin(seed: int = 102) -> Level:
+def build_level_optional_coin(seed: int = 102) -> GridState:
     w, h = 9, 7
-    level = Level(
+    gridstate = GridState(
         w,
         h,
         movement=MOVEMENTS["cardinal"],
@@ -87,25 +87,25 @@ def build_level_optional_coin(seed: int = 102) -> Level:
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
-    _floors(level)
-    _border(level)
-    level.add((1, 2), WallEntity())
-    level.add((3, 3), WallEntity())
+    _floors(gridstate)
+    _border(gridstate)
+    gridstate.add((1, 2), WallEntity())
+    gridstate.add((3, 3), WallEntity())
     for x in range(3, w - 2):
-        level.add((x, 2), WallEntity())
+        gridstate.add((x, 2), WallEntity())
     for x in range(2, w - 2):
         if x != w // 2:
-            level.add((x, h - 3), WallEntity())
-    level.add((1, 1), create_agent_entity())
-    level.add((w - 2, h - 2), ExitEntity())
+            gridstate.add((x, h - 3), WallEntity())
+    gridstate.add((1, 1), create_agent_entity())
+    gridstate.add((w - 2, h - 2), ExitEntity())
     for x in range(1, w - 2, 1):
-        level.add((x, h - 2), CoinEntity())
-    return level
+        gridstate.add((x, h - 2), CoinEntity())
+    return gridstate
 
 
-def build_level_required_one(seed: int = 103) -> Level:
+def build_level_required_one(seed: int = 103) -> GridState:
     w, h = 9, 7
-    level = Level(
+    gridstate = GridState(
         w,
         h,
         movement=MOVEMENTS["cardinal"],
@@ -113,20 +113,20 @@ def build_level_required_one(seed: int = 103) -> Level:
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
-    _floors(level)
-    _border(level)
+    _floors(gridstate)
+    _border(gridstate)
     for y in range(1, h - 1):
         if y != h // 2:
-            level.add((w // 2, y), WallEntity())
-    level.add((1, h // 2), create_agent_entity())
-    level.add((w - 2, h // 2), ExitEntity())
-    level.add((w // 2 - 1, h // 2 - 1), GemEntity())
-    return level
+            gridstate.add((w // 2, y), WallEntity())
+    gridstate.add((1, h // 2), create_agent_entity())
+    gridstate.add((w - 2, h // 2), ExitEntity())
+    gridstate.add((w // 2 - 1, h // 2 - 1), GemEntity())
+    return gridstate
 
 
-def build_level_required_two(seed: int = 104) -> Level:
+def build_level_required_two(seed: int = 104) -> GridState:
     w, h = 11, 9
-    level = Level(
+    gridstate = GridState(
         w,
         h,
         movement=MOVEMENTS["cardinal"],
@@ -134,23 +134,23 @@ def build_level_required_two(seed: int = 104) -> Level:
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
-    _floors(level)
-    _border(level)
+    _floors(gridstate)
+    _border(gridstate)
     midx, midy = w // 2, h // 2
     for x in range(1, w - 1):
         for y in range(1, h - 1):
             if x != midx and y != midy:
-                level.add((x, y), WallEntity())
-    level.add((1, midy), create_agent_entity())
-    level.add((w - 2, midy), ExitEntity())
-    level.add((midx, 1), GemEntity())
-    level.add((midx, h - 2), GemEntity())
-    return level
+                gridstate.add((x, y), WallEntity())
+    gridstate.add((1, midy), create_agent_entity())
+    gridstate.add((w - 2, midy), ExitEntity())
+    gridstate.add((midx, 1), GemEntity())
+    gridstate.add((midx, h - 2), GemEntity())
+    return gridstate
 
 
-def build_level_key_door(seed: int = 105) -> Level:
+def build_level_key_door(seed: int = 105) -> GridState:
     w, h = 11, 9
-    level = Level(
+    gridstate = GridState(
         w,
         h,
         movement=MOVEMENTS["cardinal"],
@@ -158,20 +158,20 @@ def build_level_key_door(seed: int = 105) -> Level:
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
-    _floors(level)
+    _floors(gridstate)
     for y in range(h):
         if y != h // 2:
-            level.add((w // 2, y), WallEntity())
-    level.add((1, h // 2), create_agent_entity())
-    level.add((w - 2, h // 2), ExitEntity())
-    level.add((2, h // 2 - 1), KeyEntity())
-    level.add((w // 2, h // 2), LockedDoorEntity())
-    return level
+            gridstate.add((w // 2, y), WallEntity())
+    gridstate.add((1, h // 2), create_agent_entity())
+    gridstate.add((w - 2, h // 2), ExitEntity())
+    gridstate.add((2, h // 2 - 1), KeyEntity())
+    gridstate.add((w // 2, h // 2), LockedDoorEntity())
+    return gridstate
 
 
-def build_level_hazard_detour(seed: int = 106) -> Level:
+def build_level_hazard_detour(seed: int = 106) -> GridState:
     w, h = 11, 9
-    level = Level(
+    gridstate = GridState(
         w,
         h,
         movement=MOVEMENTS["cardinal"],
@@ -179,25 +179,25 @@ def build_level_hazard_detour(seed: int = 106) -> Level:
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
-    _floors(level)
-    level.add((1, h // 2), create_agent_entity(health=3))
-    level.add((w - 2, h // 2), ExitEntity())
-    level.add((w // 2 - 1, h // 2), LavaEntity())
-    level.add((w - 3, h // 2), LavaEntity())
+    _floors(gridstate)
+    gridstate.add((1, h // 2), create_agent_entity(health=3))
+    gridstate.add((w - 2, h // 2), ExitEntity())
+    gridstate.add((w // 2 - 1, h // 2), LavaEntity())
+    gridstate.add((w - 3, h // 2), LavaEntity())
 
     for y in range(1, h - 1):
         if y != h // 2:
-            level.add((w // 2 - 1, y), WallEntity())
+            gridstate.add((w // 2 - 1, y), WallEntity())
     for y in range(2, h - 2):
         if y != h // 2:
-            level.add((w - 3, y), WallEntity())
+            gridstate.add((w - 3, y), WallEntity())
 
-    return level
+    return gridstate
 
 
-def build_level_pushable_box(seed: int = 108) -> Level:
+def build_level_pushable_box(seed: int = 108) -> GridState:
     w, h = 11, 9
-    level = Level(
+    gridstate = GridState(
         w,
         h,
         movement=MOVEMENTS["cardinal"],
@@ -205,19 +205,19 @@ def build_level_pushable_box(seed: int = 108) -> Level:
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
-    _floors(level)
+    _floors(gridstate)
     for y in range(h):
         if y != h // 2:
-            level.add((w // 2, y), WallEntity())
-    level.add((1, h // 2), create_agent_entity())
-    level.add((w - 2, h // 2), ExitEntity())
-    level.add((w // 2 - 1, h // 2), BoxEntity())
-    return level
+            gridstate.add((w // 2, y), WallEntity())
+    gridstate.add((1, h // 2), create_agent_entity())
+    gridstate.add((w - 2, h // 2), ExitEntity())
+    gridstate.add((w // 2 - 1, h // 2), BoxEntity())
+    return gridstate
 
 
-def build_level_power_shield(seed: int = 110) -> Level:
+def build_level_power_shield(seed: int = 110) -> GridState:
     w, h = 11, 9
-    level = Level(
+    gridstate = GridState(
         w,
         h,
         movement=MOVEMENTS["cardinal"],
@@ -225,20 +225,20 @@ def build_level_power_shield(seed: int = 110) -> Level:
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
-    _floors(level)
-    level.add((1, h // 2), create_agent_entity(2))
-    level.add((w - 2, h // 2), ExitEntity())
+    _floors(gridstate)
+    gridstate.add((1, h // 2), create_agent_entity(2))
+    gridstate.add((w - 2, h // 2), ExitEntity())
     for y in range(h):
         if y != h // 2:
-            level.add((w // 2, y), WallEntity())
-    level.add((2, h // 2 - 3), ShieldPowerUpEntity())
-    level.add((w // 2, h // 2), LavaEntity())
-    return level
+            gridstate.add((w // 2, y), WallEntity())
+    gridstate.add((2, h // 2 - 3), ShieldPowerUpEntity())
+    gridstate.add((w // 2, h // 2), LavaEntity())
+    return gridstate
 
 
-def build_level_power_ghost(seed: int = 111) -> Level:
+def build_level_power_ghost(seed: int = 111) -> GridState:
     w, h = 13, 9
-    level = Level(
+    gridstate = GridState(
         w,
         h,
         movement=MOVEMENTS["cardinal"],
@@ -246,18 +246,18 @@ def build_level_power_ghost(seed: int = 111) -> Level:
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
-    _floors(level)
-    level.add((1, h // 2), create_agent_entity())
-    level.add((w - 2, h // 2), ExitEntity())
+    _floors(gridstate)
+    gridstate.add((1, h // 2), create_agent_entity())
+    gridstate.add((w - 2, h // 2), ExitEntity())
     for y in range(h):
-        level.add((w // 2, y), WallEntity())
-    level.add((2, h // 2 - 3), PhasingPowerUpEntity())
-    return level
+        gridstate.add((w // 2, y), WallEntity())
+    gridstate.add((2, h // 2 - 3), PhasingPowerUpEntity())
+    return gridstate
 
 
-def build_level_power_boots(seed: int = 112) -> Level:
+def build_level_power_boots(seed: int = 112) -> GridState:
     w, h = 13, 9
-    level = Level(
+    gridstate = GridState(
         w,
         h,
         movement=MOVEMENTS["cardinal"],
@@ -265,20 +265,20 @@ def build_level_power_boots(seed: int = 112) -> Level:
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
-    _floors(level)
-    level.add((1, h // 2), create_agent_entity(1))
-    level.add((w - 2, h // 2), ExitEntity())
+    _floors(gridstate)
+    gridstate.add((1, h // 2), create_agent_entity(1))
+    gridstate.add((w - 2, h // 2), ExitEntity())
     for y in range(h):
         if y not in [h // 2, h // 2 + 1]:
-            level.add((w // 2, y), WallEntity())
-            level.add((w // 2 + 1, y), WallEntity())
-            level.add((w // 2 + 2, y), WallEntity())
-    level.add((w // 2 - 1, h // 2 + 1), SpeedPowerUpEntity())
-    return level
+            gridstate.add((w // 2, y), WallEntity())
+            gridstate.add((w // 2 + 1, y), WallEntity())
+            gridstate.add((w // 2 + 2, y), WallEntity())
+    gridstate.add((w // 2 - 1, h // 2 + 1), SpeedPowerUpEntity())
+    return gridstate
 
 
-def build_level_capstone_simple(seed: int = 113) -> Level:
-    level = Level(
+def build_level_capstone_simple(seed: int = 113) -> GridState:
+    gridstate = GridState(
         width=7,
         height=7,
         movement=MOVEMENTS["cardinal"],
@@ -287,10 +287,10 @@ def build_level_capstone_simple(seed: int = 113) -> Level:
         turn_limit=TURN_LIMIT,
     )
 
-    _floors(level)
+    _floors(gridstate)
 
     # Agent
-    level.add((0, 0), create_agent_entity())
+    gridstate.add((0, 0), create_agent_entity())
 
     # Walls (grouped and added in one pass)
     wall_coords = [
@@ -318,21 +318,21 @@ def build_level_capstone_simple(seed: int = 113) -> Level:
         (1, 6),
         (3, 6),
     ]
-    level.add_many([(pos, WallEntity()) for pos in wall_coords])
+    gridstate.add_many([(pos, WallEntity()) for pos in wall_coords])
 
     # Items and doors
-    level.add((6, 3), GemEntity())
-    level.add((0, 4), KeyEntity())
-    level.add((3, 4), LockedDoorEntity())
+    gridstate.add((6, 3), GemEntity())
+    gridstate.add((0, 4), KeyEntity())
+    gridstate.add((3, 4), LockedDoorEntity())
 
     # Exit
-    level.add((6, 6), ExitEntity())
+    gridstate.add((6, 6), ExitEntity())
 
-    return level
+    return gridstate
 
 
-def build_level_capstone_advanced(seed: int = 113) -> Level:
-    level = Level(
+def build_level_capstone_advanced(seed: int = 113) -> GridState:
+    gridstate = GridState(
         width=7,
         height=7,
         movement=MOVEMENTS["cardinal"],
@@ -340,11 +340,11 @@ def build_level_capstone_advanced(seed: int = 113) -> Level:
         seed=seed,
         turn_limit=TURN_LIMIT,
     )
-    _floors(level)
+    _floors(gridstate)
 
     # Agent and Exit
-    level.add((0, 0), create_agent_entity(health=1))
-    level.add((0, 6), ExitEntity())
+    gridstate.add((0, 0), create_agent_entity(health=1))
+    gridstate.add((0, 6), ExitEntity())
 
     # Walls
     wall_pos = [
@@ -365,30 +365,30 @@ def build_level_capstone_advanced(seed: int = 113) -> Level:
         (5, 5),
     ]
     for p in wall_pos:
-        level.add(p, WallEntity())
+        gridstate.add(p, WallEntity())
 
     # Pushable box
-    level.add((2, 1), BoxEntity())
+    gridstate.add((2, 1), BoxEntity())
 
     # Gems
-    level.add((0, 5), GemEntity())
-    level.add((6, 3), GemEntity())
+    gridstate.add((0, 5), GemEntity())
+    gridstate.add((6, 3), GemEntity())
 
     # Coins
     coin_pos = [(1, 2), (4, 2), (3, 3), (6, 5), (2, 6), (3, 6)]
     for p in coin_pos:
-        level.add(p, CoinEntity())
+        gridstate.add(p, CoinEntity())
 
     # Powerups
-    level.add((0, 2), SpeedPowerUpEntity())
-    level.add((2, 3), PhasingPowerUpEntity())
-    level.add((4, 0), ShieldPowerUpEntity())
+    gridstate.add((0, 2), SpeedPowerUpEntity())
+    gridstate.add((2, 3), PhasingPowerUpEntity())
+    gridstate.add((4, 0), ShieldPowerUpEntity())
 
     # Key-door pair
-    level.add((4, 4), KeyEntity())
-    level.add((1, 6), LockedDoorEntity())
+    gridstate.add((4, 4), KeyEntity())
+    gridstate.add((1, 6), LockedDoorEntity())
 
     # Hazards
-    level.add((5, 3), LavaEntity())
+    gridstate.add((5, 3), LavaEntity())
 
-    return level
+    return gridstate
