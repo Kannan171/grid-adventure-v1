@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../entities/">
+        <link rel="prev" href="../game_representation/">
       
       
-        <link rel="next" href="../agent/">
+        <link rel="next" href="../action/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Action Classes - Grid-Adventure1 Documentation</title>
+        <title>Entity Classes - Grid-Adventure1 Documentation</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#action" class="md-skip">
+        <a href="#entities" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Action Classes
+              Entity Classes
             
           </span>
         </div>
@@ -218,7 +218,7 @@
           
   
   
-  Developer Documentation
+  Agent Guide
 
         </a>
       </li>
@@ -488,7 +488,7 @@
   <span class="md-ellipsis">
     
   
-    Developer Documentation
+    Agent Guide
   
 
     
@@ -504,7 +504,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Developer Documentation
+    Agent Guide
   
 
           </label>
@@ -570,34 +570,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../entities/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Entity Classes
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -617,7 +589,7 @@
   <span class="md-ellipsis">
     
   
-    Action Classes
+    Entity Classes
   
 
     
@@ -635,7 +607,7 @@
   <span class="md-ellipsis">
     
   
-    Action Classes
+    Entity Classes
   
 
     
@@ -661,21 +633,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#actions" class="md-nav__link">
+  <a href="#entity-types" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Actions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#use-case" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Use Case
+        Entity Types
       
     </span>
   </a>
@@ -686,6 +647,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../action/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Action Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -753,21 +742,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#actions" class="md-nav__link">
+  <a href="#entity-types" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Actions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#use-case" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Use Case
+        Entity Types
       
     </span>
   </a>
@@ -791,66 +769,441 @@
 
 
 
-<h1 id="action">Action</h1>
-<p>The <code>Action</code> enum defines all available player actions.</p>
-<h2 id="actions">Actions</h2>
+<h1 id="entities">Entities</h1>
+<p>&nbsp;</p>
+<h2 id="entity-types">Entity Types</h2>
+<p>There are in general 5 types of Entities</p>
 <table>
 <thead>
 <tr>
-<th>Index</th>
-<th>Action</th>
+<th>Entity Types</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>0</td>
-<td><code>UP</code></td>
-<td>Move up</td>
+<td>CollidableEntity</td>
+<td>Recognisable for possession of <code>collidable</code> attribute of <code>Collidable</code> class</td>
 </tr>
 <tr>
-<td>1</td>
-<td><code>DOWN</code></td>
-<td>Move down</td>
+<td>BlockingEntity</td>
+<td>Recognisable for possession of <code>blocking</code> attribute of <code>Blocking</code> class</td>
 </tr>
 <tr>
-<td>2</td>
-<td><code>LEFT</code></td>
-<td>Move left</td>
+<td>PushableEntity</td>
+<td>Recognisable for possession of <code>pushable</code> attribute of <code>Pushable</code> class</td>
 </tr>
 <tr>
-<td>3</td>
-<td><code>RIGHT</code></td>
-<td>Move right</td>
+<td>CollectibleEntity</td>
+<td>Recognisable for possession of <code>collectible</code> attribute of <code>Colelctible</code> class</td>
 </tr>
 <tr>
-<td>4</td>
-<td><code>USE_KEY</code></td>
-<td>Unlock adjacent locked entity with matching key</td>
-</tr>
-<tr>
-<td>5</td>
-<td><code>PICK_UP</code></td>
-<td>Collect items at current tile</td>
-</tr>
-<tr>
-<td>6</td>
-<td><code>WAIT</code></td>
-<td>Do nothing (advance turn)</td>
+<td>Others</td>
+<td>All other entities</td>
 </tr>
 </tbody>
 </table>
-<h2 id="use-case">Use Case</h2>
-<p>Actions are primarily used with the step function of <a href="../grid_adventure_enviroment/#methods">GridAdventureEnv</a>.</p>
-<pre><code class="language-python"># Import
-from grid_universe.actions import Action
-
-# Using Action enum with enviroment
-obs, reward, terminated, truncated, info = env.step(Action.UP)
-
-# Using integer index
-obs, reward, terminated, truncated, info = env.step(0)  # UP
-</code></pre>
+<p>&nbsp;</p>
+<h1 id="collidable-entities">Collidable Entities</h1>
+<p>This are entities which can pass through each other but will trigger interactions when this happens. These entities are recognisable for possession of <code>collidable</code> attribute of <code>Collidable</code> class.  </p>
+<p>There are in total 2 relevant Collidable Entities.</p>
+<ul>
+<li>AgentEntity </li>
+<li>LavaEntity  </li>
+</ul>
+<p>&nbsp;</p>
+<h2 id="agententity">AgentEntity</h2>
+<p>This is the entity controlled by the user.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appearance</td>
+<td>Appearance Class</td>
+<td>Human Appearance</td>
+</tr>
+<tr>
+<td>health</td>
+<td>Health Class</td>
+<td>Health to give the agent, constitutes Max and current health</td>
+</tr>
+<tr>
+<td>inventory</td>
+<td>Inventory Class</td>
+<td>List of Entity that represents the Agents inventory</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Status Class</td>
+<td>List of Entity that represebts the Status Active on Agent</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Available Methods</th>
+<th>Inputs</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>set_health</td>
+<td>health: int</td>
+<td>Sets agent health</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="lava-entity">Lava Entity</h2>
+<p>This is a damaging entity that the agent can walk through</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appearance</td>
+<td>Appearance Class</td>
+<td>Lava Appearance</td>
+</tr>
+<tr>
+<td>damage</td>
+<td>Damage Class</td>
+<td>How much health the agent should lose walking through</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h1 id="blockingentity">BlockingEntity</h1>
+<p>This are entities which cannot be passed through by Collidable Entities. These entities are recognisable for possession of <code>blocking</code> attribute of <code>Blocking</code> class.  </p>
+<p>There are in total 3 relevant BlockingEntity. </p>
+<ul>
+<li>WallEntity</li>
+<li>LockedDoorEntity </li>
+<li>BoxEntity  </li>
+</ul>
+<p>Note that the Box is also a PushableEntity.  </p>
+<p>&nbsp;</p>
+<h2 id="wallentity">WallEntity</h2>
+<p>This is a wall entity that the agent cannot walk through nor push</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appearance</td>
+<td>Appearance Class</td>
+<td>Wall Appearance</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="lockeddoorentity">LockedDoorEntity</h2>
+<p>This is a blocking entity that the agent cannot through nor push. This entity becomes a <a href="#unlockeddoorentity">UnlockedDoorEntity</a>, when a <a href="#keyentity">KeyEntity</a> is used on it</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appearance</td>
+<td>Appearance Class</td>
+<td>Door Appearance</td>
+</tr>
+<tr>
+<td>locked</td>
+<td>Locked Class</td>
+<td>Locked class that saves the key_id matching that of KeyEntity</td>
+</tr>
+</tbody>
+</table>
+<p>Note: Each level can only have up to 1 door. For each door, it is gauranteed a key exists.</p>
+<p>&nbsp;</p>
+<h2 id="boxentity">BoxEntity</h2>
+<p>This is a movable blocking entity, that the agent can push but not walk through.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appearance</td>
+<td>Appearance Class</td>
+<td>Box Appearance</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the box is also a Pushable Entity</p>
+<p>&nbsp;</p>
+<h1 id="pushableentity">PushableEntity</h1>
+<p>This are entities which are pushable by the Agent. These entities are recognisable for possession of <code>pushable</code> attribute of <code>Pushable</code> class. </p>
+<p>There is only 1 relevant PushableEntity, it is the BoxEntity. For documentation of box, see the <a href="#boxentity">BoxEntity</a>.</p>
+<p>&nbsp;</p>
+<h1 id="collectibleentity">CollectibleEntity</h1>
+<p>This are entities which are collectable by the Agent. These entities are recognisable for possession of <code>collectible</code> attribute of <code>Collectible</code> class. </p>
+<p>There are in total 6 relevant CollectibleEntity.</p>
+<ul>
+<li>CoinEntity</li>
+<li>GemEntity</li>
+<li>KeyEntity</li>
+<li>SpeedPowerUpEntity</li>
+<li>ShieldPowerUpEntity</li>
+<li>PhasingPowerUpEntity  </li>
+</ul>
+<p>&nbsp;</p>
+<h2 id="coinentity">CoinEntity</h2>
+<p>This is an optional collectible that provides a score when collected by the agent.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appearance</td>
+<td>Appearance Class</td>
+<td>Coin Appearance</td>
+</tr>
+<tr>
+<td>rewardable</td>
+<td>Rewardable Class</td>
+<td>The score provided for picking up the coin</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="gementity">GemEntity</h2>
+<p>This is a compulsary Collectible to be collected by agent before it can enter the exit.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appearance</td>
+<td>Appearance Class</td>
+<td>Gem Appearance</td>
+</tr>
+<tr>
+<td>requireable</td>
+<td>Requirable Class</td>
+<td>Attribute to indicate to engine required collectible</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="keyentity">KeyEntity</h2>
+<p>This is a Collectible required to unlock a <a href="#lockeddoorentity">LockedDoorEntity</a></p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appearance</td>
+<td>Appearance Class</td>
+<td>Key Appearance</td>
+</tr>
+<tr>
+<td>key</td>
+<td>Key Class</td>
+<td>Key class that saves key_id matching that of LockedDoorEntity</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="speedpowerupentity">SpeedPowerUpEntity</h2>
+<p>This is a collectible granting agent the ability to walk a multiple of tiles in 1 turn for a duration of time.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appearance</td>
+<td>Appearance Class</td>
+<td>Boot Appearance</td>
+</tr>
+<tr>
+<td>speed</td>
+<td>Speed Class</td>
+<td>Speed class that saves multiplier, indicating speed up provided</td>
+</tr>
+<tr>
+<td>time_limit</td>
+<td>TimeLimit Class</td>
+<td>TimeLimit class that saves amount, indicating number of turns powerup is active</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="shieldpowerupentity">ShieldPowerUpEntity</h2>
+<p>This is a collectible granting agent immunity while walking on damaging tiles for a duration of time.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appearance</td>
+<td>Appearance Class</td>
+<td>Shield Appearance</td>
+</tr>
+<tr>
+<td>immunity</td>
+<td>Immunity Class</td>
+<td>Default Immunity class</td>
+</tr>
+<tr>
+<td>time_limit</td>
+<td>TimeLimit Class</td>
+<td>TimeLimit class that saves amount, indicating number of turns powerup is active</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="phasingpowerupentity">PhasingPowerUpEntity</h2>
+<p>This is a collectible granting agent ability to walk through <a href="#blockingentity">BlockingEntity</a> for a duration of time.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appearance</td>
+<td>Appearance Class</td>
+<td>Ghost Appearance</td>
+</tr>
+<tr>
+<td>phasing</td>
+<td>Phasing Class</td>
+<td>Default Phasing class</td>
+</tr>
+<tr>
+<td>time_limit</td>
+<td>TimeLimit Class</td>
+<td>TimeLimit class that saves amount, indicating number of turns powerup is active</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h1 id="other-entities">Other Entities</h1>
+<p>These Entities extend directly from BaseEntity. They are either non interactable entities which are purely for aesthetic purposes, or in the case of ExitEntity &amp; FloorEntity, entities with special purposes.</p>
+<p>&nbsp;</p>
+<h2 id="exitentity">ExitEntity</h2>
+<p>This are unique Exit Entity and serve as the exit objective</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appearance</td>
+<td>Appearance Class</td>
+<td>Exit Appearance</td>
+</tr>
+<tr>
+<td>exit</td>
+<td>Exit Class</td>
+<td>Default Exit Constructor</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="floorentity">FloorEntity</h2>
+<p>Floor entities are not interactable with agent. They also serve the unique purpose of introducing cost for walking over tiles.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appearance</td>
+<td>Appearance Class</td>
+<td>Floor Appearance</td>
+</tr>
+<tr>
+<td>cost</td>
+<td>Cost Class</td>
+<td>Cost of walking across the floor</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="unlockeddoorentity">UnlockedDoorEntity</h2>
+<p>UnlockedDoorEntity are not interactable with agent, serving only aesthetic purpose. They are the unlocked version of the <a href="#lockeddoorentity">LockedDoorEntity</a></p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appearance</td>
+<td>Appearance Class</td>
+<td>Door Appearance</td>
+</tr>
+</tbody>
+</table>
 
 
 

@@ -9,8 +9,10 @@
       
       
       
-        <link rel="prev" href="../action/">
+        <link rel="prev" href="../entities/">
       
+      
+        <link rel="next" href="../agent/">
       
       
         
@@ -21,7 +23,7 @@
     
     
       
-        <title>Agent Class - Grid-Adventure1 Documentation</title>
+        <title>Action Classes - Grid-Adventure1 Documentation</title>
       
     
     
@@ -62,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#agent-class" class="md-skip">
+        <a href="#action" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Agent Class
+              Action Classes
             
           </span>
         </div>
@@ -216,7 +218,7 @@
           
   
   
-  Developer Documentation
+  Agent Guide
 
         </a>
       </li>
@@ -486,7 +488,7 @@
   <span class="md-ellipsis">
     
   
-    Developer Documentation
+    Agent Guide
   
 
     
@@ -502,7 +504,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Developer Documentation
+    Agent Guide
   
 
           </label>
@@ -596,34 +598,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../action/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Action Classes
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -643,7 +617,7 @@
   <span class="md-ellipsis">
     
   
-    Agent Class
+    Action Classes
   
 
     
@@ -661,7 +635,7 @@
   <span class="md-ellipsis">
     
   
-    Agent Class
+    Action Classes
   
 
     
@@ -687,10 +661,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#agent-class-template" class="md-nav__link">
+  <a href="#actions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Agent Class Template
+        Actions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use Case
       
     </span>
   </a>
@@ -701,6 +686,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -740,10 +753,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#agent-class-template" class="md-nav__link">
+  <a href="#actions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Agent Class Template
+        Actions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use Case
       
     </span>
   </a>
@@ -767,27 +791,66 @@
 
 
 
-<h1 id="agent-class">Agent Class</h1>
-<h2 id="agent-class-template">Agent Class Template</h2>
-<p>The agent class needs to implement 2 functions. </p>
+<h1 id="action">Action</h1>
+<p>The <code>Action</code> enum defines all available player actions.</p>
+<h2 id="actions">Actions</h2>
 <table>
 <thead>
 <tr>
-<th>Function</th>
+<th>Index</th>
+<th>Action</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>__init__(self) -&gt; None</code></td>
-<td>Initialising Function</td>
+<td>0</td>
+<td><code>UP</code></td>
+<td>Move up</td>
 </tr>
 <tr>
-<td><code>step(self, state: Level | Observation) -&gt; Action</code></td>
-<td>Function used to generate Action given a game representation. This should be the "Brains" of your agent.</td>
+<td>1</td>
+<td><code>DOWN</code></td>
+<td>Move down</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>LEFT</code></td>
+<td>Move left</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>RIGHT</code></td>
+<td>Move right</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>USE_KEY</code></td>
+<td>Unlock adjacent locked entity with matching key</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>PICK_UP</code></td>
+<td>Collect items at current tile</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>WAIT</code></td>
+<td>Do nothing (advance turn)</td>
 </tr>
 </tbody>
 </table>
+<h2 id="use-case">Use Case</h2>
+<p>Actions are primarily used with the step function of <a href="../grid_adventure_enviroment/#methods">GridAdventureEnv</a>.</p>
+<pre><code class="language-python"># Import
+from grid_universe.actions import Action
+
+# Using Action enum with enviroment
+obs, reward, terminated, truncated, info = env.step(Action.UP)
+
+# Using integer index
+obs, reward, terminated, truncated, info = env.step(0)  # UP
+</code></pre>
 
 
 
