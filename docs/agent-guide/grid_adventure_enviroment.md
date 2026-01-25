@@ -11,9 +11,9 @@ The GridAdventureEnv holds an internal state ([State](game_representation.md#sta
 |-----------|------|---------|-------------|
 | `initial_state_fn` | `Callable[..., State]` | required | Function that generates the initial internal game state |
 | `render_mode` | `str` | `"rgb_array"` | Rendering mode |
-| `observation_type` | `str` | `"image"` | This determines if the game representation returned is of image ([Observation](game_representation.md#observation-representation) class) or level ([Level](game_representation.md#level-representation) class)|
+| `observation_type` | `str` | `"image"` | This determines if the game representation returned is of image ([Observation](game_representation.md#observation-representation) class) or gridstate ([GridState](game_representation.md#gridstate-representation) class)|
 
-Note: For more details about "Observation class" & "Level class", Please refer to [Game Representation](game_representation.md).
+Note: For more details about "Observation class" & "GridState class", Please refer to [Game Representation](game_representation.md).
 
 &nbsp;
 ## Methods
