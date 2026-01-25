@@ -653,6 +653,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../observation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observation Representation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../entities/" class="md-nav__link">
         
   
@@ -717,6 +745,34 @@
     
   
     Agent Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State Representation
   
 
     
@@ -814,9 +870,10 @@
 
 
 <h1 id="gridadventureenv">GridAdventureEnv</h1>
-<p>The main game engine for the Grid Adventure turn-based game. It implements the Gymnasium API, providing a standard interface for agents to interact with the game.</p>
+<p>Grid Adventure uses an underlying game engine for the <code>Grid Universe</code> turn-based game. It implements the Gymnasium API, providing a standard interface for agents to interact with the game.</p>
+<p><strong>Note</strong>: For the purpose of the Capstone Project, knowledge of the <code>Grid Universe</code> is not required.</p>
 <h2 id="big-picture">Big Picture</h2>
-<p>The GridAdventureEnv holds an internal state (<a href="../game_representation/#state-representation">State</a> class), this can be seen as the simulation. Its job is to provide player with the game representation, or "snapshot", at each turn via the <code>reset</code> or <code>step</code> function.</p>
+<p>The GridAdventureEnv holds an internal state representation (<a href="../state/">State</a> class), this can be seen as the simulation. Its job is to provide player with the game representation, or "snapshot", at each turn via the <code>reset</code> or <code>step</code> function.</p>
 <h2 id="constructor-parameters">Constructor Parameters</h2>
 <table>
 <thead>
@@ -844,7 +901,7 @@
 <td><code>observation_type</code></td>
 <td><code>str</code></td>
 <td><code>"image"</code></td>
-<td>This determines if the game representation returned is of image (<a href="../game_representation/#observation-representation">Observation</a> class) or gridstate (<a href="../game_representation/#gridstate-representation">GridState</a> class)</td>
+<td>This determines if the game representation returned is of image (<a href="../observation/">Observation</a> class) or gridstate (<a href="../game_representation/#gridstate-representation">GridState</a> class)</td>
 </tr>
 </tbody>
 </table>
@@ -887,7 +944,7 @@
 
 ```python
 from grid_adventure.env import GridAdventureEnv
-from grid_universe.actions import Action
+from grid_adventure.actions import Action
 
 env = GridAdventureEnv(initial_state_fn=my_generator)
 obs, info = env.reset()

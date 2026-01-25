@@ -12,7 +12,7 @@
         <link rel="prev" href="../grid_adventure_enviroment/">
       
       
-        <link rel="next" href="../entities/">
+        <link rel="next" href="../observation/">
       
       
         
@@ -631,6 +631,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../observation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observation Representation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../entities/" class="md-nav__link">
         
   
@@ -708,6 +736,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State Representation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -770,7 +826,7 @@
 
 
 <h1 id="game-representation">Game Representation</h1>
-<p>Grid Adventure: Variant 1 operates as a turn based game. Players are supplied a snapshot of a turn of the Game. Players then return an action, which is then used to generate the snapshot.</p>
+<p>Grid Adventure operates as a turn based game. Players are supplied a snapshot of a turn of the Game. Players then return an action, which is then used to generate the snapshot.</p>
 <h2 id="types-of-representation">Types of representation</h2>
 <p>There are 3 ways for a Game Snapshot to be represented.</p>
 <table>
@@ -782,30 +838,31 @@
 </thead>
 <tbody>
 <tr>
-<td>GridState Representation</td>
-<td>A 2 dimensional Array of cells, accompanied with additional info stored in attributes</td>
+<td><a href="#gridstate-representation">GridState Representation</a></td>
+<td>A grid based representation using 2D Array. This is the most intuitive Representation.</td>
 </tr>
 <tr>
-<td>Observation Representation</td>
-<td>An RGBA Image Array, accompanied  additional info stored in an Information Dictionary</td>
+<td><a href="../observation/">Observation Representation</a></td>
+<td>An RGBA Image representation using #D Array, accompanied  additional info stored in an Information Dictionary</td>
 </tr>
 <tr>
-<td>State Representation</td>
-<td>An Immutable world state. Stores information in various attributes, tracked by EntityID of each Entity</td>
+<td><a href="../state/">State Representation</a></td>
+<td>An Immutable world state. This is the most Comprehensive, but low level representation</td>
 </tr>
 </tbody>
 </table>
+<p><strong>Note</strong>: The Capstone Project can be solved without using the <strong>State Representation</strong>.</p>
 <p>&nbsp;</p>
 <h1 id="gridstate-representation">GridState Representation</h1>
-<p>The Level Representation is a grid centric representation, that is easiest for players to follow</p>
+<p>The GridState Representation is a grid centric representation, that is easiest for players to follow</p>
 <h2 id="gridstate-attributes">GridState Attributes</h2>
 <p>The GridState class has 3 categories of attributes</p>
 <ul>
-<li>GridState Configuration</li>
+<li>Overall Configuration</li>
 <li>Grid Structure</li>
 <li>Game Status</li>
 </ul>
-<h3 id="gridstate-configuration">GridState Configuration</h3>
+<h3 id="overall-configuration">Overall Configuration</h3>
 <table>
 <thead>
 <tr>
@@ -920,454 +977,54 @@
 </thead>
 <tbody>
 <tr>
-<td><code>gridstate.add(pos, obj)</code></td>
+<td><code>GridState.add(pos, obj)</code></td>
 <td><code>None</code></td>
 <td>Place entity at position <code>(x, y)</code></td>
 </tr>
 <tr>
-<td><code>gridstate.add_many(items)</code></td>
+<td><code>GridState.add_many(items)</code></td>
 <td><code>None</code></td>
 <td>Place multiple entities from list of <code>(pos, obj)</code> tuples</td>
 </tr>
 <tr>
-<td><code>gridstate.remove(pos, obj)</code></td>
+<td><code>GridState.remove(pos, obj)</code></td>
 <td><code>bool</code></td>
 <td>Remove specific entity by identity; returns <code>True</code> if found</td>
 </tr>
 <tr>
-<td><code>gridstate.remove_if(pos, predicate)</code></td>
+<td><code>GridState.remove_if(pos, predicate)</code></td>
 <td><code>int</code></td>
 <td>Remove entities where <code>predicate(obj)</code> is <code>True</code>; returns count</td>
 </tr>
 <tr>
-<td><code>gridstate.move_obj(from_pos, obj, to_pos)</code></td>
+<td><code>GridState.move_obj(from_pos, obj, to_pos)</code></td>
 <td><code>bool</code></td>
 <td>Move entity between cells; returns <code>True</code> if successful</td>
 </tr>
 <tr>
-<td><code>gridstate.clear_cell(pos)</code></td>
+<td><code>GridState.clear_cell(pos)</code></td>
 <td><code>int</code></td>
 <td>Remove all entities from cell; returns count</td>
 </tr>
 <tr>
-<td><code>gridstate.objects_at(pos)</code></td>
+<td><code>GridState.objects_at(pos)</code></td>
 <td><code>list[BaseEntity]</code></td>
 <td>Return shallow copy of entities at position</td>
 </tr>
 <tr>
-<td><code>to_state(gridstate)</code></td>
-<td><code>None</code></td>
-<td>Converts mutable <code>GridState</code> to immutable <code>State</code></td>
+<td><code>step(gridState, action)</code></td>
+<td><code>GridState</code></td>
+<td>Generates new <code>GridState</code> with action</td>
 </tr>
 <tr>
-<td><code>step(Gridstate, Action)</code></td>
-<td><code>GridState</code></td>
-<td>Returns a new <code>GridState</code> object that is generated by the given Action</td>
+<td><code>to_state(gridState)</code></td>
+<td><code>None</code></td>
+<td>Converts mutable <code>gridState</code> to immutable <code>State</code></td>
 </tr>
 </tbody>
 </table>
 <p>Note: <code>pos</code> is of class <code>Position</code>, a (int, int)<br />
 Note: <code>obj</code> is of class <code>BaseEntity</code>, parent class of all Entities. For more details about entities, Please refer to <a href="../entities/#entities">Entity Classes</a>.</p>
-<p>&nbsp;</p>
-<h1 id="observation-representation">Observation Representation</h1>
-<p>The observation representation is created by the grid adventure game engine, and is non reversible. Players are not able to convert observation representation into GridState or State representation.</p>
-<h2 id="observation-attribute-hierachy">Observation Attribute Hierachy</h2>
-<p>The observation Class represents the Game snapshot as a dictionary with the following hierachy.</p>
-<pre><code>Observation: TypedDict
-├── image: ndarray[H, W, 4] (uint8)
-│   └── RGBA pixel data for rendered grid
-│
-└── info: InfoDict #Dictionary subclass
-    │
-    ├── agent: AgentInfo #Dictionary subclass
-    │   │
-    │   ├── health: HealthInfo #Dictionary subclass
-    │   │   ├── health: int (-1 if missing)
-    │   │   └── max_health: int (-1 if missing)
-    │   │
-    │   ├── effects: list[EffectEntry]
-    │   │   └── [each entry]
-    │   │       ├── id: int
-    │   │       ├── type: str (&quot;&quot; | &quot;IMMUNITY&quot; | &quot;PHASING&quot; | &quot;SPEED&quot;)
-    │   │       ├── limit_type: str (&quot;&quot; | &quot;TIME&quot; | &quot;USAGE&quot;)
-    │   │       ├── limit_amount: int (-1 if unlimited)
-    │   │       └── multiplier: int (-1 if not SPEED)
-    │   │
-    │   └── inventory: list[InventoryItem]
-    │       └── [each item]
-    │           ├── id: int
-    │           ├── type: str (&quot;key&quot; | &quot;core&quot; | &quot;coin&quot; | &quot;item&quot;)
-    │           ├── key_id: str (&quot;&quot; if not a key)
-    │           └── appearance_name: str (&quot;&quot; if unknown)
-    │
-    ├── status: StatusInfo #Dictionary subclass
-    │   ├── score: int
-    │   ├── phase: str (&quot;ongoing&quot; | &quot;win&quot; | &quot;lose&quot;)
-    │   └── turn: int
-    │
-    ├── config: ConfigInfo #Dictionary subclass
-    │   ├── movement: str (movement function name)
-    │   ├── objective: str (objective function name)
-    │   ├── seed: int (-1 if None)
-    │   ├── width: int
-    │   ├── height: int
-    │   └── turn_limit: int (-1 if unlimited)
-    │
-    └── message: str (&quot;&quot; if None)
-</code></pre>
-<p>&nbsp;</p>
-<h2 id="image-usage-example">Image Usage Example</h2>
-<pre><code class="language-python">from grid_adventure.env import GridAdventureEnv
-from grid_universe.examples.maze import generate
-
-env = GridAdventureEnv(
-    initial_state_fn=generate, 
-    width=9, 
-    height=9
-)
-obs, info = env.reset()
-
-image = obs[&quot;image&quot;]  # shape: (H, W, 4), dtype: uint8
-
-# Get image dimensions
-height, width, channels = image.shape
-
-# Save as PNG
-from PIL import Image
-pil_image = Image.fromarray(image)
-pil_image.save(&quot;screenshot.png&quot;)
-
-# Convert RGBA to RGB (remove alpha channel)
-rgb_image = image[:, :, :3]
-
-# Convert to grayscale
-gray_image = np.mean(image[:, :, :3], axis=2).astype(np.uint8)
-
-# Normalize for neural network input (0-1 range)
-normalized = image.astype(np.float32) / 255.0
-
-# Resize image
-resized = Image.fromarray(image).resize((84, 84))
-resized_array = np.array(resized)
-
-# Display with matplotlib
-import matplotlib.pyplot as plt
-plt.imshow(image)
-plt.axis(&quot;off&quot;)
-plt.show()
-
-# Stack frames for temporal context (e.g., last 4 frames)
-frame_stack = np.stack([obs1[&quot;image&quot;], obs2[&quot;image&quot;], obs3[&quot;image&quot;], obs4[&quot;image&quot;]], axis=0)
-</code></pre>
-<p>&nbsp;</p>
-<h2 id="infodict-usage-example">InfoDict Usage Example</h2>
-<pre><code class="language-python">from grid_universe.gym_env import GridUniverseEnv
-from grid_universe.examples.maze import generate
-
-env = GridUniverseEnv(
-    initial_state_fn=generate, 
-    width=9, 
-    height=9
-)
-obs, info = env.reset()
-
-# Access the rendered image
-image = obs[&quot;image&quot;]  # shape: (H, W, 4), dtype: uint8
-
-# Access agent health
-health = obs[&quot;info&quot;][&quot;agent&quot;][&quot;health&quot;][&quot;health&quot;]
-max_hp = obs[&quot;info&quot;][&quot;agent&quot;][&quot;health&quot;][&quot;max_health&quot;]
-
-# Check game phase
-phase = obs[&quot;info&quot;][&quot;status&quot;][&quot;phase&quot;]  # &quot;ongoing&quot;, &quot;win&quot;, or &quot;lose&quot;
-
-# Get active effects
-for effect in obs[&quot;info&quot;][&quot;agent&quot;][&quot;effects&quot;]:
-    print(f&quot;Effect {effect['type']}: {effect['limit_amount']} remaining&quot;)
-
-# Check inventory
-for item in obs[&quot;info&quot;][&quot;agent&quot;][&quot;inventory&quot;]:
-    print(f&quot;Item: {item['type']} (id={item['id']})&quot;)
-</code></pre>
-<p>&nbsp;</p>
-<h1 id="state-representation">State Representation</h1>
-<p>The state representation is the internal representation used by the Grid Adventure game. It is lower level than the other representations, and the used to generate the GridState and Observation representations.</p>
-<p>NOTE: You do not require the use of the State representation to be able to complete the capstone project. You can feel free to use this representation if you require it, but it is more complicated to learn and use than the GridState representation.</p>
-<h2 id="state-attributes">State Attributes</h2>
-<p>The State Class represents the game snapshot with the following 4 types of attributes.</p>
-<ul>
-<li>Level Configuration</li>
-<li>Effect Configuration</li>
-<li>Property Componenets</li>
-<li>Game Status</li>
-</ul>
-<h3 id="level-configuration">Level Configuration</h3>
-<table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>width</code></td>
-<td><code>int</code></td>
-<td>Grid width in tiles</td>
-</tr>
-<tr>
-<td><code>height</code></td>
-<td><code>int</code></td>
-<td>Grid height in tiles</td>
-</tr>
-<tr>
-<td><code>movement</code></td>
-<td><code>BaseMovement</code></td>
-<td>Movement functions allowed</td>
-</tr>
-<tr>
-<td><code>objective</code></td>
-<td><code>BaseObjective</code></td>
-<td>Objective of the level</td>
-</tr>
-</tbody>
-</table>
-<h3 id="effect-components">Effect Components</h3>
-<p>All effects are stored as a map with key <code>EntityID</code> and value <code>Component</code>.</p>
-<table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Component</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>immunity</code></td>
-<td><code>Immunity</code></td>
-<td>Damage immunity effects</td>
-</tr>
-<tr>
-<td><code>phasing</code></td>
-<td><code>Phasing</code></td>
-<td>Pass-through-walls effects</td>
-</tr>
-<tr>
-<td><code>speed</code></td>
-<td><code>Speed</code></td>
-<td>Movement multiplier effects</td>
-</tr>
-<tr>
-<td><code>time_limit</code></td>
-<td><code>TimeLimit</code></td>
-<td>Effect duration (remaining steps)</td>
-</tr>
-<tr>
-<td><code>usage_limit</code></td>
-<td><code>UsageLimit</code></td>
-<td>Effect uses (remaining count)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="property-components">Property Components</h3>
-<p>All properties are stored as a map with key <code>EntityID</code> and value <code>Component</code>.</p>
-<table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Component</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>agent</code></td>
-<td><a href="../entities/#agententity"><code>Agent</code></a></td>
-<td>Player-controlled entities</td>
-</tr>
-<tr>
-<td><code>appearance</code></td>
-<td><code>Appearance</code></td>
-<td>Visual rendering properties</td>
-</tr>
-<tr>
-<td><code>blocking</code></td>
-<td><a href="../entities/#blockingentity"><code>Blocking</code></a></td>
-<td>Obstacles that block movement</td>
-</tr>
-<tr>
-<td><code>collectible</code></td>
-<td><a href="../entities/#collectibleentity"><code>Collectible</code></a></td>
-<td>Items that can be picked up</td>
-</tr>
-<tr>
-<td><code>collidable</code></td>
-<td><a href="../entities/#collidable-entities"><code>Collidable</code></a></td>
-<td>Entities triggering collision events</td>
-</tr>
-<tr>
-<td><code>cost</code></td>
-<td><code>Cost</code></td>
-<td>Entities that inflict movement cost</td>
-</tr>
-<tr>
-<td><code>damage</code></td>
-<td><a href="../entities/#lava-entity"><code>Damage</code></a></td>
-<td>Entities that deal damage on contact</td>
-</tr>
-<tr>
-<td><code>dead</code></td>
-<td><code>Dead</code></td>
-<td>Dead/incapacitated entities</td>
-</tr>
-<tr>
-<td><code>exit</code></td>
-<td><a href="../entities/#exitentity"><code>Exit</code></a></td>
-<td>Level exit points</td>
-</tr>
-<tr>
-<td><code>health</code></td>
-<td><code>Health</code></td>
-<td>Entity health (current/max)</td>
-</tr>
-<tr>
-<td><code>inventory</code></td>
-<td><code>Inventory</code></td>
-<td>Items held by entities</td>
-</tr>
-<tr>
-<td><code>key</code></td>
-<td><a href="../entities/#keyentity"><code>Key</code></a></td>
-<td>Keys that unlock <code>Locked</code> entities</td>
-</tr>
-<tr>
-<td><code>locked</code></td>
-<td><a href="../entities/#lockeddoorentity"><code>Locked</code></a></td>
-<td>Locked doors/entities</td>
-</tr>
-<tr>
-<td><code>position</code></td>
-<td><code>Position</code></td>
-<td>Entity grid positions</td>
-</tr>
-<tr>
-<td><code>pushable</code></td>
-<td><a href="../entities/#pushableentity"><code>Pushable</code></a></td>
-<td>Entities that can be pushed</td>
-</tr>
-<tr>
-<td><code>requirable</code></td>
-<td><a href="../entities/#gementity"><code>Requirable</code></a></td>
-<td>Must-collect items for objectives</td>
-</tr>
-<tr>
-<td><code>rewardable</code></td>
-<td><a href="../entities/#coinentity"><code>Rewardable</code></a></td>
-<td>Entities granting score rewards</td>
-</tr>
-<tr>
-<td><code>status</code></td>
-<td><code>Status</code></td>
-<td>Active status effects on entities</td>
-</tr>
-</tbody>
-</table>
-<h3 id="game-status_1">Game Status</h3>
-<table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>turn</code></td>
-<td><code>int</code></td>
-<td><code>0</code></td>
-<td>Current turn number</td>
-</tr>
-<tr>
-<td><code>score</code></td>
-<td><code>int</code></td>
-<td><code>0</code></td>
-<td>Cumulative score</td>
-</tr>
-<tr>
-<td><code>win</code></td>
-<td><code>bool</code></td>
-<td><code>False</code></td>
-<td>True if objective met</td>
-</tr>
-<tr>
-<td><code>lose</code></td>
-<td><code>bool</code></td>
-<td><code>False</code></td>
-<td>True if losing condition met</td>
-</tr>
-<tr>
-<td><code>message</code></td>
-<td><code>str</code> or <code>None</code></td>
-<td><code>None</code></td>
-<td>Optional status message for display</td>
-</tr>
-<tr>
-<td><code>turn_limit</code></td>
-<td><code>int</code> or <code>None</code></td>
-<td><code>None</code></td>
-<td>Max turns allowed</td>
-</tr>
-<tr>
-<td><code>seed</code></td>
-<td><code>int</code> or <code>None</code></td>
-<td><code>None</code></td>
-<td>RNG seed for deterministic behavior</td>
-</tr>
-</tbody>
-</table>
-<p>&nbsp;</p>
-<h2 id="usage-example">Usage Example</h2>
-<p>All effects and components are represented by Entities in the Grid Adventure game engine. Each entity is assigned a unique EntityID at creation. This EntityID is used to map to each attribute of the Entity. For more details about entities, Please refer to <a href="../entities/#entities">Entity Classes</a>.</p>
-<hr />
-<p>Example 1: Player Entity</p>
-<p>A player entity with EntityID = 1 that has position, health, appearance, and agent components:  </p>
-<p>&emsp;&emsp;state.position[1]   = Position(x=3, y=5)<br />
-&emsp;&emsp;state.health[1]     = Health(health=100, max_health=100)<br />
-&emsp;&emsp;state.appearance[1] = Appearance(name="human", priority=10)<br />
-&emsp;&emsp;state.agent[1]      = Agent()<br />
-&emsp;&emsp;state.inventory[1]  = Inventory(item_ids=pset([2, 3]))  # holds items 2 and 3   </p>
-<p>The same EntityID appears in multiple component stores, each holding a different aspect of that entity.</p>
-<hr />
-<p>Example 2: Status Effect Entity</p>
-<p>An immunity effect with EntityID = 50 applied to the player (EntityID = 1):</p>
-<p>&emsp;&emsp;state.immunity[50]   = Immunity()<br />
-&emsp;&emsp;state.time_limit[50] = TimeLimit(amount=10)  # lasts 10 turns<br />
-&emsp;&emsp;state.status[1]      = Status(effect_ids=pset([50]))  # player has effect 50  </p>
-<p>The effect itself is an entity (EntityID = 50) stored in immunity and time_limit. The player's status component references this effect by its ID.</p>
-<hr />
-<h2 id="useful-methods">Useful Methods</h2>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>state.description</code></td>
-<td>Property returning <code>PMap</code> of all non-empty state attributes</td>
-</tr>
-<tr>
-<td><code>from_state(state)</code></td>
-<td>Converts immutable <code>State</code> to mutable <code>GridState</code></td>
-</tr>
-</tbody>
-</table>
 
 
 

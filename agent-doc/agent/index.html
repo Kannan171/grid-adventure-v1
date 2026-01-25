@@ -12,6 +12,8 @@
         <link rel="prev" href="../action/">
       
       
+        <link rel="next" href="../state/">
+      
       
         
       
@@ -571,6 +573,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../observation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observation Representation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../entities/" class="md-nav__link">
         
   
@@ -697,10 +727,82 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#__init__-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__ function
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stepself-state-gridstate-observation-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        step(self, state: GridState | Observation) -&gt; Action
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#def-parseself-obs-imageobservation-gridstate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        def parse(self, obs: ImageObservation) -&gt; GridState
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#def-infoself-dictstr-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        def info(self) -&gt; dict[str, Any]
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State Representation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -750,6 +852,50 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#__init__-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__ function
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stepself-state-gridstate-observation-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        step(self, state: GridState | Observation) -&gt; Action
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#def-parseself-obs-imageobservation-gridstate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        def parse(self, obs: ImageObservation) -&gt; GridState
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#def-infoself-dictstr-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        def info(self) -&gt; dict[str, Any]
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -769,7 +915,7 @@
 
 <h1 id="agent-class">Agent Class</h1>
 <h2 id="agent-class-template">Agent Class Template</h2>
-<p>The agent class needs to implement 2 functions (init and step).</p>
+<p>The agent class will be the Api for submission for the capstone project. It consists of 2 compulsory functions, and 2 optional functions for debugging. </p>
 <table>
 <thead>
 <tr>
@@ -786,23 +932,33 @@
 <td><code>step(self, state: GridState | Observation) -&gt; Action</code></td>
 <td>Function used to generate Action given a game representation. This should be the "Brains" of your agent.</td>
 </tr>
-</tbody>
-</table>
-<p>There is a 3rd function in Agent class (parse) that you can choose to implement. The parse function shows how your agent "sees" the grid. This can be useful for debugging image parsing of your agent. In grid-play, this function is called and you can see how your agent parses a given grid to detect any differences.</p>
-<table>
-<thead>
 <tr>
-<th>Function</th>
-<th>Description</th>
+<td><code>def parse(self, obs: ImageObservation) -&gt; GridState</code></td>
+<td>Optional function used in GridPlay to help visualise what your agent sees</td>
 </tr>
-</thead>
-<tbody>
 <tr>
-<td><code>parse(self, ImageObservation) -&gt; GridState</code></td>
-<td>Optional function to implement to visualise agent vision in grid-play</td>
+<td><code>def info(self) -&gt; dict[str, Any]</code></td>
+<td>Optional function used in GridPlay to help visualise any other info</td>
 </tr>
 </tbody>
 </table>
+<p>&nbsp;</p>
+<h2 id="__init__-function"><code>__init__ function</code></h2>
+<p>This initialising function will be ran to initialise your agent class before use. </p>
+<p><strong>Tips</strong>: Use this function to declare any internal variables used by your agent</p>
+<p>&nbsp;</p>
+<h2 id="stepself-state-gridstate-observation-action"><code>step(self, state: GridState | Observation) -&gt; Action</code></h2>
+<p>This step function is called in the main turn loop of the Grid Adventure game. Your implementation of this function, acts as the "Brains" of your agent, to make informed decisions on the next action based on the provided state.</p>
+<p>&nbsp;</p>
+<h2 id="def-parseself-obs-imageobservation-gridstate"><code>def parse(self, obs: ImageObservation) -&gt; GridState</code></h2>
+<p>This parse function is <strong>optional</strong> to be implemented. If implemented, function will be called with the initial level in ImageObservation representation, it will then create generate a window in Grid Play in the bottom right of the screen, for visualising the GridState generated by this function.</p>
+<p><img alt="Parse Window" src="../../assets/parse_window.png" />
+<strong>Tips</strong>: Implement the image parsing of your agent using this function. This allows you to catch its mistake in predicting the gridstate.</p>
+<p>&nbsp;</p>
+<h2 id="def-infoself-dictstr-any"><code>def info(self) -&gt; dict[str, Any]</code></h2>
+<p>This info function is <strong>optional</strong> to be implemented. If implemented, each turn, Grid Play will display the information in of the dictionary</p>
+<p><img alt="Info Window" src="../../assets/info_function.png" />
+<strong>Tips</strong>: Use this function to provide a window into internal variables of your agent at every step of the game.</p>
 
 
 

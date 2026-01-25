@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../introduction/">
+        <link rel="prev" href="../agent/">
       
-      
-        <link rel="next" href="../objectives/">
       
       
         
@@ -23,7 +21,7 @@
     
     
       
-        <title>Entities - Grid-Adventure1 Documentation</title>
+        <title>State Representation - Grid-Adventure1 Documentation</title>
       
     
     
@@ -64,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#floor" class="md-skip">
+        <a href="#state-representation" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Entities
+              State Representation
             
           </span>
         </div>
@@ -188,13 +186,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../introduction/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../player-guide/introduction/" class="md-tabs__link">
           
   
   
@@ -210,11 +206,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../agent-doc/grid_adventure_enviroment/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../grid_adventure_enviroment/" class="md-tabs__link">
           
   
   
@@ -290,29 +288,24 @@
       
   
   
-    
   
   
-  
     
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -330,7 +323,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -348,7 +341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../introduction/" class="md-nav__link">
+      <a href="../../player-guide/introduction/" class="md-nav__link">
         
   
   
@@ -373,35 +366,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Entities
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../player-guide/entities/" class="md-nav__link">
         
   
   
@@ -417,178 +385,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#floor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Floor
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#agent" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Agent
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#wall" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Wall
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exit
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#coin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Coin
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gem" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Gem
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#door" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Door
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#box" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Box
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lava" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Lava
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#powerups" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Powerups
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#powerup-speed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Powerup-Speed
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#powerup-shield" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Powerup-Shield
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#powerup-ghost" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Powerup-Ghost
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -601,7 +397,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../objectives/" class="md-nav__link">
+      <a href="../../player-guide/objectives/" class="md-nav__link">
         
   
   
@@ -629,7 +425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../movements/" class="md-nav__link">
+      <a href="../../player-guide/movements/" class="md-nav__link">
         
   
   
@@ -661,24 +457,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -696,7 +497,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -714,7 +515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent-doc/grid_adventure_enviroment/" class="md-nav__link">
+      <a href="../grid_adventure_enviroment/" class="md-nav__link">
         
   
   
@@ -742,7 +543,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent-doc/game_representation/" class="md-nav__link">
+      <a href="../game_representation/" class="md-nav__link">
         
   
   
@@ -770,7 +571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent-doc/observation/" class="md-nav__link">
+      <a href="../observation/" class="md-nav__link">
         
   
   
@@ -798,7 +599,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent-doc/entities/" class="md-nav__link">
+      <a href="../entities/" class="md-nav__link">
         
   
   
@@ -826,7 +627,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent-doc/action/" class="md-nav__link">
+      <a href="../action/" class="md-nav__link">
         
   
   
@@ -854,7 +655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../agent-doc/agent/" class="md-nav__link">
+      <a href="../agent/" class="md-nav__link">
         
   
   
@@ -879,10 +680,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../agent-doc/state/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State Representation
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -898,6 +726,120 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#warning-on-state-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WARNING ON STATE SPACE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#state-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State Attributes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="State Attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effect-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effect Components
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#property-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property Components
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#game-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Game Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful Methods
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -927,6 +869,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -935,10 +879,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#floor" class="md-nav__link">
+  <a href="#warning-on-state-space" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Floor
+        WARNING ON STATE SPACE
       
     </span>
   </a>
@@ -946,10 +890,71 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#agent" class="md-nav__link">
+  <a href="#state-attributes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Agent
+        State Attributes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="State Attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effect-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effect Components
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#property-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Property Components
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#game-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Game Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage Example
       
     </span>
   </a>
@@ -957,131 +962,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#wall" class="md-nav__link">
+  <a href="#useful-methods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Wall
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#exit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Exit
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#coin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Coin
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gem" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Gem
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#door" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Door
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#box" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Box
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lava" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Lava
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#powerups" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Powerups
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#powerup-speed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Powerup-Speed
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#powerup-shield" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Powerup-Shield
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#powerup-ghost" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Powerup-Ghost
+        Useful Methods
       
     </span>
   </a>
@@ -1105,53 +989,287 @@
 
 
 
-  <h1>Entities</h1>
-
-<p>All objects available in Grid-Adventure-V1 are shown below. Each entity is displayed in five slightly different visuals. Many other appearances exist that are similar but differ subtly from those shown.</p>
-<h2 id="floor">Floor</h2>
-<p><img alt="Floor" src="../../assets/floors.png" /></p>
-<p>Floor is the basic tile of the grid. Other entities can be present on floor tiles.</p>
-<h2 id="agent">Agent</h2>
-<p><img alt="Agent" src="../../assets/humans.png" /></p>
-<p>Agent is the character that you will control and play as. It appears in the grid as a human. You will move around the grid, interact with objects and aim to complete the objective.</p>
-<p>In 1 turn, the Agent can either move to an adjacent tile (Up/Down/Left/Right), pickup a item or use a key to unlock a door.
-The agent starts with some health points and you will lose if the HP drops to 0.</p>
-<h2 id="wall">Wall</h2>
-<p><img alt="Wall" src="../../assets/walls.png" /></p>
-<p>Walls can be present on the grid and blocks the agent from moving past it.</p>
-<h2 id="exit">Exit</h2>
-<p><img alt="Exit" src="../../assets/exits.png" /></p>
-<p>This is the final escape tile that the agent needs to land on to complete the objective.</p>
-<h2 id="coin">Coin</h2>
-<p><img alt="Coin" src="../../assets/coins.png" /></p>
-<p>Coin is a optional item that can be picked up on the grid. The agent may collect the coin to reduce total cost by 5.</p>
-<h2 id="gem">Gem</h2>
-<p><img alt="Gem" src="../../assets/gems.png" /></p>
-<p>Gem is an item on the grid that needs to be picked up. If there are any gems present, all of them need to be collected by the agent before moving to the exit tile to complete the objective.</p>
-<h2 id="key">Key</h2>
-<p><img alt="Key" src="../../assets/keys.png" /></p>
-<p>Key is an optional item on the grid that can be picked up by the agent. A key is required to unlock a door. Any key can be used to unlock a door, but each key can only be used once.</p>
-<h2 id="door">Door</h2>
-<p><img alt="Locked_Door" src="../../assets/locked_doors.png" /></p>
-<p>A locked door blocks the agent from moving past it. To unlock a door, the agent first needs to collect a key. Using the key while standing adjacent to the door unlocks it and it becomes an unlocked door. The agent can freely pass through unlocked doors. Unlocked doors appear on the grid as shown below.
-<img alt="Unlocked_Door" src="../../assets/unlocked_doors.png" /></p>
-<h2 id="box">Box</h2>
-<p><img alt="Box" src="../../assets/boxes.png" /></p>
-<p>Box is an item on the grid that can be moved by the agent. The agent can push a box in any direction onto a free tile. Boxes cannot be pushed onto walls, doors or lava.</p>
-<h2 id="lava">Lava</h2>
-<p><img alt="Lava" src="../../assets/lavas.png" /></p>
-<p>Lava tiles inflict damage to the agent. When the agent lands on lava, 2 damage is dealt. The player loses if agent HP drops to 0.</p>
-<h2 id="powerups">Powerups</h2>
-<p>Powerups can also be present on the grid and can be picked up by the agent if wanted. They provide a boost and are associated with a turn or usage limit.</p>
-<h2 id="powerup-speed">Powerup-Speed</h2>
-<p><img alt="Speed" src="../../assets/boots.png" /></p>
-<p>The speed powerup allows the agent to move 2 tiles in 1 turn. It has a 5 turn limit. Note that the agent can still be blocked by any objects in its way.</p>
-<h2 id="powerup-shield">Powerup-Shield</h2>
-<p><img alt="Shield" src="../../assets/shields.png" /></p>
-<p>Shield protects the agent from damage taken. It has a usage limit of 5. The shield is used once every time the agent lands on lava.</p>
-<h2 id="powerup-ghost">Powerup-Ghost</h2>
-<p><img alt="Ghost" src="../../assets/ghosts.png" /></p>
-<p>Ghost allows the agent to move through objects. It has a turn limit of 5. While the powerup is active, the agent can move through walls and doors. The agent does not take damage from lava as well.</p>
+<h1 id="state-representation">State Representation</h1>
+<p>The state representation is the same internal representation used by the Grid Adventure game, stores information in various attributes, tracked by EntityID of each Entity. It is the most comprehensive of the 3 representations, and the used to generate the GridState and Observation representations. </p>
+<h2 id="warning-on-state-space">WARNING ON STATE SPACE</h2>
+<p>The Capstone Project can be solved without using the <strong>State Representation</strong>, however the State Representation is included for a lower level acess to the representation.</p>
+<h2 id="state-attributes">State Attributes</h2>
+<p>The state Class represents the Game snapshot with the following 4 types of attributes.</p>
+<ul>
+<li>Level Configuration</li>
+<li>Effect Configuration</li>
+<li>Property Componenets</li>
+<li>Game Status</li>
+</ul>
+<h3 id="level-configuration">Level Configuration</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><code>int</code></td>
+<td>Grid width in tiles</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><code>int</code></td>
+<td>Grid height in tiles</td>
+</tr>
+<tr>
+<td><code>movement</code></td>
+<td><code>BaseMovement</code></td>
+<td>Movement functions allowed</td>
+</tr>
+<tr>
+<td><code>objective</code></td>
+<td><code>BaseObjective</code></td>
+<td>Objective of the level</td>
+</tr>
+</tbody>
+</table>
+<h3 id="effect-components">Effect Components</h3>
+<p>All effect stores are <code>PMap[EntityID, Component]</code>.<br />
+Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are available.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Mapped Component</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>immunity</code></td>
+<td><code>Immunity</code></td>
+<td>Damage immunity effects</td>
+</tr>
+<tr>
+<td><code>phasing</code></td>
+<td><code>Phasing</code></td>
+<td>Pass-through-walls effects</td>
+</tr>
+<tr>
+<td><code>speed</code></td>
+<td><code>Speed</code></td>
+<td>Movement multiplier effects</td>
+</tr>
+<tr>
+<td><code>time_limit</code></td>
+<td><code>TimeLimit</code></td>
+<td>Effect duration (remaining steps)</td>
+</tr>
+<tr>
+<td><code>usage_limit</code></td>
+<td><code>UsageLimit</code></td>
+<td>Effect uses (remaining count)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="property-components">Property Components</h3>
+<p>All property stores are <code>PMap[EntityID, Component]</code>.<br />
+Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are available.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Mapped Component</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>agent</code></td>
+<td><a href="../entities/#agententity"><code>Agent</code></a></td>
+<td>Player-controlled entities</td>
+</tr>
+<tr>
+<td><code>appearance</code></td>
+<td><code>Appearance</code></td>
+<td>Visual rendering properties</td>
+</tr>
+<tr>
+<td><code>blocking</code></td>
+<td><a href="../entities/#blockingentity"><code>Blocking</code></a></td>
+<td>Obstacles that block movement</td>
+</tr>
+<tr>
+<td><code>collectible</code></td>
+<td><a href="../entities/#collectibleentity"><code>Collectible</code></a></td>
+<td>Items that can be picked up</td>
+</tr>
+<tr>
+<td><code>collidable</code></td>
+<td><a href="../entities/#collidable-entities"><code>Collidable</code></a></td>
+<td>Entities triggering collision events</td>
+</tr>
+<tr>
+<td><code>cost</code></td>
+<td><code>Cost</code></td>
+<td>Entities that inflict movement cost</td>
+</tr>
+<tr>
+<td><code>damage</code></td>
+<td><a href="../entities/#lava-entity"><code>Damage</code></a></td>
+<td>Entities that deal damage on contact</td>
+</tr>
+<tr>
+<td><code>dead</code></td>
+<td><code>Dead</code></td>
+<td>Dead/incapacitated entities</td>
+</tr>
+<tr>
+<td><code>exit</code></td>
+<td><a href="../entities/#exitentity"><code>Exit</code></a></td>
+<td>Level exit points</td>
+</tr>
+<tr>
+<td><code>health</code></td>
+<td><code>Health</code></td>
+<td>Entity health (current/max)</td>
+</tr>
+<tr>
+<td><code>inventory</code></td>
+<td><code>Inventory</code></td>
+<td>Items held by entities</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td><a href="../entities/#keyentity"><code>Key</code></a></td>
+<td>Keys that unlock <code>Locked</code> entities</td>
+</tr>
+<tr>
+<td><code>locked</code></td>
+<td><a href="../entities/#lockeddoorentity"><code>Locked</code></a></td>
+<td>Locked doors/entities</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><code>Position</code></td>
+<td>Entity grid positions</td>
+</tr>
+<tr>
+<td><code>pushable</code></td>
+<td><a href="../entities/#pushableentity"><code>Pushable</code></a></td>
+<td>Entities that can be pushed</td>
+</tr>
+<tr>
+<td><code>requirable</code></td>
+<td><a href="../entities/#gementity"><code>Requirable</code></a></td>
+<td>Must-collect items for objectives</td>
+</tr>
+<tr>
+<td><code>rewardable</code></td>
+<td><a href="../entities/#coinentity"><code>Rewardable</code></a></td>
+<td>Entities granting score rewards</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>Status</code></td>
+<td>Active status effects on entities</td>
+</tr>
+</tbody>
+</table>
+<h3 id="game-status">Game Status</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>turn</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+<td>Current turn number</td>
+</tr>
+<tr>
+<td><code>score</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+<td>Cumulative score</td>
+</tr>
+<tr>
+<td><code>win</code></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>True if objective met</td>
+</tr>
+<tr>
+<td><code>lose</code></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>True if losing condition met</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>str</code> or <code>None</code></td>
+<td><code>None</code></td>
+<td>Optional status message for display</td>
+</tr>
+<tr>
+<td><code>turn_limit</code></td>
+<td><code>int</code> or <code>None</code></td>
+<td><code>None</code></td>
+<td>Max turns allowed</td>
+</tr>
+<tr>
+<td><code>seed</code></td>
+<td><code>int</code> or <code>None</code></td>
+<td><code>None</code></td>
+<td>RNG seed for deterministic behavior</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="usage-example">Usage Example</h2>
+<p>All effects and components are represented by Entities in the Grid Adventure game. Each entity is assigned a unique EntityID at creation. This EntityID is used to map to each attribute of the Entity. For more details about entities, Please refer to <a href="../entities/#entities">Entity Classes</a>.</p>
+<hr />
+<p>Example 1: Player Entity</p>
+<p>A player entity with EntityID = 1 that has position, health, appearance, and agent components:  </p>
+<p>&emsp;&emsp;state.position[1]   = Position(x=3, y=5)<br />
+&emsp;&emsp;state.health[1]     = Health(health=100, max_health=100)<br />
+&emsp;&emsp;state.appearance[1] = Appearance(name="human", priority=10)<br />
+&emsp;&emsp;state.agent[1]      = Agent()<br />
+&emsp;&emsp;state.inventory[1]  = Inventory(item_ids=pset([2, 3]))  # holds items 2 and 3   </p>
+<p>The same EntityID appears in multiple component stores, each holding a different aspect of that entity.</p>
+<hr />
+<p>Example 2: Status Effect Entity</p>
+<p>An immunity effect with EntityID = 50 applied to the player (EntityID = 1):</p>
+<p>&emsp;&emsp;state.immunity[50]   = Immunity()<br />
+&emsp;&emsp;state.time_limit[50] = TimeLimit(amount=10)  # lasts 10 turns<br />
+&emsp;&emsp;state.status[1]      = Status(effect_ids=pset([50]))  # player has effect 50  </p>
+<p>The effect itself is an entity (EntityID = 50) stored in immunity and time_limit. The player's status component references this effect by its ID.</p>
+<hr />
+<h2 id="useful-methods">Useful Methods</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>state.description</code></td>
+<td>Property returning <code>PMap</code> of all non-empty state attributes</td>
+</tr>
+<tr>
+<td><code>from_state(state)</code></td>
+<td>Converts immutable <code>State</code> to mutable <code>GridState</code></td>
+</tr>
+</tbody>
+</table>
 
 
 
