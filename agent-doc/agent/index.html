@@ -12,8 +12,6 @@
         <link rel="prev" href="../action/">
       
       
-        <link rel="next" href="../state/">
-      
       
         
       
@@ -214,7 +212,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../grid_adventure_enviroment/" class="md-tabs__link">
+        <a href="../grid_adventure_environment/" class="md-tabs__link">
           
   
   
@@ -517,14 +515,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../grid_adventure_enviroment/" class="md-nav__link">
+      <a href="../grid_adventure_environment/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Grid Adventure Enviroment
+    Grid Adventure Environment
   
 
     
@@ -537,6 +535,56 @@
   
 
               
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Game Representation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Game Representation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -552,7 +600,7 @@
   <span class="md-ellipsis">
     
   
-    Game Representation
+    Game Representation Overview
   
 
     
@@ -573,14 +621,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../observation/" class="md-nav__link">
+      <a href="../gridstate/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Observation Representation
+    GridState
   
 
     
@@ -601,14 +649,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../entities/" class="md-nav__link">
+      <a href="../image_observation/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Entity Classes
+    ImageObservation
   
 
     
@@ -617,6 +665,42 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -636,7 +720,7 @@
   <span class="md-ellipsis">
     
   
-    Action Classes
+    Action Class
   
 
     
@@ -725,9 +809,10 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Agent Class Template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#__init__-function" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -737,37 +822,42 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#stepself-state-gridstate-observation-action" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#stepself-state-gridstate-imageobservation-action" class="md-nav__link">
     <span class="md-ellipsis">
       
-        step(self, state: GridState | Observation) -&gt; Action
+        step(self, state: GridState | ImageObservation) -&gt; Action
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#def-parseself-obs-imageobservation-gridstate" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#parseself-obs-imageobservation-gridstate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        def parse(self, obs: ImageObservation) -&gt; GridState
+        parse(self, obs: ImageObservation) -&gt; GridState
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#def-infoself-dictstr-any" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#infoself-dictstr-any" class="md-nav__link">
     <span class="md-ellipsis">
       
-        def info(self) -&gt; dict[str, Any]
+        info(self) -&gt; dict[str, Any]
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -775,34 +865,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../state/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    State Representation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -850,9 +912,10 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Agent Class Template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#__init__-function" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -862,37 +925,42 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#stepself-state-gridstate-observation-action" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#stepself-state-gridstate-imageobservation-action" class="md-nav__link">
     <span class="md-ellipsis">
       
-        step(self, state: GridState | Observation) -&gt; Action
+        step(self, state: GridState | ImageObservation) -&gt; Action
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#def-parseself-obs-imageobservation-gridstate" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#parseself-obs-imageobservation-gridstate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        def parse(self, obs: ImageObservation) -&gt; GridState
+        parse(self, obs: ImageObservation) -&gt; GridState
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#def-infoself-dictstr-any" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#infoself-dictstr-any" class="md-nav__link">
     <span class="md-ellipsis">
       
-        def info(self) -&gt; dict[str, Any]
+        info(self) -&gt; dict[str, Any]
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -915,7 +983,7 @@
 
 <h1 id="agent-class">Agent Class</h1>
 <h2 id="agent-class-template">Agent Class Template</h2>
-<p>The agent class will be the Api for submission for the capstone project. It consists of 2 compulsory functions, and 2 optional functions for debugging. </p>
+<p>The agent class will be the API for submission for the capstone project. It consists of 2 compulsory functions, and 2 optional functions for debugging. </p>
 <table>
 <thead>
 <tr>
@@ -943,21 +1011,21 @@
 </tbody>
 </table>
 <p>&nbsp;</p>
-<h2 id="__init__-function"><code>__init__ function</code></h2>
+<h3 id="__init__-function"><code>__init__ function</code></h3>
 <p>This initialising function will be ran to initialise your agent class before use. </p>
 <p><strong>Tips</strong>: Use this function to declare any internal variables used by your agent</p>
 <p>&nbsp;</p>
-<h2 id="stepself-state-gridstate-observation-action"><code>step(self, state: GridState | Observation) -&gt; Action</code></h2>
-<p>This step function is called in the main turn loop of the Grid Adventure game. Your implementation of this function, acts as the "Brains" of your agent, to make informed decisions on the next action based on the provided state.</p>
+<h3 id="stepself-state-gridstate-imageobservation-action"><code>step(self, state: GridState | ImageObservation) -&gt; Action</code></h3>
+<p>This step function is called in the main turn loop of the Grid Adventure game. Your implementation of this function acts as the "Brains" of your agent, to make informed decisions on the next action based on the provided state.</p>
 <p>&nbsp;</p>
-<h2 id="def-parseself-obs-imageobservation-gridstate"><code>def parse(self, obs: ImageObservation) -&gt; GridState</code></h2>
+<h3 id="parseself-obs-imageobservation-gridstate"><code>parse(self, obs: ImageObservation) -&gt; GridState</code></h3>
 <p>This parse function is <strong>optional</strong> to be implemented. If implemented, function will be called with the initial level in ImageObservation representation, it will then create generate a window in Grid Play in the bottom right of the screen, for visualising the GridState generated by this function.</p>
-<p><img alt="Parse Window" src="../../assets/parse.png" />
-<strong>Tips</strong>: Implement the image parsing of your agent using this function. This allows you to catch its mistake in predicting the gridstate.</p>
-<p>In the given example, we see the actual grid in the blue square and agent vision in red square. We can see that the agent mistakenly believes that there is a box in the grid.</p>
+<p><strong>Tips</strong>: Implement the image parsing of your agent using this function. This allows you to catch its mistake in predicting the GridState.
+<img alt="Parse Window" src="../../assets/parse.png" /></p>
+<p>In the above example, we see the actual grid in the blue square and agent vision in red square. We can see that the agent mistakenly believes that there is a box in the grid.</p>
 <p>&nbsp;</p>
-<h2 id="def-infoself-dictstr-any"><code>def info(self) -&gt; dict[str, Any]</code></h2>
-<p>This info function is <strong>optional</strong> to be implemented. If implemented, each turn, Grid Play will display the information in of the dictionary</p>
+<h3 id="infoself-dictstr-any"><code>info(self) -&gt; dict[str, Any]</code></h3>
+<p>This info function is <strong>optional</strong> to be implemented. If implemented, each turn, Grid Play will display the information in of the dictionary as shown below.</p>
 <p><img alt="Info Window" src="../../assets/info.png" />
 <strong>Tips</strong>: Use this function to provide a window into internal variables of your agent at every step of the game.</p>
 

@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../grid_adventure_enviroment/">
+        <link rel="prev" href="../grid_adventure_environment/">
       
       
-        <link rel="next" href="../observation/">
+        <link rel="next" href="../gridstate/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Game Representation - Grid-Adventure1 Documentation</title>
+        <title>Game Representation Overview - Grid-Adventure1 Documentation</title>
       
     
     
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Game Representation
+              Game Representation Overview
             
           </span>
         </div>
@@ -214,7 +214,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../grid_adventure_enviroment/" class="md-tabs__link">
+        <a href="../grid_adventure_environment/" class="md-tabs__link">
           
   
   
@@ -517,14 +517,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../grid_adventure_enviroment/" class="md-nav__link">
+      <a href="../grid_adventure_environment/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Grid Adventure Enviroment
+    Grid Adventure Environment
   
 
     
@@ -537,6 +537,58 @@
   
 
               
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Game Representation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Game Representation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -561,7 +613,7 @@
   <span class="md-ellipsis">
     
   
-    Game Representation
+    Game Representation Overview
   
 
     
@@ -579,7 +631,7 @@
   <span class="md-ellipsis">
     
   
-    Game Representation
+    Game Representation Overview
   
 
     
@@ -631,14 +683,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../observation/" class="md-nav__link">
+      <a href="../gridstate/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Observation Representation
+    GridState
   
 
     
@@ -659,14 +711,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../entities/" class="md-nav__link">
+      <a href="../image_observation/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Entity Classes
+    ImageObservation
   
 
     
@@ -675,6 +727,42 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    State
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -694,7 +782,7 @@
   <span class="md-ellipsis">
     
   
-    Action Classes
+    Action Class
   
 
     
@@ -723,34 +811,6 @@
     
   
     Agent Class
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../state/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    State Representation
   
 
     
@@ -826,7 +886,7 @@
 
 
 <h1 id="game-representation">Game Representation</h1>
-<p>Grid Adventure operates as a turn based game. Players are supplied a snapshot of a turn of the Game. Players then return an action, which is then used to generate the snapshot.</p>
+<p>Grid Adventure V1 operates as a turn based game. Players are supplied a snapshot of a turn of the Game. Players then return an action, which is then used to generate the snapshot.</p>
 <h2 id="types-of-representation">Types of representation</h2>
 <p>There are 3 ways for a Game Snapshot to be represented.</p>
 <table>
@@ -838,12 +898,12 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="#gridstate-representation">GridState Representation</a></td>
+<td><a href="../gridstate/">GridState Representation</a></td>
 <td>A grid based representation using 2D Array. This is the most intuitive Representation.</td>
 </tr>
 <tr>
-<td><a href="../observation/">Observation Representation</a></td>
-<td>An RGBA Image representation using #D Array, accompanied  additional info stored in an Information Dictionary</td>
+<td><a href="../image_observation/">ImageObservation Representation</a></td>
+<td>An RGBA Image representation using 3D Array, accompanied  additional info stored in an Information Dictionary</td>
 </tr>
 <tr>
 <td><a href="../state/">State Representation</a></td>
@@ -852,179 +912,6 @@
 </tbody>
 </table>
 <p><strong>Note</strong>: The Capstone Project can be solved without using the <strong>State Representation</strong>.</p>
-<p>&nbsp;</p>
-<h1 id="gridstate-representation">GridState Representation</h1>
-<p>The GridState Representation is a grid centric representation, that is easiest for players to follow</p>
-<h2 id="gridstate-attributes">GridState Attributes</h2>
-<p>The GridState class has 3 categories of attributes</p>
-<ul>
-<li>Overall Configuration</li>
-<li>Grid Structure</li>
-<li>Game Status</li>
-</ul>
-<h3 id="overall-configuration">Overall Configuration</h3>
-<table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>width</code></td>
-<td><code>int</code></td>
-<td>Grid width in tiles</td>
-</tr>
-<tr>
-<td><code>height</code></td>
-<td><code>int</code></td>
-<td>Grid height in tiles</td>
-</tr>
-<tr>
-<td><code>movement</code></td>
-<td><code>BaseMovement</code></td>
-<td>Movement function configuration</td>
-</tr>
-<tr>
-<td><code>objective</code></td>
-<td><code>BaseObjective</code></td>
-<td>Win/lose condition configuration</td>
-</tr>
-<tr>
-<td><code>seed</code></td>
-<td><code>int</code> or <code>None</code></td>
-<td>RNG seed for deterministic behavior</td>
-</tr>
-</tbody>
-</table>
-<h3 id="grid-structure">Grid Structure</h3>
-<table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>grid</code></td>
-<td><code>list[list[list[BaseEntity]]]</code></td>
-<td>Grid representation where <code>grid[x][y]</code> is a list of entities at that cell</td>
-</tr>
-</tbody>
-</table>
-<h3 id="game-status">Game Status</h3>
-<table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>turn</code></td>
-<td><code>int</code></td>
-<td><code>0</code></td>
-<td>Current turn number</td>
-</tr>
-<tr>
-<td><code>score</code></td>
-<td><code>int</code></td>
-<td><code>0</code></td>
-<td>Cumulative score</td>
-</tr>
-<tr>
-<td><code>win</code></td>
-<td><code>bool</code></td>
-<td><code>False</code></td>
-<td>True if objective met</td>
-</tr>
-<tr>
-<td><code>lose</code></td>
-<td><code>bool</code></td>
-<td><code>False</code></td>
-<td>True if losing condition met</td>
-</tr>
-<tr>
-<td><code>message</code></td>
-<td><code>str</code> or <code>None</code></td>
-<td><code>None</code></td>
-<td>Optional status message for display</td>
-</tr>
-<tr>
-<td><code>turn_limit</code></td>
-<td><code>int</code> or <code>None</code></td>
-<td><code>None</code></td>
-<td>Max turns allowed</td>
-</tr>
-</tbody>
-</table>
-<p>&nbsp;</p>
-<h2 id="available-methods">Available Methods</h2>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Returns</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>GridState.add(pos, obj)</code></td>
-<td><code>None</code></td>
-<td>Place entity at position <code>(x, y)</code></td>
-</tr>
-<tr>
-<td><code>GridState.add_many(items)</code></td>
-<td><code>None</code></td>
-<td>Place multiple entities from list of <code>(pos, obj)</code> tuples</td>
-</tr>
-<tr>
-<td><code>GridState.remove(pos, obj)</code></td>
-<td><code>bool</code></td>
-<td>Remove specific entity by identity; returns <code>True</code> if found</td>
-</tr>
-<tr>
-<td><code>GridState.remove_if(pos, predicate)</code></td>
-<td><code>int</code></td>
-<td>Remove entities where <code>predicate(obj)</code> is <code>True</code>; returns count</td>
-</tr>
-<tr>
-<td><code>GridState.move_obj(from_pos, obj, to_pos)</code></td>
-<td><code>bool</code></td>
-<td>Move entity between cells; returns <code>True</code> if successful</td>
-</tr>
-<tr>
-<td><code>GridState.clear_cell(pos)</code></td>
-<td><code>int</code></td>
-<td>Remove all entities from cell; returns count</td>
-</tr>
-<tr>
-<td><code>GridState.objects_at(pos)</code></td>
-<td><code>list[BaseEntity]</code></td>
-<td>Return shallow copy of entities at position</td>
-</tr>
-<tr>
-<td><code>step(gridState, action)</code></td>
-<td><code>GridState</code></td>
-<td>Generates new <code>GridState</code> with action</td>
-</tr>
-<tr>
-<td><code>to_state(gridState)</code></td>
-<td><code>None</code></td>
-<td>Converts mutable <code>gridState</code> to immutable <code>State</code></td>
-</tr>
-</tbody>
-</table>
-<p>Note: <code>pos</code> is of class <code>Position</code>, a (int, int)<br />
-Note: <code>obj</code> is of class <code>BaseEntity</code>, parent class of all Entities. For more details about entities, Please refer to <a href="../entities/#entities">Entity Classes</a>.</p>
 
 
 
