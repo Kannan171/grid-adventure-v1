@@ -8,7 +8,7 @@ GridAdventureEnv is the main environment that runs the Grid Adventure V1 game. I
 |-----------|------|---------|-------------|
 | `initial_state_fn` | `Callable[..., State]` | required | Function that generates the initial internal game state |
 | `render_mode` | `str` | `"rgb_array"` | Rendering mode |
-| `observation_type` | `str` | `"image"` or `"gridstate"` | This determines if the game representation returned is of image ([ImageObservation](image_observation.md) class) or gridstate ([GridState](#gridstate) class)|
+| `observation_type` | `str` | `"image"` or `"gridstate"` | This determines if the game representation returned is of image ([ImageObservation](image_observation.md) class) or gridstate ([GridState](gridstate.md) class)|
 
 Note: For more details about `ImageObservation` class and `GridState` class, please refer to [Game Representation](game_representation.md).
 
