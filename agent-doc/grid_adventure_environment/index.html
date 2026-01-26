@@ -961,12 +961,12 @@
 <tr>
 <td><code>observation_type</code></td>
 <td><code>str</code></td>
-<td><code>"image"</code></td>
-<td><code>"gridstate"</code></td>
+<td><code>"image"</code> or <code>"gridstate"</code></td>
+<td>This determines if the game representation returned is of image (<a href="../image_observation/">ImageObservation</a> class) or gridstate (<a href="#gridstate">GridState</a> class)</td>
 </tr>
 </tbody>
 </table>
-<p>Note: For more details about "ImageObservation class" &amp; "GridState class", Please refer to <a href="../game_representation/">Game Representation</a>.</p>
+<p>Note: For more details about <code>ImageObservation</code> class and <code>GridState</code> class, please refer to <a href="../game_representation/">Game Representation</a>.</p>
 <p>&nbsp;</p>
 <h2 id="methods">Methods</h2>
 <table>
@@ -986,38 +986,20 @@
 <tr>
 <td><code>GridAdventureEnv.step(action)</code></td>
 <td><code>tuple[Observation, float, bool, bool, dict]</code></td>
-<td>Apply one action, and returns the game representation</td>
+<td>Applies one action, and returns the game representation</td>
 </tr>
 <tr>
 <td><code>GridAdventureEnv.render()</code></td>
 <td><code>PILImage</code> or <code>None</code></td>
-<td>Render current state</td>
+<td>Renders the current state</td>
 </tr>
 <tr>
 <td><code>GridAdventureEnv.close()</code></td>
 <td><code>None</code></td>
-<td>Release resources</td>
+<td>Releases resources</td>
 </tr>
 </tbody>
 </table>
-<!-- &nbsp;
-## Basic Usage
-
-```python
-from grid_adventure.env import GridAdventureEnv
-from grid_adventure.actions import Action
-
-env = GridAdventureEnv(initial_state_fn=my_generator)
-obs, info = env.reset()
-
-done = False
-while not done:
-    action = Action.UP  # or your policy
-    obs, reward, terminated, truncated, info = env.step(action)
-    done = terminated or truncated
-
-env.close()
-``` -->
 
 
 

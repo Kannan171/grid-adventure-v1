@@ -1193,51 +1193,51 @@
 
   <h1>Entities</h1>
 
-<p>All objects available in Grid-Adventure-V1 are shown below. Each entity is displayed in five slightly different visuals. Many other appearances exist that are similar but differ subtly from those shown.</p>
+<p>All objects available in Grid-Adventure-V1 are shown below. Each entity is displayed in five slightly different visuals. Many other appearances exist that are similar but may differ subtly from those shown.</p>
 <h2 id="floor">Floor</h2>
 <p><img alt="Floor" src="../../assets/floors.png" /></p>
-<p>Floor is the basic tile of the grid. Other entities can be present on floor tiles.</p>
+<p>Floor is the basic tile of the grid. Other entities can also be present with floor tiles.</p>
 <h2 id="agent">Agent</h2>
 <p><img alt="Agent" src="../../assets/humans.png" /></p>
 <p>Agent is the character that you will control and play as. It appears in the grid as a human. You will move around the grid, interact with objects and aim to complete the objective.</p>
-<p>In 1 turn, the Agent can either move to an adjacent tile (Up/Down/Left/Right), pickup a item or use a key to unlock a door.
-The agent starts with some health points and you will lose if the HP drops to 0.</p>
+<p>In 1 turn, the Agent can either move to an adjacent tile (up/down/left/right), pickup a item, use a key to unlock a door or simply do nothing (wait).
+The agent starts with some health points (up to 5) and the player loses if the HP drops to 0.</p>
 <h2 id="wall">Wall</h2>
 <p><img alt="Wall" src="../../assets/walls.png" /></p>
-<p>Walls can be present on the grid and blocks the agent from moving past it.</p>
+<p>Walls can be present on the grid and blocks the agent from moving past them.</p>
 <h2 id="exit">Exit</h2>
 <p><img alt="Exit" src="../../assets/exits.png" /></p>
-<p>This is the final escape tile that the agent needs to land on to complete the objective.</p>
+<p>This is the final escape tile that the agent must reach to complete the objective.</p>
 <h2 id="coin">Coin</h2>
 <p><img alt="Coin" src="../../assets/coins.png" /></p>
-<p>Coin is a optional item that can be picked up on the grid. The agent may collect the coin to reduce total cost by 5.</p>
+<p>Coin is a optional item that can be picked up on the grid. The agent may collect a coin to receive a reward of 5.</p>
 <h2 id="gem">Gem</h2>
 <p><img alt="Gem" src="../../assets/gems.png" /></p>
-<p>Gem is an item on the grid that needs to be picked up. If there are any gems present, all of them need to be collected by the agent before moving to the exit tile to complete the objective.</p>
+<p>Gem is an item on the grid that needs to be picked up. If any gems are present, the agent must collect all of them before moving to the exit tile to complete the objective.</p>
 <h2 id="key">Key</h2>
 <p><img alt="Key" src="../../assets/keys.png" /></p>
 <p>Key is an optional item on the grid that can be picked up by the agent. A key is required to unlock a door. Any key can be used to unlock a door, but each key can only be used once.</p>
 <h2 id="door">Door</h2>
 <p><img alt="Locked_Door" src="../../assets/locked_doors.png" /></p>
-<p>A locked door blocks the agent from moving past it. To unlock a door, the agent first needs to collect a key. Using the key while standing adjacent to the door unlocks it and it becomes an unlocked door. The agent can freely pass through unlocked doors. Unlocked doors appear on the grid as shown below.
+<p>A locked door blocks the agent from moving past it. To unlock a door, the agent must first collect a key. Using the key while standing adjacent to the door unlocks it, turning it into an unlocked door. The agent can then pass freely through unlocked doors. Unlocked doors appear on the grid as shown below.
 <img alt="Unlocked_Door" src="../../assets/unlocked_doors.png" /></p>
 <h2 id="box">Box</h2>
 <p><img alt="Box" src="../../assets/boxes.png" /></p>
-<p>Box is an item on the grid that can be moved by the agent. The agent can push a box in any direction onto a free tile. Boxes cannot be pushed onto walls, doors or lava.</p>
+<p>Box is an item on the grid that can be moved by the agent. The agent can push a box in any direction onto a free tile. Boxes cannot be pushed onto walls, doors, or lava.</p>
 <h2 id="lava">Lava</h2>
 <p><img alt="Lava" src="../../assets/lavas.png" /></p>
-<p>Lava tiles inflict damage to the agent. When the agent lands on lava, 2 damage is dealt. The player loses if agent HP drops to 0.</p>
+<p>Lava tiles inflict damage to the agent. When the agent lands on lava, it takes 2 damage. The player loses if the agent's HP drops to 0.</p>
 <h2 id="powerups">Powerups</h2>
-<p>Powerups can also be present on the grid and can be picked up by the agent if wanted. They provide a boost and are associated with a turn or usage limit.</p>
+<p>Powerups may also appear on the grid and can be picked up by the agent. They provide temporary boosts and are associated with either a turn or usage limit.</p>
 <h2 id="powerup-speed">Powerup-Speed</h2>
 <p><img alt="Speed" src="../../assets/boots.png" /></p>
-<p>The speed powerup allows the agent to move 2 tiles in 1 turn. It has a 5 turn limit. Note that the agent can still be blocked by any objects in its way.</p>
+<p>The speed powerup allows the agent to move 2 tiles in 1 turn. It has a 5-turn limit. Note that the agent can still be blocked by any objects in its path.</p>
 <h2 id="powerup-shield">Powerup-Shield</h2>
 <p><img alt="Shield" src="../../assets/shields.png" /></p>
 <p>Shield protects the agent from damage taken. It has a usage limit of 5. The shield is used once every time the agent lands on lava.</p>
 <h2 id="powerup-phasing">Powerup-Phasing</h2>
 <p><img alt="Phasing" src="../../assets/ghosts.png" /></p>
-<p>Phasing allows the agent to move through objects. It has a turn limit of 5. While the powerup is active, the agent can move through walls and doors. The agent does not take damage from lava as well.</p>
+<p>Phasing allows the agent to move through objects. It has a turn limit of 5. While the powerup is active, the agent can move through walls and doors and does not take damage from lava.</p>
 
 
 

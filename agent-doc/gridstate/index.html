@@ -1072,7 +1072,7 @@
 <h1 id="gridstate-representation">GridState Representation</h1>
 <p>The GridState Representation is a grid centric representation, that is easiest for players to follow</p>
 <h2 id="gridstate-attributes">GridState Attributes</h2>
-<p>The GridState class has 3 categories of attributes</p>
+<p>The GridState class has 3 categories of attributes:</p>
 <ul>
 <li>Overall Configuration</li>
 <li>Grid Structure</li>
@@ -1159,13 +1159,13 @@
 <td><code>win</code></td>
 <td><code>bool</code></td>
 <td><code>False</code></td>
-<td>True if objective met</td>
+<td>True if the objective is met</td>
 </tr>
 <tr>
 <td><code>lose</code></td>
 <td><code>bool</code></td>
 <td><code>False</code></td>
-<td>True if losing condition met</td>
+<td>True if the losing condition is met</td>
 </tr>
 <tr>
 <td><code>message</code></td>
@@ -1177,7 +1177,7 @@
 <td><code>turn_limit</code></td>
 <td><code>int</code> or <code>None</code></td>
 <td><code>None</code></td>
-<td>Max turns allowed</td>
+<td>Maximum turns allowed</td>
 </tr>
 </tbody>
 </table>
@@ -1195,17 +1195,17 @@
 <tr>
 <td><code>GridState.add(pos, obj)</code></td>
 <td><code>None</code></td>
-<td>Place entity at position <code>(x, y)</code></td>
+<td>Place an entity at position <code>(x, y)</code></td>
 </tr>
 <tr>
 <td><code>GridState.add_many(items)</code></td>
 <td><code>None</code></td>
-<td>Place multiple entities from list of <code>(pos, obj)</code> tuples</td>
+<td>Places multiple entities from list of <code>(pos, obj)</code> tuples</td>
 </tr>
 <tr>
 <td><code>GridState.remove(pos, obj)</code></td>
 <td><code>bool</code></td>
-<td>Remove specific entity by identity; returns <code>True</code> if found</td>
+<td>Removes a specific entity by identity; returns <code>True</code> if found</td>
 </tr>
 <tr>
 <td><code>GridState.remove_if(pos, predicate)</code></td>
@@ -1230,22 +1230,22 @@
 <tr>
 <td><code>step(gridState, action)</code></td>
 <td><code>GridState</code></td>
-<td>Generates new <code>GridState</code> with action</td>
+<td>Generates a new <code>GridState</code> with action</td>
 </tr>
 <tr>
 <td><code>to_state(gridState)</code></td>
-<td><code>None</code></td>
-<td>Converts mutable <code>gridState</code> to immutable <code>State</code></td>
+<td><code>State</code></td>
+<td>Converts mutable <code>GridState</code> to immutable <code>State</code></td>
 </tr>
 </tbody>
 </table>
-<p>Note: <code>pos</code> is of class <code>Position</code>, a (int, int)<br />
-Note: <code>obj</code> is of class <code>BaseEntity</code>, parent class of all Entities. For more details about entities, Please refer to <a href="#entities">Entity Classes</a>.</p>
+<p>Note: <code>pos</code> is of class <code>Position</code>, represented as a <code>(int, int)</code><br />
+Note: <code>obj</code> is of class <code>BaseEntity</code>, parent class of all Entities. For more details about entities, please refer to <a href="#entities">Entity Classes</a>.</p>
 <h2 id="entities">Entities</h2>
 <h3 id="entity-list">Entity List</h3>
-<p>There are a total of 14 Entities that can be present on the grid. To view the appearance and interactions between the entities, refer to the <a href="../../player-guide/entities/">Player Guide</a></p>
+<p>There are a total of 14 entities that can be present on the grid. To view the appearance and interactions between the entities, refer to the <a href="../../player-guide/entities/">Player Guide</a></p>
 <p><strong><a href="../../player-guide/entities/#agent">AgentEntity</a></strong></p>
-<p>This is the entity controlled by the user. Agent contains additional attributes</p>
+<p>This is the entity controlled by the user. The Agent contains additional attributes and methods.</p>
 <table>
 <thead>
 <tr>
@@ -1263,12 +1263,12 @@ Note: <code>obj</code> is of class <code>BaseEntity</code>, parent class of all 
 <tr>
 <td>inventory_list</td>
 <td>list[BaseEntity]</td>
-<td>List of Entity that represents the Agents inventory</td>
+<td>List of Entity that represents the Agent's inventory</td>
 </tr>
 <tr>
 <td>status_list</td>
 <td>list[BaseEntity]</td>
-<td>List of Entity that represents the Status Active on Agent</td>
+<td>List of Entity that represents the statuses active on the agent</td>
 </tr>
 </tbody>
 </table>
@@ -1284,7 +1284,7 @@ Note: <code>obj</code> is of class <code>BaseEntity</code>, parent class of all 
 <tr>
 <td>set_health</td>
 <td>health: int</td>
-<td>Sets agent health</td>
+<td>Sets the agent's health</td>
 </tr>
 </tbody>
 </table>

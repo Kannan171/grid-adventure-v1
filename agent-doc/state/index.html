@@ -1568,17 +1568,17 @@
 
 
 <h1 id="state-representation">State Representation</h1>
-<p>The state representation is the same internal representation used by the Grid Adventure game, stores information in various attributes, tracked by EntityID of each Entity. It is the most comprehensive of the 3 representations, and the used to generate the GridState and Observation representations. </p>
+<p>The state representation is the internal representation used by the Grid Adventure game. It stores information in various attributes, tracked by EntityID of each Entity. It is the most comprehensive of the 3 representations, and is used to generate the GridState and ImageObservation representations. </p>
 <div class="admonition warning">
 <p class="admonition-title">WARNING ON STATE SPACE</p>
-<p>The Capstone Project can be solved without using the <strong>State Representation</strong>, however the State Representation is included for a lower level acess to the representation.</p>
+<p>The Capstone Project can be solved without using the <strong>State Representation</strong>, however the State Representation is included for a lower level access to the representation.</p>
 </div>
 <h2 id="state-attributes">State Attributes</h2>
 <p>The state Class represents the Game snapshot with the following 4 types of attributes.</p>
 <ul>
 <li>Level Configuration</li>
 <li>Effect Configuration</li>
-<li>Property Componenets</li>
+<li>Property Components</li>
 <li>Game Status</li>
 </ul>
 <h3 id="level-configuration">Level Configuration</h3>
@@ -1614,8 +1614,8 @@
 </tbody>
 </table>
 <h3 id="effect-components">Effect Components</h3>
-<p>All effect stores are <code>PMap[EntityID, Component]</code>.<br />
-Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are available.</p>
+<p>All effect stores are of type <code>PMap[EntityID, Component]</code>.<br />
+Note: <code>PMap</code> is an immutable dictionary, standard dictionary methods are available.</p>
 <table>
 <thead>
 <tr>
@@ -1653,8 +1653,8 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 </tbody>
 </table>
 <h3 id="property-components">Property Components</h3>
-<p>All property stores are <code>PMap[EntityID, Component]</code>.<br />
-Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are available.</p>
+<p>All property stores are of type <code>PMap[EntityID, Component]</code>.<br />
+Note: <code>PMap</code> is an immutable dictionary, standard dictionary methods are available.</p>
 <table>
 <thead>
 <tr>
@@ -1867,7 +1867,7 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 </table>
 <p>&nbsp;</p>
 <h3 id="collidable-entities">Collidable Entities</h3>
-<p>This are entities which can pass through each other but will trigger interactions when this happens. These entities are recognisable for possession of <code>collidable</code> attribute of <code>Collidable</code> class.  </p>
+<p>These are entities which can pass through each other but trigger interactions when they do. These entities are recognisable for possession of <code>collidable</code> attribute of <code>Collidable</code> class.  </p>
 <p>There are in total 2 relevant Collidable Entities.</p>
 <ul>
 <li>AgentEntity </li>
@@ -1893,12 +1893,12 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 <tr>
 <td>inventory</td>
 <td>Inventory Class</td>
-<td>List of Entity that represents the Agents inventory</td>
+<td>List of Entity that represents the Agent's inventory</td>
 </tr>
 <tr>
 <td>status</td>
 <td>Status Class</td>
-<td>List of Entity that represents the Status Active on Agent</td>
+<td>List of Entity that represents the statuses active on the agent</td>
 </tr>
 </tbody>
 </table>
@@ -1914,16 +1914,16 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 <tr>
 <td>set_health</td>
 <td>health: int</td>
-<td>Sets agent health</td>
+<td>Sets the agent's health</td>
 </tr>
 </tbody>
 </table>
 <p>&nbsp;</p>
 <h4 id="lavaentity"><a href="../../player-guide/entities/#lava">LavaEntity</a></h4>
-<p>This is a damaging entity that the agent can walk through</p>
+<p>This is a damaging entity that the agent can walk through.</p>
 <p>&nbsp;</p>
 <h3 id="blockingentity">BlockingEntity</h3>
-<p>This are entities which cannot be passed through by Collidable Entities. These entities are recognisable for possession of <code>blocking</code> attribute of <code>Blocking</code> class.  </p>
+<p>These are entities which cannot be passed through by Collidable Entities. These entities are recognisable for possession of <code>blocking</code> attribute of <code>Blocking</code> class.  </p>
 <p>There are in total 3 relevant BlockingEntity. </p>
 <ul>
 <li>WallEntity</li>
@@ -1932,18 +1932,18 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 </ul>
 <p>&nbsp;</p>
 <h3 id="pushableentity">PushableEntity</h3>
-<p>This are entities which are pushable by the Agent. These entities are recognisable for possession of <code>pushable</code> attribute of <code>Pushable</code> class. </p>
+<p>These are entities which are pushable by the Agent. These entities are recognisable for possession of <code>pushable</code> attribute of <code>Pushable</code> class. </p>
 <p>There is 1 relevant pushable entity, <a href="#boxentity">BoxEntity</a></p>
 <p>&nbsp;</p>
 <h4 id="wallentity"><a href="../../player-guide/entities/#wall">WallEntity</a></h4>
-<p>This is a wall entity that the agent cannot walk through nor push. The wall entity has no attributes.</p>
+<p>This is a wall entity that the agent cannot walk through or push. The wall entity has no attributes.</p>
 <p>&nbsp;</p>
 <h4 id="boxentity"><a href="../../player-guide/entities/#box">BoxEntity</a></h4>
-<p>This is a pushable blocking entity, that the agent can push but not walk through. The box entity has no attributes.</p>
+<p>This is a pushable blocking entity that the agent can push but not walk through. The box entity has no attributes.</p>
 <p>Note: that the box is also a <a href="#pushableentity">Pushable</a> Entity</p>
 <p>&nbsp;</p>
 <h4 id="lockeddoorentity"><a href="../../player-guide/entities/#door">LockedDoorEntity</a></h4>
-<p>This is a blocking entity that the agent cannot push through nor push. This entity becomes a <a href="#unlockeddoorentity">UnlockedDoorEntity</a>, when a <a href="#keyentity">KeyEntity</a> is used on it</p>
+<p>This is a blocking entity that the agent cannot push through or push. This entity becomes a <a href="#unlockeddoorentity">UnlockedDoorEntity</a>, when a <a href="#keyentity">KeyEntity</a> is used on it</p>
 <table>
 <thead>
 <tr>
@@ -1963,7 +1963,7 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 <p>Note: Each level can have multiple key - door pairs. Any key can be used to unlock a door, but each key can only be used once.</p>
 <p>&nbsp;</p>
 <h3 id="collectibleentity">CollectibleEntity</h3>
-<p>This are entities which are collectable by the Agent. These entities are recognisable for possession of <code>collectible</code> attribute of <code>Collectible</code> class. </p>
+<p>These are entities which are collectible by the agent. These entities are recognisable for possession of <code>collectible</code> attribute of <code>Collectible</code> class. </p>
 <p>There are in total 6 relevant CollectibleEntity.</p>
 <ul>
 <li>CoinEntity</li>
@@ -1995,10 +1995,10 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 <p>Note: Score received for collecting a coin is fixed at 5.</p>
 <p>&nbsp;</p>
 <h4 id="gementity"><a href="../../player-guide/entities/#gem">GemEntity</a></h4>
-<p>This is a <strong>compulsory</strong> Collectible to be collected by agent before it can enter the exit. The GemEntity has no attributes.</p>
+<p>This is a <strong>compulsory</strong> collectible to be collected by agent before it can enter the exit. The GemEntity has no attributes.</p>
 <p>&nbsp;</p>
 <h4 id="keyentity"><a href="../../player-guide/entities/#key">KeyEntity</a></h4>
-<p>This is a Collectible required to unlock a <a href="#lockeddoorentity">LockedDoorEntity</a></p>
+<p>This is a collectible required to unlock a <a href="#lockeddoorentity">LockedDoorEntity</a></p>
 <table>
 <thead>
 <tr>
@@ -2018,7 +2018,7 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 <p>Note: Any key present in the grid can be used to unlock a door, but each key can only be used once.</p>
 <p>&nbsp;</p>
 <h4 id="speedpowerupentity"><a href="../../player-guide/entities/#powerup-speed">SpeedPowerUpEntity</a></h4>
-<p>This is a collectible granting agent the ability to walk 2 tiles in 1 turn for a duration of time.</p>
+<p>This is a collectible power-up granting agent the ability to walk 2 tiles in 1 turn for a duration of time.</p>
 <table>
 <thead>
 <tr>
@@ -2043,7 +2043,7 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 <p>Note: Time limit is a constant at 5 steps.</p>
 <p>&nbsp;</p>
 <h4 id="shieldpowerupentity"><a href="../../player-guide/entities/#powerup-shield">ShieldPowerUpEntity</a></h4>
-<p>This is a collectible granting agent immunity while walking on damaging tiles for 5 uses.</p>
+<p>This is a collectible power-up granting agent immunity while walking on damaging tiles for 5 uses.</p>
 <table>
 <thead>
 <tr>
@@ -2063,7 +2063,7 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 <p>Note: Usage limit is a constant at 5 uses.</p>
 <p>&nbsp;</p>
 <h4 id="phasingpowerupentity"><a href="../../player-guide/entities/#powerup-phasing">PhasingPowerUpEntity</a></h4>
-<p>This is a collectible granting agent ability to walk through <a href="#blockingentity">BlockingEntity</a> for a duration of time.</p>
+<p>This is a collectible power-up granting agent ability to walk through <a href="#blockingentity">BlockingEntity</a> for a duration of time.</p>
 <table>
 <thead>
 <tr>
@@ -2086,16 +2086,16 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 <p>These Entities extend directly from BaseEntity. They are either non interactable entities which are purely for aesthetic purposes, or in the case of ExitEntity &amp; FloorEntity, entities with special purposes.</p>
 <p>&nbsp;</p>
 <h4 id="exitentity"><a href="../../player-guide/entities/#exit">ExitEntity</a></h4>
-<p>This are unique Exit Entity and serve as the exit objective. The ExitEntity has no other attributes.</p>
+<p>This serves as the final tile the agent has to reach to complete the objective. The ExitEntity has no other attributes.</p>
 <p>&nbsp;</p>
 <h4 id="floorentity"><a href="../../player-guide/entities/#floor">FloorEntity</a></h4>
-<p>Floor entities are not interactable with agent.</p>
+<p>Floor entities are not interactable with the agent.</p>
 <p>&nbsp;</p>
 <h4 id="unlockeddoorentity"><a href="../../player-guide/entities/#door">UnlockedDoorEntity</a></h4>
-<p>UnlockedDoorEntity is not interactable with agent, serving only aesthetic purpose. It is the unlocked version of the <a href="#lockeddoorentity">LockedDoorEntity</a>. The UnlockedDoorEntity has no attributes.</p>
+<p>UnlockedDoorEntity is not interactable with agent and serves only an aesthetic purpose. It is the unlocked version of the <a href="#lockeddoorentity">LockedDoorEntity</a>. The UnlockedDoorEntity has no attributes.</p>
 <p>&nbsp;</p>
 <h2 id="usage-example">Usage Example</h2>
-<p>All effects and components are represented by Entities in the Grid Adventure game. Each entity is assigned a unique EntityID at creation. This EntityID is used to map to each attribute of the Entity. For more details about entities, Please refer to <a href="#entities">Entity Classes</a>.</p>
+<p>All effects and components are represented by Entities in the Grid Adventure game. Each entity is assigned a unique EntityID at creation. This EntityID is used to map to each attribute of the Entity. For more details about entities, please refer to <a href="#entities">Entity Classes</a>.</p>
 <hr />
 <p>Example 1: Player Entity</p>
 <p>A player entity with EntityID = 1 that has position, health, appearance, and agent components:  </p>
