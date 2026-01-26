@@ -632,7 +632,7 @@
   <span class="md-ellipsis">
     
   
-    Game Representation Overview
+    Overview
   
 
     
@@ -958,7 +958,7 @@
 
 
 <h1 id="imageobservation-representation">ImageObservation Representation</h1>
-<p>The ImageObservation representation is created by the Grid Adventure V1 game engine, and is non reversible. Players are not able to convert ImageObservation representation into GridState or State representation.</p>
+<p>The ImageObservation representation is created by the Grid Adventure V1 game engine. It contains a 3D image array with additional information in a dictionary.</p>
 <h2 id="imageobservation-attribute-hierachy">ImageObservation Attribute Hierachy</h2>
 <p>The ImageObservation Class represents the Game snapshot as a dictionary with the following hierachy.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ImageObservation: TypedDict
@@ -984,24 +984,23 @@
 <a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    │   └── inventory: list[InventoryItem]
 <a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    │       └── [each item]
 <a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    │           ├── id: int
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    │           ├── type: str (&quot;key&quot; | &quot;core&quot; | &quot;coin&quot; | &quot;item&quot;)
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    │           ├── key_id: str (&quot;&quot; if not a key)
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    │           └── appearance_name: str (&quot;&quot; if unknown)
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    │
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>    ├── status: StatusInfo #Dictionary subclass
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>    │   ├── score: int
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>    │   ├── phase: str (&quot;ongoing&quot; | &quot;win&quot; | &quot;lose&quot;)
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    │   └── turn: int
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>    │
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>    ├── config: ConfigInfo #Dictionary subclass
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>    │   ├── movement: str (movement function name)
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>    │   ├── objective: str (objective function name)
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    │   ├── seed: int (-1 if None)
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    │   ├── width: int
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>    │   ├── height: int
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>    │   └── turn_limit: int (-1 if unlimited)
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>    │
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>    └── message: str (&quot;&quot; if None)
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    │           ├── type: str (&quot;key&quot; | &quot;gem&quot; | &quot;coin&quot; | &quot;item&quot;)
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    │           └── appearance_name: str (&quot;&quot; if unknown)
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    │
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    ├── status: StatusInfo #Dictionary subclass
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>    │   ├── score: int
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>    │   ├── phase: str (&quot;ongoing&quot; | &quot;win&quot; | &quot;lose&quot;)
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>    │   └── turn: int
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    │
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>    ├── config: ConfigInfo #Dictionary subclass
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>    │   ├── movement: str (movement function name)
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>    │   ├── objective: str (objective function name)
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>    │   ├── seed: int (-1 if None)
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    │   ├── width: int
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    │   ├── height: int
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>    │   └── turn_limit: int (-1 if unlimited)
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>    │
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>    └── message: str (&quot;&quot; if None)
 </code></pre></div>
 <p>&nbsp;</p>
 <h2 id="image-usage-example">Image Usage Example</h2>
