@@ -47,7 +47,7 @@ Note: `PMap` is an Immutable Dictionary, dictionary methods are available.
 | `collectible` | [`Collectible`](#collectibleentity) | Items that can be picked up |
 | `collidable` | [`Collidable`](#collidable-entities) | Entities triggering collision events |
 | `cost` | `Cost` | Entities that inflict movement cost |
-| `damage` | [`Damage`](#lava-entity) | Entities that deal damage on contact |
+| `damage` | [`Damage`](#lavaentity) | Entities that deal damage on contact |
 | `dead` | `Dead` | Dead/incapacitated entities |
 | `exit` | [`Exit`](#exitentity) | Level exit points |
 | `health` | `Health` | Entity health (current/max) |
