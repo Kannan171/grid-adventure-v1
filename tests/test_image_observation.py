@@ -2,7 +2,7 @@ from typing import Callable
 import numpy as np
 from grid_adventure.env import GridAdventureEnv
 from grid_adventure.levels import intro
-from grid_universe.levels.convert import level_fn_to_initial_state_fn
+from grid_universe.grid.convert import grid_state_fn_to_initial_state_fn
 from grid_universe.actions import Action
 from grid_universe.renderer.image import ImageMap
 
@@ -16,7 +16,9 @@ def test_env_image_observation_with_temp_assets(
     asset_root = make_temp_assets(stems)
 
     env = GridAdventureEnv(
-        initial_state_fn=level_fn_to_initial_state_fn(intro.build_level_basic_movement),
+        initial_state_fn=grid_state_fn_to_initial_state_fn(
+            intro.build_level_basic_movement
+        ),
         observation_type="image",
         seed=100,
         render_asset_root=asset_root,

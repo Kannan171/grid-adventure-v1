@@ -48,7 +48,7 @@ def _env_factory(
 source = make_level_selection_source(
     name="Grid Adventure Intro",
     builders=BUILDERS,
-    builder_returns_level=True,  # builders return Level
+    builder_returns_gridstate=True,  # builders return GridState
     env_factory=_env_factory,
     image_maps=[IMAGE_MAP],  # single pack -> no picker
 )

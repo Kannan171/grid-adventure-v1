@@ -2,11 +2,11 @@ from collections.abc import Callable
 from typing import Any
 
 from grid_universe.state import State
-from grid_universe.gym_env import GridUniverseEnv, Observation
+from grid_universe.env import GridUniverseEnv, ImageObservation
 from grid_universe.renderer.image import ImageMap, DEFAULT_RESOLUTION
-from grid_universe.levels.grid import Level
+from grid_universe.grid.gridstate import GridState
 
-from grid_adventure.level import from_state
+from grid_adventure.grid import from_state
 from grid_adventure.rendering import DEFAULT_ASSET_ROOT, IMAGE_MAP
 
 
@@ -37,12 +37,12 @@ class GridAdventureEnv(GridUniverseEnv):
             **kwargs,
         )
 
-    def _get_obs(self) -> Observation | Level:
+    def _get_obs(self) -> ImageObservation | GridState:
         """
-        Get the current observation from the environment. If the observation type is 'level',
-        return a specialized Level view; otherwise, return the standard observation.
+        Get the current observation from the environment. If the observation type is 'gridstate',
+        return a specialized GridState view; otherwise, return the standard observation.
         """
         assert self.state is not None and self.agent_id is not None
-        if self._observation_type == "level":
+        if self._observation_type == "gridstate":
             return from_state(self.state)
         return super()._get_obs()
