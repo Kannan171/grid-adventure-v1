@@ -887,10 +887,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#lava-entity" class="md-nav__link">
+  <a href="#lavaentity" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Lava Entity
+        LavaEntity
       
     </span>
   </a>
@@ -911,7 +911,18 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="BlockingEntity">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pushableentity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PushableEntity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PushableEntity">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -949,17 +960,6 @@
         
       </ul>
     </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pushableentity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PushableEntity
-      
-    </span>
-  </a>
   
 </li>
         
@@ -1331,10 +1331,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#lava-entity" class="md-nav__link">
+  <a href="#lavaentity" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Lava Entity
+        LavaEntity
       
     </span>
   </a>
@@ -1355,7 +1355,18 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="BlockingEntity">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pushableentity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PushableEntity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PushableEntity">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1393,17 +1404,6 @@
         
       </ul>
     </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pushableentity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PushableEntity
-      
-    </span>
-  </a>
   
 </li>
         
@@ -1874,7 +1874,7 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 <li>LavaEntity  </li>
 </ul>
 <p>&nbsp;</p>
-<h4 id="agententity">AgentEntity</h4>
+<h4 id="agententity"><a href="../../player-guide/entities/#agent">AgentEntity</a></h4>
 <p>This is the entity controlled by the user.</p>
 <table>
 <thead>
@@ -1919,9 +1919,8 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 </tbody>
 </table>
 <p>&nbsp;</p>
-<h4 id="lava-entity">Lava Entity</h4>
+<h4 id="lavaentity"><a href="../../player-guide/entities/#lava">LavaEntity</a></h4>
 <p>This is a damaging entity that the agent can walk through</p>
-<p>Note: Lava has a fixed Damage of 2.</p>
 <p>&nbsp;</p>
 <h3 id="blockingentity">BlockingEntity</h3>
 <p>This are entities which cannot be passed through by Collidable Entities. These entities are recognisable for possession of <code>blocking</code> attribute of <code>Blocking</code> class.  </p>
@@ -1931,16 +1930,19 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 <li>LockedDoorEntity </li>
 <li>BoxEntity  </li>
 </ul>
-<p>Note that the Box is also a PushableEntity.  </p>
 <p>&nbsp;</p>
-<h4 id="wallentity">WallEntity</h4>
-<p>This is a wall entity that the agent cannot walk through nor push. The wall entity has no atributes.</p>
+<h3 id="pushableentity">PushableEntity</h3>
+<p>This are entities which are pushable by the Agent. These entities are recognisable for possession of <code>pushable</code> attribute of <code>Pushable</code> class. </p>
+<p>There is 1 relevant pushable entity, <a href="#boxentity">BoxEntity</a></p>
 <p>&nbsp;</p>
-<h4 id="boxentity">BoxEntity</h4>
-<p>This is a movable blocking entity, that the agent can push but not walk through. The box entity has no attributes.</p>
-<p>Note: that the box is also a Pushable Entity</p>
+<h4 id="wallentity"><a href="../../player-guide/entities/#wall">WallEntity</a></h4>
+<p>This is a wall entity that the agent cannot walk through nor push. The wall entity has no attributes.</p>
 <p>&nbsp;</p>
-<h4 id="lockeddoorentity">LockedDoorEntity</h4>
+<h4 id="boxentity"><a href="../../player-guide/entities/#box">BoxEntity</a></h4>
+<p>This is a pushable blocking entity, that the agent can push but not walk through. The box entity has no attributes.</p>
+<p>Note: that the box is also a <a href="#pushableentity">Pushable</a> Entity</p>
+<p>&nbsp;</p>
+<h4 id="lockeddoorentity"><a href="../../player-guide/entities/#door">LockedDoorEntity</a></h4>
 <p>This is a blocking entity that the agent cannot push through nor push. This entity becomes a <a href="#unlockeddoorentity">UnlockedDoorEntity</a>, when a <a href="#keyentity">KeyEntity</a> is used on it</p>
 <table>
 <thead>
@@ -1960,10 +1962,6 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 </table>
 <p>Note: Each level can have multiple key - door pairs. Any key can be used to unlock a door, but each key can only be used once.</p>
 <p>&nbsp;</p>
-<h3 id="pushableentity">PushableEntity</h3>
-<p>This are entities which are pushable by the Agent. These entities are recognisable for possession of <code>pushable</code> attribute of <code>Pushable</code> class. </p>
-<p>There is only 1 relevant PushableEntity, it is the BoxEntity. For documentation of box, see the <a href="#boxentity">BoxEntity</a>.</p>
-<p>&nbsp;</p>
 <h3 id="collectibleentity">CollectibleEntity</h3>
 <p>This are entities which are collectable by the Agent. These entities are recognisable for possession of <code>collectible</code> attribute of <code>Collectible</code> class. </p>
 <p>There are in total 6 relevant CollectibleEntity.</p>
@@ -1976,7 +1974,7 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 <li>PhasingPowerUpEntity  </li>
 </ul>
 <p>&nbsp;</p>
-<h4 id="coinentity">CoinEntity</h4>
+<h4 id="coinentity"><a href="../../player-guide/entities/#coin">CoinEntity</a></h4>
 <p>This is an <strong>optional</strong> collectible that provides a score when collected by the agent. </p>
 <table>
 <thead>
@@ -1996,10 +1994,10 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 </table>
 <p>Note: Score received for collecting a coin is fixed at 5.</p>
 <p>&nbsp;</p>
-<h4 id="gementity">GemEntity</h4>
+<h4 id="gementity"><a href="../../player-guide/entities/#gem">GemEntity</a></h4>
 <p>This is a <strong>compulsory</strong> Collectible to be collected by agent before it can enter the exit. The GemEntity has no attributes.</p>
 <p>&nbsp;</p>
-<h4 id="keyentity">KeyEntity</h4>
+<h4 id="keyentity"><a href="../../player-guide/entities/#key">KeyEntity</a></h4>
 <p>This is a Collectible required to unlock a <a href="#lockeddoorentity">LockedDoorEntity</a></p>
 <table>
 <thead>
@@ -2019,7 +2017,7 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 </table>
 <p>Note: Any key present in the grid can be used to unlock a door, but each key can only be used once.</p>
 <p>&nbsp;</p>
-<h4 id="speedpowerupentity">SpeedPowerUpEntity</h4>
+<h4 id="speedpowerupentity"><a href="../../player-guide/entities/#powerup-speed">SpeedPowerUpEntity</a></h4>
 <p>This is a collectible granting agent the ability to walk 2 tiles in 1 turn for a duration of time.</p>
 <table>
 <thead>
@@ -2044,7 +2042,7 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 </table>
 <p>Note: Time limit is a constant at 5 steps.</p>
 <p>&nbsp;</p>
-<h4 id="shieldpowerupentity">ShieldPowerUpEntity</h4>
+<h4 id="shieldpowerupentity"><a href="../../player-guide/entities/#powerup-shield">ShieldPowerUpEntity</a></h4>
 <p>This is a collectible granting agent immunity while walking on damaging tiles for 5 uses.</p>
 <table>
 <thead>
@@ -2064,7 +2062,7 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 </table>
 <p>Note: Usage limit is a constant at 5 uses.</p>
 <p>&nbsp;</p>
-<h4 id="phasingpowerupentity">PhasingPowerUpEntity</h4>
+<h4 id="phasingpowerupentity"><a href="../../player-guide/entities/#powerup-phasing">PhasingPowerUpEntity</a></h4>
 <p>This is a collectible granting agent ability to walk through <a href="#blockingentity">BlockingEntity</a> for a duration of time.</p>
 <table>
 <thead>
@@ -2087,13 +2085,13 @@ Note: <code>PMap</code> is an Immutable Dictionary, dictionary methods are avail
 <h4 id="other-entities">Other Entities</h4>
 <p>These Entities extend directly from BaseEntity. They are either non interactable entities which are purely for aesthetic purposes, or in the case of ExitEntity &amp; FloorEntity, entities with special purposes.</p>
 <p>&nbsp;</p>
-<h4 id="exitentity">ExitEntity</h4>
+<h4 id="exitentity"><a href="../../player-guide/entities/#exit">ExitEntity</a></h4>
 <p>This are unique Exit Entity and serve as the exit objective. The ExitEntity has no other attributes.</p>
 <p>&nbsp;</p>
-<h4 id="floorentity">FloorEntity</h4>
+<h4 id="floorentity"><a href="../../player-guide/entities/#floor">FloorEntity</a></h4>
 <p>Floor entities are not interactable with agent.</p>
 <p>&nbsp;</p>
-<h4 id="unlockeddoorentity">UnlockedDoorEntity</h4>
+<h4 id="unlockeddoorentity"><a href="../../player-guide/entities/#door">UnlockedDoorEntity</a></h4>
 <p>UnlockedDoorEntity is not interactable with agent, serving only aesthetic purpose. It is the unlocked version of the <a href="#lockeddoorentity">LockedDoorEntity</a>. The UnlockedDoorEntity has no attributes.</p>
 <p>&nbsp;</p>
 <h2 id="usage-example">Usage Example</h2>
