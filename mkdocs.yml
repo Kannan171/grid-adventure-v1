@@ -20,7 +20,7 @@ nav:
       - Introduction: agent-doc/introduction.md
       - Grid Adventure Environment: agent-doc/grid_adventure_environment.md
       - Game Representation:
-          - Game Representation Overview: agent-doc/game_representation.md
+          - Overview: agent-doc/game_representation.md
           - GridState: agent-doc/gridstate.md
           - ImageObservation: agent-doc/image_observation.md
           - State: agent-doc/state.md

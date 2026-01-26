@@ -83,8 +83,8 @@ The speed powerup allows the agent to move 2 tiles in 1 turn. It has a 5 turn li
 
 Shield protects the agent from damage taken. It has a usage limit of 5. The shield is used once every time the agent lands on lava.
 
-## Powerup-Ghost
+## Powerup-Phasing
 
 ![Ghost](../assets/ghosts.png)
 
-Ghost allows the agent to move through objects. It has a turn limit of 5. While the powerup is active, the agent can move through walls and doors. The agent does not take damage from lava as well.
+Phasing allows the agent to move through objects. It has a turn limit of 5. While the powerup is active, the agent can move through walls and doors. The agent does not take damage from lava as well.

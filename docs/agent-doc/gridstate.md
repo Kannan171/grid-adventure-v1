@@ -51,85 +51,49 @@ The GridState class has 3 categories of attributes
 | `to_state(gridState)` | `None` | Converts mutable `gridState` to immutable `State` |
 
 Note: `pos` is of class `Position`, a (int, int)  
-Note: `obj` is of class `BaseEntity`, parent class of all Entities. For more details about entities, Please refer to [Entity Classes](entities.md#entities).
+Note: `obj` is of class `BaseEntity`, parent class of all Entities. For more details about entities, Please refer to [Entity Classes](#entities).
 
 ## Entities
-&nbsp;
+
 ### Entity List
 There are a total of 14 Entities that can be present on the grid. To view the appearance and interactions between the entities, refer to the [Player Guide](../player-guide/entities.md)
 
-&nbsp;
-#### AgentEntity
-This is the entity controlled by the user.
+**[1. AgentEntity](../player-guide/entities.md#agent)**
+
+This is the entity controlled by the user. Agent contains additional attributes
 
 |Attribute|Type|Description|
 |---|---|---|
 |health|Health Class|Health to give the agent, constitutes Max and current health|
-|inventory|Inventory Class|List of Entity that represents the Agents inventory|
-|status|Status Class|List of Entity that represents the Status Active on Agent|
+|inventory_list|list[BaseEntity]|List of Entity that represents the Agents inventory|
+|status_list|list[BaseEntity]|List of Entity that represents the Status Active on Agent|
 
 |Available Methods|Inputs|Description|
 |---|---|---|
 |set_health|health: int|Sets agent health|
 
-&nbsp;
-#### LavaEntity
-This is a damaging entity that the agent can walk through. When the Agent lands on a Lava tile, 2 damage is dealt.
+**[2. LavaEntity](../player-guide/entities.md#lava)**
 
-&nbsp;
-#### WallEntity
-This is a wall entity that the agent cannot walk through nor push.
+**[3. WallEntity](../player-guide/entities.md#wall)**
 
-&nbsp;
-#### BoxEntity
-This is a pushable blocking entity, that the agent can push but not walk through.
+**[4. BoxEntity](../player-guide/entities.md#box)**
 
-&nbsp;
-#### LockedDoorEntity
-This is a blocking entity that the agent cannot push through nor push. This entity becomes a [UnlockedDoorEntity](#unlockeddoorentity), when a [KeyEntity](#keyentity) is used on it. 
+**[5. LockedDoorEntity](../player-guide/entities.md#door)**
 
-note: Any key can be used to unlock a door, but each key can only be used once.
+**[6. CoinEntity](../player-guide/entities.md#coin)**
 
-&nbsp;
-#### CoinEntity
-This is an **optional** collectible that provides a reward of 5 when picked up by the agent. 
+**[7. GemEntity](../player-guide/entities.md#gem)**
 
-&nbsp;
-#### GemEntity
-This is a **required** collectible to be collected by agent before it can enter the exit.
+**[8. KeyEntity](../player-guide/entities.md#key)**
 
-&nbsp;
-#### KeyEntity
-This is a collectible required to unlock a [LockedDoorEntity](#lockeddoorentity)
+**[9. SpeedPowerUpEntity](../player-guide/entities.md#powerup-speed)**
 
-Note: Any key present in the grid can be used to unlock a door, but each key can only be used once.
+**[10. ShieldPowerUpEntity](../player-guide/entities.md#powerup-shield)**
 
-&nbsp;
-#### SpeedPowerUpEntity
-This is a collectible granting agent the ability to walk 2 tiles in 1 turn.
+**[11. PhasingPowerUpEntity](../player-guide/entities.md#powerup-phasing)**
 
-Speed powerup lasts for 5 turns.
+**[12. ExitEntity](../player-guide/entities.md#exit)**
 
-&nbsp;
-#### ShieldPowerUpEntity
-This is a collectible granting agent immunity. When the agent walks onto a lava tile, the shield is used once and the agent does not take damage.
+**[13. FloorEntity](../player-guide/entities.md#floor)**
 
-Shield powerup has 5 uses.
-
-&nbsp;
-#### PhasingPowerUpEntity
-This is a collectible granting agent ability to walk through walls and doors.
-
-Phasing powerup lasts for 5 turns.
-
-&nbsp;
-#### ExitEntity
-ExitEntity and serve as the exit objective. The agent completes the objective by collecting any gems present, then moving to the exit tile.
-
-&nbsp;
-#### FloorEntity 
-Floor entities are not interactable with agent.
-
-&nbsp;
-#### UnlockedDoorEntity 
-UnlockedDoorEntity are not interactable with agent, serving only aesthetic purpose. They are the unlocked version of the [LockedDoorEntity](#lockeddoorentity).
+**[14. UnlockedDoorEntity](../player-guide/entities.md#door)**

@@ -43,7 +43,7 @@ Note: `PMap` is an Immutable Dictionary, dictionary methods are available.
 |-----------|-----------|-------------|
 | `agent` | [`Agent`](#agententity) | Player-controlled entities |
 | `appearance` | `Appearance` | Visual rendering properties |
-| `blocking` | [`Blocking`](entities.md#blockingentity) | Obstacles that block movement |
+| `blocking` | [`Blocking`](#blockingentity) | Obstacles that block movement |
 | `collectible` | [`Collectible`](#collectibleentity) | Items that can be picked up |
 | `collidable` | [`Collidable`](#collidable-entities) | Entities triggering collision events |
 | `cost` | `Cost` | Entities that inflict movement cost |
@@ -80,7 +80,7 @@ Note: `PMap` is an Immutable Dictionary, dictionary methods are available.
 | `from_state(state)` | Converts immutable `State` to mutable `GridState` |
 
 &nbsp;
-## Entity list and Attributes
+## Entities
 &nbsp;
 
 ### Entity Types
@@ -251,7 +251,7 @@ UnlockedDoorEntity is not interactable with agent, serving only aesthetic purpos
 
 &nbsp;
 ## Usage Example
-All effects and components are represented by Entities in the Grid Adventure game. Each entity is assigned a unique EntityID at creation. This EntityID is used to map to each attribute of the Entity. For more details about entities, Please refer to [Entity Classes](entities.md#entities).
+All effects and components are represented by Entities in the Grid Adventure game. Each entity is assigned a unique EntityID at creation. This EntityID is used to map to each attribute of the Entity. For more details about entities, Please refer to [Entity Classes](#entities).
 
 ---                                                                                                                                                                               
 Example 1: Player Entity

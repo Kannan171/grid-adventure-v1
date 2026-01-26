@@ -1,6 +1,6 @@
 
 # ImageObservation Representation
-The ImageObservation representation is created by the Grid Adventure V1 game engine, and is non reversible. Players are not able to convert ImageObservation representation into GridState or State representation.
+The ImageObservation representation is created by the Grid Adventure V1 game engine. It contains a 3D image array with additional information in a dictionary.
 
 ## ImageObservation Attribute Hierachy
 The ImageObservation Class represents the Game snapshot as a dictionary with the following hierachy.
@@ -29,8 +29,7 @@ ImageObservation: TypedDict
     │   └── inventory: list[InventoryItem]
     │       └── [each item]
     │           ├── id: int
-    │           ├── type: str ("key" | "core" | "coin" | "item")
-    │           ├── key_id: str ("" if not a key)
+    │           ├── type: str ("key" | "gem" | "coin" | "item")
     │           └── appearance_name: str ("" if unknown)
     │
     ├── status: StatusInfo #Dictionary subclass
