@@ -1042,14 +1042,14 @@
 <p>When the grid is rendered, the image will be populated with all the entities present. For more information on the different entities and their appearances, please refer to the <a href="../../player-guide/entities/">Player Guide</a>. An example of a rendered grid is shown below.</p>
 <p><img alt="Grid Example" src="../../assets/grid_example.png" /></p>
 <h2 id="rendering-constraints">Rendering Constraints</h2>
-<p>It is given that all levels do not have any overlapping entities at the start. This is to reduce the possible states for the agent to consider when reading an <code>ImageObservation.image</code>. </p>
+<p>It is given that all grids do not have any overlapping entities at the start. This is to reduce the possible states for the agent to consider when reading an <code>ImageObservation.image</code>. </p>
 <p><strong>Note</strong>: The only exception is the overlap on <code>FloorEntity</code> with all other Entities.</p>
 <h2 id="overlapping-entities">Overlapping Entities</h2>
 <h3 id="agent-with-collectible-items">Agent with Collectible items</h3>
 <p>When overlapping Agent with collectible items such as Gem, Coin, Key or any Power Ups, the collectible item will be minimised and shown in the top left of the grid cell.</p>
 <p><img alt="Agent Overlapping with Collectible" src="../../assets/rendering_agent_collectible.png" /></p>
 <h3 id="agent-or-box-with-background-entities">Agent or Box with Background Entities</h3>
-<p>When overlapping Agent with background entities, such as Lava, Unlocked Door, Exit &amp; Floor, the Agent will be poitioned before the background entity.</p>
+<p>When overlapping Agent with background entities, such as Lava, Unlocked Door, Exit &amp; Floor, the Agent will be positioned before the background entity.</p>
 <p><img alt="Agent Overlapping with Non Background entities" src="../../assets/rendering_agent_background.png" /></p>
 
 
