@@ -1,7 +1,7 @@
 # State Representation
 The state representation is the internal representation used by the Grid Adventure game. It stores information in various attributes, tracked by EntityID of each Entity. It is the most comprehensive of the 3 representations, and is used to generate the GridState and ImageObservation representations. 
 
-!!! warning "WARNING ON STATE SPACE"
+!!! warning "WARNING ON STATE REPRESENTATION"
     The Capstone Project can be solved without using the **State Representation**, however the State Representation is included for a lower level access to the representation.
 
 ## State Attributes

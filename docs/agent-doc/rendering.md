@@ -6,7 +6,7 @@ When the grid is rendered, the image will be populated with all the entities pre
 ![Grid Example](../assets/grid_example.png)
 
 ## Rendering Constraints
-It is given that all levels do not have any overlapping entities at the start. This is to reduce the possible states for the agent to consider when reading an `ImageObservation.image`. 
+It is given that all grids do not have any overlapping entities at the start. This is to reduce the possible states for the agent to consider when reading an `ImageObservation.image`. 
 
 **Note**: The only exception is the overlap on `FloorEntity` with all other Entities.
 
@@ -17,6 +17,6 @@ When overlapping Agent with collectible items such as Gem, Coin, Key or any Powe
 ![Agent Overlapping with Collectible](../assets/rendering_agent_collectible.png)
 
 ### Agent or Box with Background Entities
-When overlapping Agent with background entities, such as Lava, Unlocked Door, Exit & Floor, the Agent will be poitioned before the background entity.
+When overlapping Agent with background entities, such as Lava, Unlocked Door, Exit & Floor, the Agent will be positioned before the background entity.
 
 ![Agent Overlapping with Non Background entities](../assets/rendering_agent_background.png)
