@@ -570,6 +570,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../rendering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Image Rendering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -586,10 +614,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
             
   
   
@@ -607,8 +635,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1104,6 +1132,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Usage Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#useful-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful Operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1548,6 +1604,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Usage Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#useful-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful Operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1832,7 +1916,7 @@ Note: <code>PMap</code> is an immutable dictionary, standard dictionary methods 
 </table>
 <p>&nbsp;</p>
 <h2 id="entities">Entities</h2>
-<p>&nbsp;</p>
+<p>All effects and components are represented by Entities in the Grid Adventure game. Each entity is assigned a unique EntityID at creation. This EntityID is used to map to each attribute of the Entity.</p>
 <h3 id="entity-types">Entity Types</h3>
 <p>There are in general 5 types of Entities</p>
 <table>
@@ -1891,12 +1975,12 @@ Note: <code>PMap</code> is an immutable dictionary, standard dictionary methods 
 <td>Health to give the agent, constitutes Max and current health</td>
 </tr>
 <tr>
-<td>inventory</td>
+<td>inventory_list</td>
 <td>Inventory Class</td>
 <td>List of Entity that represents the Agent's inventory</td>
 </tr>
 <tr>
-<td>status</td>
+<td>status_list</td>
 <td>Status Class</td>
 <td>List of Entity that represents the statuses active on the agent</td>
 </tr>
@@ -1940,7 +2024,7 @@ Note: <code>PMap</code> is an immutable dictionary, standard dictionary methods 
 <p>&nbsp;</p>
 <h4 id="boxentity"><a href="../../player-guide/entities/#box">BoxEntity</a></h4>
 <p>This is a pushable blocking entity that the agent can push but not walk through. The box entity has no attributes.</p>
-<p>Note: that the box is also a <a href="#pushableentity">Pushable</a> Entity</p>
+<p>Note: that the box is both <a href="#blockingentity">Blocking</a> and a <a href="#pushableentity">Pushable</a> Entity</p>
 <p>&nbsp;</p>
 <h4 id="lockeddoorentity"><a href="../../player-guide/entities/#door">LockedDoorEntity</a></h4>
 <p>This is a blocking entity that the agent cannot push through or push. This entity becomes a <a href="#unlockeddoorentity">UnlockedDoorEntity</a>, when a <a href="#keyentity">KeyEntity</a> is used on it</p>
@@ -2095,23 +2179,80 @@ Note: <code>PMap</code> is an immutable dictionary, standard dictionary methods 
 <p>UnlockedDoorEntity is not interactable with agent and serves only an aesthetic purpose. It is the unlocked version of the <a href="#lockeddoorentity">LockedDoorEntity</a>. The UnlockedDoorEntity has no attributes.</p>
 <p>&nbsp;</p>
 <h2 id="usage-example">Usage Example</h2>
-<p>All effects and components are represented by Entities in the Grid Adventure game. Each entity is assigned a unique EntityID at creation. This EntityID is used to map to each attribute of the Entity. For more details about entities, please refer to <a href="#entities">Entity Classes</a>.</p>
+<p>Use the code examples given below to familiarise yourself on the <code>State</code> representation and explore the different components.</p>
 <hr />
-<p>Example 1: Player Entity</p>
-<p>A player entity with EntityID = 1 that has position, health, appearance, and agent components:  </p>
-<p>&emsp;&emsp;state.position[1]   = Position(x=3, y=5)<br />
-&emsp;&emsp;state.health[1]     = Health(health=100, max_health=100)<br />
-&emsp;&emsp;state.appearance[1] = Appearance(name="human", priority=10)<br />
-&emsp;&emsp;state.agent[1]      = AgentEntity()<br />
-&emsp;&emsp;state.inventory[1]  = Inventory(item_ids=pset([2, 3]))  # holds items 2 and 3   </p>
-<p>The same EntityID appears in multiple component stores, each holding a different aspect of that entity.</p>
+<h3 id="useful-operations">Useful Operations</h3>
+<ul>
+<li>
+<p><strong>Get agent ID</strong>
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="kc">None</span><span class="p">)</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Lookup components by EntityId</strong>
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">state</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">eid</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">eid</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">blocking</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Iterate entities in a cell</strong><br />
+  Invert <code>state.position</code> to obtain a mapping of:
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Position -&gt; [EntityID]
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Sparse debug view</strong>
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">state</span><span class="o">.</span><span class="n">description</span>
+</code></pre></div>
+  Returns a <code>PMap</code> containing only populated component stores.</p>
+</li>
+<li>
+<p><strong>Apply an action</strong>
+  ```python
+  step(State, Action) -&gt; State</p>
+</li>
+</ul>
 <hr />
-<p>Example 2: Status Effect Entity</p>
-<p>An immunity effect with EntityID = 50 applied to the player (EntityID = 1):</p>
-<p>&emsp;&emsp;state.immunity[50]   = Immunity()<br />
-&emsp;&emsp;state.time_limit[50] = TimeLimit(amount=10)  # lasts 10 turns<br />
-&emsp;&emsp;state.status[1]      = Status(effect_ids=pset([50]))  # player has effect 50  </p>
-<p>The effect itself is an entity (EntityID = 50) stored in immunity and time_limit. The player's status component references this effect by its ID.</p>
+<h3 id="full-example">Full Example</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span> <span class="nn">grid_adventure.step</span> <span class="kn">import</span> <span class="n">step</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># Creation of the grid still requires use of GridState</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">gridstate</span> <span class="o">=</span> <span class="n">GridState</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">movement</span><span class="o">=</span><span class="n">MOVEMENTS</span><span class="p">[</span><span class="s2">&quot;cardinal&quot;</span><span class="p">],</span> <span class="n">objective</span><span class="o">=</span><span class="n">OBJECTIVES</span><span class="p">[</span><span class="s2">&quot;collect_gems_and_exit&quot;</span><span class="p">],</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,)</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">gridstate</span><span class="o">.</span><span class="n">height</span><span class="p">):</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">gridstate</span><span class="o">.</span><span class="n">width</span><span class="p">):</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="n">gridstate</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">FloorEntity</span><span class="p">())</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># Add an agent entity, box and exit to the grid</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">gridstate</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">AgentEntity</span><span class="p">())</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">gridstate</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">BoxEntity</span><span class="p">())</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="n">gristate</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">ExitEntity</span><span class="p">())</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="c1"># Convert GridState to the immutable State representation</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="n">state</span> <span class="o">=</span> <span class="n">to_state</span><span class="p">(</span><span class="n">gridstate</span><span class="p">)</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="c1"># state.description contains only populated component stores</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="c1"># (e.g. position, agent, blocking, etc.)</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="c1"># state.position maps EntityID -&gt; (x, y) coordinates and can be used to locate entities in the grid</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="c1"># Retrieve the agent&#39;s EntityID</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="n">agent_id</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="n">box_entity_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">pushable</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="c1"># Find all entities that are pushable. Since only 1 box is added, it contains the entity id of the box</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="n">box_id</span> <span class="o">=</span> <span class="n">box_entity_ids</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="c1"># Look up current position</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="n">agent_position</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">agent_id</span><span class="p">)</span> <span class="c1">#(0,1)</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="n">box_position</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">box_id</span><span class="p">)</span> <span class="c1">#(1,1)</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="c1"># Check whether the entity is considered blocking</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="n">is__agent_blocking</span> <span class="o">=</span> <span class="n">agent_id</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">blocking</span> <span class="c1"># False</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="n">is_box_blocking</span> <span class="o">=</span> <span class="n">box_id</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">blocking</span> <span class="c1"># True</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="c1"># Apply an action using step. step returns a new State</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="n">state</span> <span class="o">=</span> <span class="n">step</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">Action</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">)</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="c1"># After stepping, the agent&#39;s position in state_3_1.position is updated</span>
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="n">new_agent_position</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">agent_id</span><span class="p">)</span> <span class="c1">#(1,1)</span>
+</code></pre></div>
 
 
 
