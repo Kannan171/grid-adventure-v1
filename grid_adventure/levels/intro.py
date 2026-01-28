@@ -103,28 +103,7 @@ def build_level_optional_coin(seed: int = 102) -> GridState:
     return gridstate
 
 
-def build_level_required_one(seed: int = 103) -> GridState:
-    w, h = 9, 7
-    gridstate = GridState(
-        w,
-        h,
-        movement=MOVEMENTS["cardinal"],
-        objective=OBJECTIVES["collect_gems_and_exit"],
-        seed=seed,
-        turn_limit=TURN_LIMIT,
-    )
-    _floors(gridstate)
-    _border(gridstate)
-    for y in range(1, h - 1):
-        if y != h // 2:
-            gridstate.add((w // 2, y), WallEntity())
-    gridstate.add((1, h // 2), create_agent_entity())
-    gridstate.add((w - 2, h // 2), ExitEntity())
-    gridstate.add((w // 2 - 1, h // 2 - 1), GemEntity())
-    return gridstate
-
-
-def build_level_required_two(seed: int = 104) -> GridState:
+def build_level_required_multiple(seed: int = 104) -> GridState:
     w, h = 11, 9
     gridstate = GridState(
         w,
@@ -277,7 +256,7 @@ def build_level_power_boots(seed: int = 112) -> GridState:
     return gridstate
 
 
-def build_level_capstone_simple(seed: int = 113) -> GridState:
+def build_level_combined_mechanics(seed: int = 113) -> GridState:
     gridstate = GridState(
         width=7,
         height=7,
@@ -331,7 +310,7 @@ def build_level_capstone_simple(seed: int = 113) -> GridState:
     return gridstate
 
 
-def build_level_capstone_advanced(seed: int = 113) -> GridState:
+def build_level_boss(seed: int = 113) -> GridState:
     gridstate = GridState(
         width=7,
         height=7,
