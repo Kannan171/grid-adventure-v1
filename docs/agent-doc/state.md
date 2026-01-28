@@ -7,19 +7,19 @@ The state representation is the internal representation used by the Grid Adventu
 ## State Attributes
 The state Class represents the Game snapshot with the following 4 types of attributes.
 
-- Level Configuration
+- Grid Configuration
 - Effect Configuration
 - Property Components
 - Game Status
 
-### Level Configuration
+### Grid Configuration
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
 | `width` | `int` | Grid width in tiles |
 | `height` | `int` | Grid height in tiles |
 | `movement` | `BaseMovement` | Movement functions allowed |
-| `objective` | `BaseObjective` | Objective of the level |
+| `objective` | `BaseObjective` | Objective of the grid |
 
 ### Effect Components
 
@@ -49,7 +49,7 @@ Note: `PMap` is an immutable dictionary, standard dictionary methods are availab
 | `cost` | `Cost` | Entities that inflict movement cost |
 | `damage` | [`Damage`](#lavaentity) | Entities that deal damage on contact |
 | `dead` | `Dead` | Dead/incapacitated entities |
-| `exit` | [`Exit`](#exitentity) | Level exit points |
+| `exit` | [`Exit`](#exitentity) | Grid exit points |
 | `health` | `Health` | Entity health (current/max) |
 | `inventory` | `Inventory` | Items held by entities |
 | `key` | [`Key`](#keyentity) | Keys that unlock `Locked` entities |
@@ -157,7 +157,7 @@ This is a blocking entity that the agent cannot push through or push. This entit
 |---|---|---|
 |locked|Locked Class|Locked door that can be unlocked by a Key|
 
-Note: Each level can have multiple key - door pairs. Any key can be used to unlock a door, but each key can only be used once.
+Note: Each grid can have multiple key - door pairs. Any key can be used to unlock a door, but each key can only be used once.
 
 &nbsp;
 

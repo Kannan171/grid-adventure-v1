@@ -9,7 +9,7 @@ The world is represented as a 2D grid made up of tiles. The agent can start at a
 This Player Guide is designed to help you understand every part of the game:
 
 * [Entities](entities.md) — the objects you will encounter in the grid
-* [Objectives](objectives.md) — what you must accomplish to complete a level
+* [Objectives](objectives.md) — what you must accomplish to win the game
 * [Movements](movements.md) — how the Agent moves and interacts with various objects
 
 Dive into each section to master the game and start gridding!
