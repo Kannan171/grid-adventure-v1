@@ -73,35 +73,9 @@ def test_collect_coin_increases_score():
 
 
 # ---- L3 ----
-def test_required_one_collect_then_exit_wins():
-    """L3: One required core — collect the core then reach exit to win."""
-    gridstate = intro.build_level_required_one(seed=103)
-    state = to_state(gridstate)
-
-    # Derive geometry
-    w = state.width
-    midx = w // 2
-    # Core is placed at (midx-1, midy-1); agent at (1, midy); exit at (w-2, midy)
-
-    # Move to core tile: UP to y=midy-1, then RIGHT until x=midx-1
-    state = adv_step(state, Action.UP)
-    while _agent_pos(state).x < midx - 1:
-        state = adv_step(state, Action.RIGHT)
-    # Pick up core
-    state = adv_step(state, Action.PICK_UP)
-    # Back to middle row
-    state = adv_step(state, Action.DOWN)
-    # Move to exit
-    while _agent_pos(state).x < w - 2:
-        state = adv_step(state, Action.RIGHT)
-
-    assert state.win is True
-
-
-# ---- L4 ----
-def test_required_two_collect_both_then_exit_wins():
-    """L4: Two required cores — collect both (top and bottom) then reach exit to win."""
-    gridstate = intro.build_level_required_two(seed=104)
+def test_required_gems_collect_all_then_exit_wins():
+    """L3/L4: Required gems — one gem is not enough; collecting both then exiting wins."""
+    gridstate = intro.build_level_required_multiple(seed=104)
     state = to_state(gridstate)
 
     # Geometry (open cross: mid row and mid column are open)
@@ -111,16 +85,25 @@ def test_required_two_collect_both_then_exit_wins():
     bottom_core = Position(midx, h - 2)
     exit_pos = Position(w - 2, midy)
 
-    # Move to center column along mid row
+    # Move to center column along mid row, then up to top gem and pick up
     while _agent_pos(state).x < midx:
         state = adv_step(state, Action.RIGHT)
-
-    # Up to top core and pick up
     while _agent_pos(state).y > top_core.y:
         state = adv_step(state, Action.UP)
     state = adv_step(state, Action.PICK_UP)
 
-    # Down to bottom core and pick up
+    # Return to mid row, go to exit without bottom gem; should not win
+    while _agent_pos(state).y < midy:
+        state = adv_step(state, Action.DOWN)
+    while _agent_pos(state).x < exit_pos.x:
+        state = adv_step(state, Action.RIGHT)
+    assert state.win is False
+
+    # Go back to center column
+    while _agent_pos(state).x > midx:
+        state = adv_step(state, Action.LEFT)
+
+    # Down to bottom gem and pick up
     while _agent_pos(state).y < bottom_core.y:
         state = adv_step(state, Action.DOWN)
     state = adv_step(state, Action.PICK_UP)

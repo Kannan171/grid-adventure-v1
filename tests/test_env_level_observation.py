@@ -7,7 +7,7 @@ from grid_universe.grid.convert import grid_state_fn_to_initial_state_fn
 def test_env_returns_level_observation():
     env = GridAdventureEnv(
         initial_state_fn=grid_state_fn_to_initial_state_fn(
-            intro.build_level_capstone_simple
+            intro.build_level_basic_movement
         ),
         observation_type="gridstate",
     )
