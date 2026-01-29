@@ -133,13 +133,16 @@ Overlaps may occur when the Agent moves onto a tile containing other entities.
 
 ### Overlapping Entities
 #### Agent with collectible items
+
 When the Agent occupies the same cell as a collectible item:
+
 - The Agent is rendered normally
 - The collectible item is **shrunk** and displayed in the **top-left corner** of the cell
 ![Agent Overlapping with collectible](../assets/rendering_agent_collectible.png)
 
 #### Agent with background entities
 When the Agent occupies the same cell as a background entity (lava, unlocked door, exit):
+
 - The background entity remains visible
 - The Agent is rendered **in front** of it
 
