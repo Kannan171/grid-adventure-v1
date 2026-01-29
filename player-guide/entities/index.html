@@ -550,38 +550,44 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#powerup-speed" class="md-nav__link">
+    <nav class="md-nav" aria-label="Powerups">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#speed-powerup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Powerup-Speed
+        Speed Powerup
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#powerup-shield" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#shield-powerup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Powerup-Shield
+        Shield Powerup
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#powerup-phasing" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#phasing-powerup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Powerup-Phasing
+        Phasing Powerup
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -989,34 +995,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../agent-doc/rendering/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Image Rendering
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1167,38 +1145,44 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#powerup-speed" class="md-nav__link">
+    <nav class="md-nav" aria-label="Powerups">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#speed-powerup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Powerup-Speed
+        Speed Powerup
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#powerup-shield" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#shield-powerup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Powerup-Shield
+        Shield Powerup
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#powerup-phasing" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#phasing-powerup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Powerup-Phasing
+        Phasing Powerup
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1257,15 +1241,15 @@ The agent starts with some health points (up to 5) and the player loses if the H
 <p>Lava tiles inflict damage to the agent. When the agent lands on lava, it takes 2 damage. The player loses if the agent's HP drops to 0.</p>
 <h2 id="powerups">Powerups</h2>
 <p>Powerups may also appear on the grid and can be picked up by the agent. They provide temporary boosts and are associated with either a turn or usage limit.</p>
-<h2 id="powerup-speed">Powerup-Speed</h2>
+<h3 id="speed-powerup">Speed Powerup</h3>
 <p><img alt="Speed" src="../../assets/boots.png" /></p>
 <p>The speed powerup allows the agent to move 2 tiles in 1 turn. It has a 5-turn limit. Note that the agent can still be blocked by any objects in its path.</p>
-<h2 id="powerup-shield">Powerup-Shield</h2>
+<h3 id="shield-powerup">Shield Powerup</h3>
 <p><img alt="Shield" src="../../assets/shields.png" /></p>
 <p>Shield protects the agent from damage taken. It has a usage limit of 5. The shield is used once every time the agent lands on lava.</p>
-<h2 id="powerup-phasing">Powerup-Phasing</h2>
+<h3 id="phasing-powerup">Phasing Powerup</h3>
 <p><img alt="Phasing" src="../../assets/ghosts.png" /></p>
-<p>Phasing allows the agent to move through objects. It has a turn limit of 5. While the powerup is active, the agent can move through walls and doors and does not take damage from lava.</p>
+<p>Phasing allows the agent to move through objects. It has a turn limit of 5. While the powerup is active, the agent can move through walls, doors and boxes. The agent does not take damage from lava as well.</p>
 
 
 

@@ -773,6 +773,101 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#image-rendering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Image Rendering
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Image Rendering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overlapping-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overlapping rules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overlapping rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initial-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initial State
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#during-gameplay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        During Gameplay
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overlapping-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overlapping Entities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overlapping Entities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agent-with-collectible-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent with collectible items
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent-with-background-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent with background entities
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -874,34 +969,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../rendering/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Image Rendering
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -968,6 +1035,101 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#image-rendering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Image Rendering
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Image Rendering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overlapping-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overlapping rules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overlapping rules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initial-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initial State
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#during-gameplay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        During Gameplay
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overlapping-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overlapping Entities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overlapping Entities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agent-with-collectible-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent with collectible items
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent-with-background-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent with background entities
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -987,7 +1149,7 @@
 
 <h1 id="imageobservation-representation">ImageObservation Representation</h1>
 <p>The ImageObservation representation is created by Grid Adventure. It contains a 3D image array with additional information in a dictionary.</p>
-<p>For how the rules on how the image is rendered, refer to <a href="../rendering/">Image Rendering</a>.</p>
+<p>For more information on how the image is rendered, refer to <a href="#image-rendering">Image Rendering</a>.</p>
 <h2 id="imageobservation-attribute-hierarchy">ImageObservation Attribute Hierarchy</h2>
 <p>The ImageObservation Class represents the game snapshot as a dictionary with the following hierarchy.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ImageObservation: TypedDict
@@ -1059,9 +1221,6 @@
 <a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
 <a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
-<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="c1"># Stack frames for temporal context (e.g., last 4 frames)</span>
-<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="n">frame_stack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">obs1</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">],</span> <span class="n">obs2</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">],</span> <span class="n">obs3</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">],</span> <span class="n">obs4</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <p>&nbsp;</p>
 <h2 id="infodict-usage-example">InfoDict Usage Example</h2>
@@ -1093,6 +1252,30 @@
 <a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">obs</span><span class="p">[</span><span class="s2">&quot;info&quot;</span><span class="p">][</span><span class="s2">&quot;agent&quot;</span><span class="p">][</span><span class="s2">&quot;inventory&quot;</span><span class="p">]:</span>
 <a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Item: </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> (id=</span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 </code></pre></div>
+<h2 id="image-rendering">Image Rendering</h2>
+<p>The rendered image represents the current game state as a 2D grid. Each grid cell may contain multiple entities, which are populated in order to produce the final image. For more information on the different entities and their appearances, please refer to the <a href="../../player-guide/entities/">Player Guide</a>. </p>
+<p>An example of a rendered grid is shown below.
+<img alt="Grid Example" src="../../assets/grid_example.png" /></p>
+<h3 id="overlapping-rules">Overlapping rules</h3>
+<h4 id="initial-state">Initial State</h4>
+<ul>
+<li>At the start of the game, <strong>entities do not overlap</strong>.</li>
+<li>The only exception is <strong>Floor</strong>, which may exist beneath any entity.</li>
+</ul>
+<h4 id="during-gameplay">During Gameplay</h4>
+<p>Overlaps may occur when the Agent moves onto a tile containing other entities.</p>
+<hr />
+<h3 id="overlapping-entities">Overlapping Entities</h3>
+<h4 id="agent-with-collectible-items">Agent with collectible items</h4>
+<p>When the Agent occupies the same cell as a collectible item:
+- The Agent is rendered normally
+- The collectible item is <strong>shrunk</strong> and displayed in the <strong>top-left corner</strong> of the cell
+<img alt="Agent Overlapping with collectible" src="../../assets/rendering_agent_collectible.png" /></p>
+<h4 id="agent-with-background-entities">Agent with background entities</h4>
+<p>When the Agent occupies the same cell as a background entity (lava, unlocked door, exit):
+- The background entity remains visible
+- The Agent is rendered <strong>in front</strong> of it</p>
+<p><img alt="Agent Overlapping with Background entities" src="../../assets/rendering_agent_background.png" /></p>
 
 
 
