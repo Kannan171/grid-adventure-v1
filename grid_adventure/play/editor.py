@@ -190,6 +190,8 @@ register_level_source(
         movement_registry=MOVEMENTS,
         objective_registry=OBJECTIVES,
         asset_root_resolver=_asset_root_resolver,
-        env_class=GridAdventureEnv,
+        gridstate_import_line="from grid_adventure.grid import GridState",
+        movements_import_line="from grid_adventure.movements import MOVEMENTS",
+        objectives_import_line="from grid_adventure.objectives import OBJECTIVES",
     )
 )
