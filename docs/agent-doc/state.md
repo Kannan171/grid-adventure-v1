@@ -199,7 +199,7 @@ This is a collectible required to unlock a [LockedDoorEntity](#lockeddoorentity)
 Note: Any key present in the grid can be used to unlock a door, but each key can only be used once.
 
 &nbsp;
-#### [SpeedPowerUpEntity](../player-guide/entities.md#powerup-speed)
+#### [SpeedPowerUpEntity](../player-guide/entities.md#speed-powerup)
 This is a collectible power-up granting agent the ability to walk 2 tiles in 1 turn for a duration of time.
 
 |Attribute|Type|Description|
@@ -210,7 +210,7 @@ This is a collectible power-up granting agent the ability to walk 2 tiles in 1 t
 Note: Time limit is a constant at 5 steps.
 
 &nbsp;
-#### [ShieldPowerUpEntity](../player-guide/entities.md#powerup-shield)
+#### [ShieldPowerUpEntity](../player-guide/entities.md#shield-powerup)
 This is a collectible power-up granting agent immunity while walking on damaging tiles for 5 uses.
 
 |Attribute|Type|Description|
@@ -220,7 +220,7 @@ This is a collectible power-up granting agent immunity while walking on damaging
 Note: Usage limit is a constant at 5 uses.
 
 &nbsp;
-#### [PhasingPowerUpEntity](../player-guide/entities.md#powerup-phasing)
+#### [PhasingPowerUpEntity](../player-guide/entities.md#phasing-powerup)
 This is a collectible power-up granting agent ability to walk through [BlockingEntity](#blockingentity) for a duration of time.
 
 |Attribute|Type|Description|
@@ -279,6 +279,7 @@ UnlockedDoorEntity is not interactable with agent and serves only an aesthetic p
 - **Apply an action**
   ```python
   step(State, Action) -> State
+  ```
 ---
 
 ### Full Example

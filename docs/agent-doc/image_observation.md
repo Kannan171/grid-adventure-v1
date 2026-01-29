@@ -2,7 +2,7 @@
 # ImageObservation Representation
 The ImageObservation representation is created by Grid Adventure. It contains a 3D image array with additional information in a dictionary.
 
-For how the rules on how the image is rendered, refer to [Image Rendering](rendering.md).
+For more information on how the image is rendered, refer to [Image Rendering](#image-rendering).
 
 ## ImageObservation Attribute Hierarchy
 The ImageObservation Class represents the game snapshot as a dictionary with the following hierarchy.
@@ -79,9 +79,6 @@ import matplotlib.pyplot as plt
 plt.imshow(image)
 plt.axis("off")
 plt.show()
-
-# Stack frames for temporal context (e.g., last 4 frames)
-frame_stack = np.stack([obs1["image"], obs2["image"], obs3["image"], obs4["image"]], axis=0)
 ```
 
 
@@ -117,3 +114,33 @@ for effect in obs["info"]["agent"]["effects"]:
 for item in obs["info"]["agent"]["inventory"]:
     print(f"Item: {item['type']} (id={item['id']})")
 ```
+
+## Image Rendering
+The rendered image represents the current game state as a 2D grid. Each grid cell may contain multiple entities, which are populated in order to produce the final image. For more information on the different entities and their appearances, please refer to the [Player Guide](../player-guide/entities.md). 
+
+An example of a rendered grid is shown below.
+![Grid Example](../assets/grid_example.png)
+
+### Overlapping rules
+#### Initial State
+- At the start of the game, **entities do not overlap**.
+- The only exception is **Floor**, which may exist beneath any entity.
+
+#### During Gameplay
+Overlaps may occur when the Agent moves onto a tile containing other entities.
+
+---
+
+### Overlapping Entities
+#### Agent with collectible items
+When the Agent occupies the same cell as a collectible item:
+- The Agent is rendered normally
+- The collectible item is **shrunk** and displayed in the **top-left corner** of the cell
+![Agent Overlapping with collectible](../assets/rendering_agent_collectible.png)
+
+#### Agent with background entities
+When the Agent occupies the same cell as a background entity (lava, unlocked door, exit):
+- The background entity remains visible
+- The Agent is rendered **in front** of it
+
+![Agent Overlapping with Background entities](../assets/rendering_agent_background.png)

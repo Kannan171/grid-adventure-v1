@@ -56,9 +56,11 @@ Note: `obj` is of class `BaseEntity`, parent class of all Entities. For more det
 ## Entities
 
 ### Entity List
-There are a total of 14 entities that can be present on the grid. To view the appearance and interactions between the entities, refer to the [Player Guide](../player-guide/entities.md)
+There are a total of 14 entities that can be present on the grid. To view the appearance and interactions between the entities, refer to the [Player Guide](../player-guide/entities.md).
 
-**[AgentEntity](../player-guide/entities.md#agent)**
+All entities have an `appearance.name` attribute, which is a string describing the entity. It can be used to determine the entities present in each cell of the grid. Each entity below is given with its entity class name as well as appearance name in brackets.
+
+**[AgentEntity](../player-guide/entities.md#agent)** (`"human"`)
 
 This is the entity controlled by the user. The Agent contains additional attributes and methods.
 
@@ -72,28 +74,28 @@ This is the entity controlled by the user. The Agent contains additional attribu
 |---|---|---|
 |set_health|health: int|Sets the agent's health|
 
-**[LavaEntity](../player-guide/entities.md#lava)**
+**[LavaEntity](../player-guide/entities.md#lava)** (`"lava"`)
 
-**[WallEntity](../player-guide/entities.md#wall)**
+**[WallEntity](../player-guide/entities.md#wall)** (`"wall"`)
 
-**[BoxEntity](../player-guide/entities.md#box)**
+**[BoxEntity](../player-guide/entities.md#box)** (`"box"`)
 
-**[CoinEntity](../player-guide/entities.md#coin)**
+**[CoinEntity](../player-guide/entities.md#coin)** (`"coin"`)
 
-**[GemEntity](../player-guide/entities.md#gem)**
+**[GemEntity](../player-guide/entities.md#gem)** (`"gem"`)
 
-**[KeyEntity](../player-guide/entities.md#key)**
+**[KeyEntity](../player-guide/entities.md#key)** (`"key"`)
 
-**[LockedDoorEntity](../player-guide/entities.md#door)**
+**[LockedDoorEntity](../player-guide/entities.md#door)** (`"door"`)
 
 **[UnlockedDoorEntity](../player-guide/entities.md#door)**
 
-**[SpeedPowerUpEntity](../player-guide/entities.md#powerup-speed)**
+**[SpeedPowerUpEntity](../player-guide/entities.md#speed-powerup)** (`"boots"`)
 
-**[ShieldPowerUpEntity](../player-guide/entities.md#powerup-shield)**
+**[ShieldPowerUpEntity](../player-guide/entities.md#shield-powerup)** (`"shield"`)
 
-**[PhasingPowerUpEntity](../player-guide/entities.md#powerup-phasing)**
+**[PhasingPowerUpEntity](../player-guide/entities.md#phasing-powerup)** (`"ghost"`)
 
-**[ExitEntity](../player-guide/entities.md#exit)**
+**[ExitEntity](../player-guide/entities.md#exit)** (`"exit"`)
 
-**[FloorEntity](../player-guide/entities.md#floor)**
+**[FloorEntity](../player-guide/entities.md#floor)** (`"floor"`)

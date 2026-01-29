@@ -42,13 +42,17 @@ The example shows the agent movement once boots are picked up. Note that walls c
 
 Shield allows the agent to move through lava without taking damage. It has 5 uses.
 
-In this example, the agent health has been set to 1, so landing on lava will result in a loss. Thus, the agent collects the shield powerup to pass through 3 lava tiles and reach the exit.
+In this example, the agent health has been set to 1, so the agent dies when stepping on lava without the shield.
 
-![Shield_Movement](../assets/shield_movement.gif)
+![Lava_death](../assets/lava_1.gif)
+
+In order to reach the exit, the agent can collect the shield powerup which allows it to safely pass through the lava.
+
+![Shield_movement](../assets/lava_2.gif)
 
 ## Powerup-Phasing
 
-Phasing powerup allows the agent to move through objects such as walls and doors. It lasts for 5 turns.
+Phasing powerup allows the agent to move through objects such as walls, doors and boxes. It lasts for 5 turns.
 
 In this example, the agent collects the phasing powerup to pass through the walls and reach the exit tile.
 

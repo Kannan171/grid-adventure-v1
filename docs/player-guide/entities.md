@@ -71,20 +71,20 @@ Lava tiles inflict damage to the agent. When the agent lands on lava, it takes 2
 
 Powerups may also appear on the grid and can be picked up by the agent. They provide temporary boosts and are associated with either a turn or usage limit.
 
-## Powerup-Speed
+### Speed Powerup
 
 ![Speed](../assets/boots.png)
 
 The speed powerup allows the agent to move 2 tiles in 1 turn. It has a 5-turn limit. Note that the agent can still be blocked by any objects in its path.
 
-## Powerup-Shield
+### Shield Powerup
 
 ![Shield](../assets/shields.png)
 
 Shield protects the agent from damage taken. It has a usage limit of 5. The shield is used once every time the agent lands on lava.
 
-## Powerup-Phasing
+### Phasing Powerup
 
 ![Phasing](../assets/ghosts.png)
 
-Phasing allows the agent to move through objects. It has a turn limit of 5. While the powerup is active, the agent can move through walls and doors and does not take damage from lava.
+Phasing allows the agent to move through objects. It has a turn limit of 5. While the powerup is active, the agent can move through walls, doors and boxes. The agent does not take damage from lava as well.

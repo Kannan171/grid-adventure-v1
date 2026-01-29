@@ -11,4 +11,8 @@ There are 3 ways for a Game Snapshot to be represented.
 | [ImageObservation](image_observation.md) | An RGBA Image representation using a 3D Array, with additional info stored in an information dictionary |
 | [State](state.md) | An Immutable world state. This is the most comprehensive, but low level representation |
 
-**Note**: The Capstone Project can be solved without using the **State Representation**.
+!!! Note
+    There are no direct between `GridState` and `ImageObservation` representations. If required, agents will need to build the mapping themselves.
+
+!!! Note
+    The Capstone Project can be solved without using the **State** representation.
