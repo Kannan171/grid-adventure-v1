@@ -17,6 +17,7 @@ dev = ["pytest", "pytest-cov", "mypy", "ruff"]
 play = [
     "grid-play @ git+https://github.com/grid-universe/grid-play.git"
 ]
+doc = ["mkdocs", "mkdocs-material", "mkdocstrings", "mkdocstrings-python"]
 
 [tool.setuptools.packages.find]
 where = ["."]

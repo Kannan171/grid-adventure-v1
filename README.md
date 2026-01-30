@@ -2,7 +2,12 @@
 
 A gridworld puzzle-adventure game built on the Grid Universe engine.
 
-Navigate grid-based levels, collect coins and keys, avoid hazards and enemies, and find the exit. Features powerups (speed, phasing, shields), moving enemies, portals, and locked doors.
+Navigate grid-based levels, collect coins and keys, avoid hazards, and find the exit. Features powerups (speed, phasing, shields), and unlockable doors.
+
+Comprehensive documentation is available at the [Grid Adventure V1 Docs](https://grid-universe.github.io/grid-adventure-v1/): 
+
+- **Player Guide**: entities, movements, objectives, and examples.
+- **Agent developer docs**: environment API, action set, agent class template, and detailed representations, and examples.
 
 ## Install
 
