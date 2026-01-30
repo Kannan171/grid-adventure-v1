@@ -31,9 +31,9 @@ Use the Config tab to change levels or customize settings.
 
 ## Features
 
-- **Entities:** Player, walls, floors, exits, coins, keys, doors, enemies, hazards
+- **Entities:** Player, walls, floors, exits, coins, keys, doors, hazards
 - **Powerups:** Speed boost, phasing (walk through walls), damage immunity shield
-- **Mechanics:** Health system, inventory, time limits, portal teleportation, pushable blocks
+- **Mechanics:** Health system, inventory, time limits, pushable blocks
 - **Editor:** Visual level design with real-time testing
 
 ## Development
