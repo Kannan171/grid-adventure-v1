@@ -7,7 +7,7 @@ Navigate grid-based levels, collect coins and keys, avoid hazards, and find the 
 Comprehensive documentation is available at the [Grid Adventure V1 Docs](https://grid-universe.github.io/grid-adventure-v1/): 
 
 - **Player Guide**: entities, movements, objectives, and examples.
-- **Agent developer docs**: environment API, action set, agent class template, and detailed representations, and examples.
+- **Agent developer docs**: environment API, representations, actions, and examples.
 
 ## Install
 
