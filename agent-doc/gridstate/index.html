@@ -1245,6 +1245,10 @@ Note: <code>obj</code> is of class <code>BaseEntity</code>, parent class of all 
 <h3 id="entity-list">Entity List</h3>
 <p>There are a total of 14 entities that can be present on the grid. To view the appearance and interactions between the entities, refer to the <a href="../../player-guide/entities/">Player Guide</a>.</p>
 <p>All entities have an <code>appearance.name</code> attribute, which is a string describing the entity. It can be used to determine the entities present in each cell of the grid. Each entity below is given with its entity class name as well as appearance name in brackets.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When rendering the grid, each entity’s <strong>appearance name</strong> is used to determine which image to display. By default, images are loaded from the <code>DEFAULT_ASSET_ROOT</code> defined in <code>grid_adventure.rendering</code>, which provides public assets from Grid Adventure V1. A mapping from appearance name is also defined as <code>IMAGE_MAP</code> in the same package.</p>
+</div>
 <p><strong><a href="../../player-guide/entities/#agent">AgentEntity</a></strong> (<code>"human"</code>)</p>
 <p>This is the entity controlled by the user. The Agent contains additional attributes and methods.</p>
 <table>
@@ -1295,8 +1299,8 @@ Note: <code>obj</code> is of class <code>BaseEntity</code>, parent class of all 
 <p><strong><a href="../../player-guide/entities/#coin">CoinEntity</a></strong> (<code>"coin"</code>)</p>
 <p><strong><a href="../../player-guide/entities/#gem">GemEntity</a></strong> (<code>"gem"</code>)</p>
 <p><strong><a href="../../player-guide/entities/#key">KeyEntity</a></strong> (<code>"key"</code>)</p>
-<p><strong><a href="../../player-guide/entities/#door">LockedDoorEntity</a></strong> (<code>"door"</code>)</p>
-<p><strong><a href="../../player-guide/entities/#door">UnlockedDoorEntity</a></strong></p>
+<p><strong><a href="../../player-guide/entities/#door">LockedDoorEntity</a></strong> (<code>"locked"</code>)</p>
+<p><strong><a href="../../player-guide/entities/#door">UnlockedDoorEntity</a></strong> (<code>"opened"</code>)</p>
 <p><strong><a href="../../player-guide/entities/#speed-powerup">SpeedPowerUpEntity</a></strong> (<code>"boots"</code>)</p>
 <p><strong><a href="../../player-guide/entities/#shield-powerup">ShieldPowerUpEntity</a></strong> (<code>"shield"</code>)</p>
 <p><strong><a href="../../player-guide/entities/#phasing-powerup">PhasingPowerUpEntity</a></strong> (<code>"ghost"</code>)</p>
