@@ -12,7 +12,7 @@ There are three representations of a game snapshot.
 | [State](state.md) | An Immutable world state. This is the most comprehensive, but low level representation |
 
 !!! Note
-    There are no direct between `GridState` and `ImageObservation` representations. If required, agents will need to build the mapping themselves.
+    There is no built-in mapping function between `GridState` and `ImageObservation` representations. If required, agents will need to build the mapping themselves.
 
 !!! Note
     The Capstone Project can be solved without using the **State** representation.
