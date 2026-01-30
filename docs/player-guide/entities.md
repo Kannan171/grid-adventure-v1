@@ -1,4 +1,4 @@
-All objects available in Grid-Adventure-V1 are shown below. Each entity is displayed in five slightly different visuals. Many other appearances exist that are similar but may differ subtly from those shown.
+All objects available in Grid Adventure V1 are shown below. Each entity is displayed in five slightly different visuals. Many other appearances exist that are similar but may differ subtly from those shown.
 
 ## Floor
 
