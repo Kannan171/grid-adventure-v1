@@ -23,7 +23,7 @@
     
     
       
-        <title>Entities - Grid-Adventure V1 Documentation</title>
+        <title>Entities - Grid Adventure: Variant 1</title>
       
     
     
@@ -78,7 +78,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Grid-Adventure V1 Documentation" class="md-header__button md-logo" aria-label="Grid-Adventure V1 Documentation" data-md-component="logo">
+    <a href="../.." title="Grid Adventure: Variant 1" class="md-header__button md-logo" aria-label="Grid Adventure: Variant 1" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -92,7 +92,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Grid-Adventure V1 Documentation
+            Grid Adventure: Variant 1
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -248,13 +248,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Grid-Adventure V1 Documentation" class="md-nav__button md-logo" aria-label="Grid-Adventure V1 Documentation" data-md-component="logo">
+    <a href="../.." title="Grid Adventure: Variant 1" class="md-nav__button md-logo" aria-label="Grid Adventure: Variant 1" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Grid-Adventure V1 Documentation
+    Grid Adventure: Variant 1
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -1205,7 +1205,7 @@
 
   <h1>Entities</h1>
 
-<p>All objects available in Grid-Adventure-V1 are shown below. Each entity is displayed in five slightly different visuals. Many other appearances exist that are similar but may differ subtly from those shown.</p>
+<p>All objects available in Grid Adventure V1 are shown below. Each entity is displayed in five slightly different visuals. Many other appearances exist that are similar but may differ subtly from those shown.</p>
 <h2 id="floor">Floor</h2>
 <p><img alt="Floor" src="../../assets/floors.png" /></p>
 <p>Floor is the basic tile of the grid. Other entities can also be present with floor tiles.</p>
@@ -1244,12 +1244,24 @@ The agent starts with some health points (up to 5) and the player loses if the H
 <h3 id="speed-powerup">Speed Powerup</h3>
 <p><img alt="Speed" src="../../assets/boots.png" /></p>
 <p>The speed powerup allows the agent to move 2 tiles in 1 turn. It has a 5-turn limit. Note that the agent can still be blocked by any objects in its path.</p>
+<div class="admonition note">
+<p class="admonition-title">Stacking</p>
+<p>If the agent picks up a second speed powerup while one is active, they will both count down simultaneously. Thus, the powerup will expire 5 turns after the last one is picked up. The agent still moves 2 tiles in a turn, even if multiple speed powerups are active.</p>
+</div>
 <h3 id="shield-powerup">Shield Powerup</h3>
 <p><img alt="Shield" src="../../assets/shields.png" /></p>
 <p>Shield protects the agent from damage taken. It has a usage limit of 5. The shield is used once every time the agent lands on lava.</p>
+<div class="admonition note">
+<p class="admonition-title">Stacking</p>
+<p>If the agent picks up a second shield while one is active, they will be used one after the other. If the agent currently has an active shield with durability 2 and picks up a new shield, it will have 2 active shields, with durability 2 and 5 respectively. When the agent lands on lava, only the first one is used, leaving the agent with 2 active shields, with durability 1 and 5.</p>
+</div>
 <h3 id="phasing-powerup">Phasing Powerup</h3>
 <p><img alt="Phasing" src="../../assets/ghosts.png" /></p>
 <p>Phasing allows the agent to move through objects. It has a turn limit of 5. While the powerup is active, the agent can move through walls, doors and boxes. The agent does not take damage from lava as well.</p>
+<div class="admonition note">
+<p class="admonition-title">Stacking</p>
+<p>If the agent picks up a second phasing powerup while one is active, they will both count down simultaneously. Thus, the powerup will expire 5 turns after the last one is picked up.</p>
+</div>
 
 
 
