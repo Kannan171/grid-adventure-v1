@@ -77,14 +77,23 @@ Powerups may also appear on the grid and can be picked up by the agent. They pro
 
 The speed powerup allows the agent to move 2 tiles in 1 turn. It has a 5-turn limit. Note that the agent can still be blocked by any objects in its path.
 
+!!! note "Stacking"
+    If the agent picks up a second speed powerup while one is active, they will both count down simultaneously. Thus, the powerup will expire 5 turns after the last one is picked up. The agent still moves 2 tiles in a turn, even if multiple speed powerups are active.
+
 ### Shield Powerup
 
 ![Shield](../assets/shields.png)
 
 Shield protects the agent from damage taken. It has a usage limit of 5. The shield is used once every time the agent lands on lava.
 
+!!! note "Stacking"
+    If the agent picks up a second shield while one is active, they will be used one after the other. If the agent currently has an active shield with durability 2 and picks up a new shield, it will have 2 active shields, with durability 2 and 5 respectively. When the agent lands on lava, only the first one is used, leaving the agent with 2 active shields, with durability 1 and 5.
+
 ### Phasing Powerup
 
 ![Phasing](../assets/ghosts.png)
 
 Phasing allows the agent to move through objects. It has a turn limit of 5. While the powerup is active, the agent can move through walls, doors and boxes. The agent does not take damage from lava as well.
+
+!!! note "Stacking"
+    If the agent picks up a second phasing powerup while one is active, they will both count down simultaneously. Thus, the powerup will expire 5 turns after the last one is picked up.
