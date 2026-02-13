@@ -77,7 +77,7 @@ Powerups may also appear on the grid and can be picked up by the agent. They pro
 
 <a name="usage-limit-anchor"></a>
 !!! info "Usage limit"
-    Powerups with a usage limit count down only when used. It expires when the usage limit reaches 0. If the agent picks up a duplicate powerup, they will count down one after the other. The first powerup must be fully used up before the second one begins to be used.
+    Powerups with a usage limit count down only when used. It expires when the usage limit reaches 0. If a duplicate is picked up, only one instance is used at any moment.
 
 
 ### Speed Powerup
