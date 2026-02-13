@@ -1240,28 +1240,30 @@ The agent starts with some health points (up to 5) and the player loses if the H
 <p><img alt="Lava" src="../../assets/lavas.png" /></p>
 <p>Lava tiles inflict damage to the agent. When the agent lands on lava, it takes 2 damage. The player loses if the agent's HP drops to 0.</p>
 <h2 id="powerups">Powerups</h2>
-<p>Powerups may also appear on the grid and can be picked up by the agent. They provide temporary boosts and are associated with either a turn or usage limit.</p>
+<p>Powerups may also appear on the grid and can be picked up by the agent. They provide temporary boosts and are associated with either a <a href="#turn-limit-anchor">turn limit</a> or <a href="#usage-limit-anchor">usage limit</a>. The agent can pickup and have multiple powerups at once, including duplicates.</p>
+<p><a name="turn-limit-anchor"></a></p>
+<div class="admonition info">
+<p class="admonition-title">Turn limit</p>
+<p>Powerups with a turn limit count down after every turn. The effect expires when the limit reaches 0. If the agent picks up a duplicate powerup, both will count down simultaneously. Essentially, the turn limit is reset when the second powerup is picked up.</p>
+</div>
+<p><a name="usage-limit-anchor"></a></p>
+<div class="admonition info">
+<p class="admonition-title">Usage limit</p>
+<p>Powerups with a usage limit count down only when used. It expires when the usage limit reaches 0. If the agent picks up a duplicate powerup, they will count down one after the other. The first powerup must be fully used up before the second one begins to be used.</p>
+</div>
 <h3 id="speed-powerup">Speed Powerup</h3>
 <p><img alt="Speed" src="../../assets/boots.png" /></p>
-<p>The speed powerup allows the agent to move 2 tiles in 1 turn. It has a 5-turn limit. Note that the agent can still be blocked by any objects in its path.</p>
+<p>The speed powerup allows the agent to move 2 tiles in 1 turn. It has a <a href="#turn-limit-anchor">turn limit</a> of 5. Note that the agent can still be blocked by any objects in its path.</p>
 <div class="admonition note">
 <p class="admonition-title">Stacking</p>
-<p>If the agent picks up a second speed powerup while one is active, they will both count down simultaneously. Thus, the powerup will expire 5 turns after the last one is picked up. The agent still moves 2 tiles in a turn, even if multiple speed powerups are active.</p>
+<p>Even if the agent has 2 active speed powerups, it is still only able to move 2 tiles in 1 turn.</p>
 </div>
 <h3 id="shield-powerup">Shield Powerup</h3>
 <p><img alt="Shield" src="../../assets/shields.png" /></p>
-<p>Shield protects the agent from damage taken. It has a usage limit of 5. The shield is used once every time the agent lands on lava.</p>
-<div class="admonition note">
-<p class="admonition-title">Stacking</p>
-<p>If the agent picks up a second shield while one is active, they will be used one after the other. If the agent currently has an active shield with durability 2 and picks up a new shield, it will have 2 active shields, with durability 2 and 5 respectively. When the agent lands on lava, only the first one is used, leaving the agent with 2 active shields, with durability 1 and 5.</p>
-</div>
+<p>Shield protects the agent from damage taken. It has a <a href="#usage-limit-anchor">usage limit</a> of 5. The shield is used once every time the agent lands on lava.</p>
 <h3 id="phasing-powerup">Phasing Powerup</h3>
 <p><img alt="Phasing" src="../../assets/ghosts.png" /></p>
-<p>Phasing allows the agent to move through objects. It has a turn limit of 5. While the powerup is active, the agent can move through walls, doors and boxes. The agent does not take damage from lava as well.</p>
-<div class="admonition note">
-<p class="admonition-title">Stacking</p>
-<p>If the agent picks up a second phasing powerup while one is active, they will both count down simultaneously. Thus, the powerup will expire 5 turns after the last one is picked up.</p>
-</div>
+<p>Phasing allows the agent to move through objects. It has a <a href="#turn-limit-anchor">turn limit</a> of 5. While the powerup is active, the agent can move through walls, doors and boxes. The agent does not take damage from lava as well.</p>
 
 
 
